@@ -6,46 +6,226 @@
   <meta name="description" content="VIBRA - Portfolio de nos événements : mariages, corporate, festivals avec Safran, L'Oréal, Capgemini">
   <meta name="keywords" content="portfolio événementiel, réalisations VIBRA, clients prestigieux">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="VIBRA - Portfolio & Réalisations">
-  <meta property="og:description" content="Découvrez nos plus belles réalisations événementielles">
-  <meta property="og:image" content="assets/images/og-image.jpg">
-  <meta property="og:url" content="https://vibra-events.com/portfolio.html">
-  <meta property="og:type" content="website">
-
   <title>VIBRA - Portfolio | Nos Réalisations Événementielles</title>
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/images/logo/vibra-icon.svg">
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-
-  <!-- Main CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: hidden; }
+
+    /* ===== HEADER ===== */
+    .port-hero {
+      padding: 150px 40px 40px;
+      text-align: center;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .port-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(232, 108, 36, 0.03) 0%, transparent 40%),
+        linear-gradient(225deg, rgba(255, 160, 80, 0.04) 0%, transparent 40%);
+      animation: portHeroShimmer 8s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .port-hero::after {
+      content: '';
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      width: 250px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(232, 108, 36, 0.15), transparent);
+      transform: translate(-50%, -50%);
+      animation: portLineGlow 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes portHeroShimmer {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+    @keyframes portLineGlow {
+      0%, 100% { width: 150px; opacity: 0.3; }
+      50% { width: 350px; opacity: 0.6; }
+    }
+    .port-hero h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(32px, 5vw, 56px);
+      text-transform: uppercase;
+      color: #1a1a1a;
+      margin: 0 0 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .port-hero p {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: clamp(14px, 2vw, 18px);
+      color: #1a1a1a;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== GRID ===== */
+    .port-grid-section {
+      background: #FFEFE4;
+      padding: 40px 50px 60px;
+    }
+    .port-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    /* ===== CARD ===== */
+    .port-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+    }
+    .port-card img.port-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .port-card:hover img.port-card__img {
+      transform: scale(1.05);
+    }
+    /* Filtre orange par défaut */
+    .port-card__orange {
+      position: absolute;
+      inset: 0;
+      background: rgba(232, 108, 36, 0.35);
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .port-card:hover .port-card__orange {
+      opacity: 0;
+    }
+    .port-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 60%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 14px;
+      z-index: 2;
+    }
+    .port-card__logo {
+      height: 22px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+      transition: transform 0.4s ease;
+      transform-origin: right center;
+    }
+    .port-card:hover .port-card__logo {
+      transform: scale(1.4);
+    }
+    .port-card__text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .port-card:hover .port-card__text {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ===== PARTNERS BAR ===== */
+    .port-partners {
+      background: #fff;
+      padding: 40px 50px;
+      border-top: 1px solid #eee;
+    }
+    .port-partners__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .port-partners__inner img {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .port-partners__inner img:hover {
+      opacity: 1;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .port-grid { gap: 16px; }
+      .port-card__logo { height: 18px; }
+    }
+
+    @media (max-width: 768px) {
+      .port-hero { padding: 120px 20px 30px; }
+      .port-grid-section { padding: 30px 24px 40px; }
+      .port-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .port-partners { padding: 30px 24px; }
+      .port-partners__inner { justify-content: center; gap: 24px; }
+      .port-partners__inner img { height: 22px; }
+    }
+
+    @media (max-width: 480px) {
+      .port-hero { padding: 100px 16px 24px; }
+      .port-grid-section { padding: 20px 16px 30px; }
+      .port-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .port-card__overlay { padding: 10px; }
+      .port-card__logo { height: 14px; }
+      .port-partners { padding: 24px 16px; }
+      .port-partners__inner img { height: 18px; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Skip to content -->
   <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
 
-  <!-- Header -->
   <header class="header" id="header">
     <div class="header-container">
-      <a href="/" class="logo" aria-label="VIBRA accueil">
-        <img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image">
-      </a>
-
-      <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="/" class="logo"><img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image"></a>
+      <nav class="nav-desktop">
         <ul class="nav-menu">
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-              Prestations
-              <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </a>
+            <a href="#" class="nav-link dropdown-toggle">Prestations <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
             <ul class="dropdown-menu">
               <li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li>
               <li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li>
@@ -53,228 +233,196 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-              Artistes
-              <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </a>
+            <a href="#" class="nav-link dropdown-toggle">Artistes <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
             <ul class="dropdown-menu">
               <li><a href="equipe-djs.html" class="nav-link">DJs</a></li>
               <li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="portfolio.html" class="nav-link">Réalisations</a>
-          </li>
-          <li class="nav-item">
-            <a href="#about" class="nav-link">À propos</a>
-          </li>
-          <li class="nav-item">
-            <a href="mix-playlists.html" class="nav-link">Nos mixs</a>
-          </li>
+          <li class="nav-item"><a href="portfolio.html" class="nav-link">Réalisations</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">À propos</a></li>
+          <li class="nav-item"><a href="mix-playlists.html" class="nav-link">Nos mixs</a></li>
         </ul>
       </nav>
-
       <div class="header-right">
         <a href="#devis" class="btn btn-primary">Devis en ligne</a>
         <div class="language-switcher">
-          <button class="lang-btn active" data-lang="fr" aria-label="Français">FR</button>
+          <button class="lang-btn active" data-lang="fr">FR</button>
           <span class="lang-separator">/</span>
-          <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+          <button class="lang-btn" data-lang="en">EN</button>
         </div>
       </div>
-
-      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <button class="menu-toggle"><span></span><span></span><span></span></button>
     </div>
-
-    <nav class="nav-mobile" aria-label="Navigation mobile">
+    <nav class="nav-mobile">
       <ul class="nav-menu">
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle">
-            Prestations
-            <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li>
-            <li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle">
-            Artistes
-            <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="equipe-djs.html" class="nav-link">DJs</a></li>
-            <li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a href="portfolio.html" class="nav-link">Réalisations</a>
-        </li>
-        <li class="nav-item">
-          <a href="#about" class="nav-link">À propos</a>
-        </li>
-        <li class="nav-item">
-          <a href="mix-playlists.html" class="nav-link">Nos mixs</a>
-        </li>
-        <li class="nav-item">
-          <a href="#devis" class="btn btn-primary btn-block">Devis en ligne</a>
-        </li>
+        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Prestations <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link">Son & Lumière</a></li></ul></li>
+        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Artistes <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li></ul></li>
+        <li class="nav-item"><a href="portfolio.html" class="nav-link">Réalisations</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">À propos</a></li>
+        <li class="nav-item"><a href="mix-playlists.html" class="nav-link">Nos mixs</a></li>
+        <li class="nav-item"><a href="#devis" class="btn btn-primary btn-block">Devis en ligne</a></li>
       </ul>
     </nav>
-
     <div class="menu-overlay"></div>
   </header>
 
-  <!-- Main Content -->
   <main id="main-content">
 
-    <!-- Page Header -->
-    <section class="page-header">
-      <div class="container">
-        <h1 class="page-title">Nos Réalisations</h1>
-        <p class="page-subtitle">
-          Ils nous ont fait confiance pour leurs événements les plus importants
-        </p>
-      </div>
+    <section class="port-hero">
+      <h1>Nos Événements</h1>
+      <p>Notre équipe ....</p>
     </section>
 
-    <!-- Portfolio Grid -->
-    <section class="portfolio-section">
-      <div class="container">
-        <div class="portfolio-grid">
-          <!-- Row 1 -->
-          <div class="portfolio-card">
-            <img src="assets/images/clients/SAF.PA_BIG.D-d0effc17.png" alt="Safran" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+    <section class="port-grid-section">
+      <div class="port-grid">
+        <!-- Row 1 -->
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (1).webp" alt="Événement AlphaNOV" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/Logo_FR_Baseline_ALP.png" alt="AlphaNOV">
           </div>
-
-          <div class="portfolio-card">
-            <img src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        </div>
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (2) - Copie - Copie.webp" alt="Événement Capgemini" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini">
           </div>
-
-          <div class="portfolio-card">
-            <img src="assets/images/clients/LOGO-CS-H-BLANC-01-e1644513513994.webp" alt="L'Oréal" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        </div>
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (3) - Copie - Copie.webp" alt="Événement L'Oréal" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/LOGO-CS-H-BLANC-01-e1644513513994.webp" alt="L'Oréal">
           </div>
-
-          <div class="portfolio-card">
-            <img src="assets/images/clients/Logo_FR_Baseline_ALP.png" alt="AlphaNOV" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        </div>
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (4) - Copie - Copie.webp" alt="Événement BOSS" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/hugoboss.png" alt="BOSS">
           </div>
+        </div>
 
-          <!-- Row 2 -->
-          <div class="portfolio-card">
-            <img src="assets/images/clients/hugoboss.png" alt="BOSS" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        <!-- Row 2 -->
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (5) - Copie - Copie.webp" alt="Événement Capgemini" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini">
           </div>
-
-          <div class="portfolio-card">
-            <img src="assets/images/clients/Gendarmerie-Logo v2.png" alt="Gendarmerie Nationale" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        </div>
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (6) - Copie - Copie.webp" alt="Événement Capgemini" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini">
           </div>
-
-          <div class="portfolio-card">
-            <img src="assets/images/clients/NOTI-CLUB-Logotype-bleu.png" alt="Noti Club" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        </div>
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (7) - Copie - Copie.webp" alt="Événement Capgemini" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini">
           </div>
-
-          <div class="portfolio-card">
-            <img src="assets/images/clients/SAF.PA_BIG.D-d0effc17.png" alt="Safran" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        </div>
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (8) - Copie - Copie.webp" alt="Événement Capgemini" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini">
           </div>
+        </div>
 
-          <!-- Row 3 -->
-          <div class="portfolio-card">
-            <img src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        <!-- Row 3 -->
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (9) - Copie - Copie.webp" alt="Événement Capgemini" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini">
           </div>
-
-          <div class="portfolio-card">
-            <img src="assets/images/clients/LOGO-CS-H-BLANC-01-e1644513513994.webp" alt="L'Oréal" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        </div>
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (1) - Copie - Copie.webp" alt="Événement Capgemini" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini">
           </div>
-
-          <div class="portfolio-card">
-            <img src="assets/images/clients/Logo_FR_Baseline_ALP.png" alt="AlphaNOV" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        </div>
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (1) - Copie.webp" alt="Événement Capgemini" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini">
           </div>
-
-          <div class="portfolio-card">
-            <img src="assets/images/clients/hugoboss.png" alt="BOSS" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        </div>
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (2) - Copie.webp" alt="Événement Capgemini" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini">
           </div>
+        </div>
 
-          <!-- Row 4 -->
-          <div class="portfolio-card">
-            <img src="assets/images/clients/Gendarmerie-Logo v2.png" alt="Gendarmerie Nationale" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        <!-- Row 4 -->
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (3) - Copie.webp" alt="Événement Capgemini" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini">
           </div>
-
-          <div class="portfolio-card">
-            <img src="assets/images/clients/NOTI-CLUB-Logotype-bleu.png" alt="Noti Club" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        </div>
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (4) - Copie.webp" alt="Événement Capgemini" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini">
           </div>
-
-          <div class="portfolio-card">
-            <img src="assets/images/clients/SAF.PA_BIG.D-d0effc17.png" alt="Safran" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        </div>
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (5) - Copie.webp" alt="Événement Capgemini" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini">
           </div>
-
-          <div class="portfolio-card">
-            <img src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini" class="portfolio-logo" loading="lazy">
-            <div class="portfolio-overlay"></div>
+        </div>
+        <div class="port-card">
+          <img class="port-card__img" src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (6) - Copie.webp" alt="Événement Capgemini" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__text">test</span>
+            <img class="port-card__logo" src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-      <div class="container">
-        <h2 class="section-title text-center">Notre Expertise en Chiffres</h2>
-
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-number">500+</div>
-            <div class="stat-label">Événements Réalisés</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-number">10+</div>
-            <div class="stat-label">Années d'Expérience</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-number">98%</div>
-            <div class="stat-label">Clients Satisfaits</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-number">50+</div>
-            <div class="stat-label">Entreprises du CAC40</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <div class="container">
-        <h2 class="cta-title">Rejoignez nos clients prestigieux</h2>
-        <p class="cta-subtitle">Créons ensemble votre prochain événement mémorable</p>
-        <a href="#devis" class="btn btn-primary btn-large">Demander un devis</a>
+    <!-- Partners bar -->
+    <section class="port-partners">
+      <div class="port-partners__inner">
+        <img src="assets/images/clients/SAF.PA_BIG.D-d0effc17.png" alt="Safran">
+        <img src="assets/images/clients/CAP.PA_BIG.D-679c041e.png" alt="Capgemini">
+        <img src="assets/images/clients/LOGO-CS-H-BLANC-01-e1644513513994.webp" alt="L'Oréal">
+        <img src="assets/images/clients/Logo_FR_Baseline_ALP.png" alt="AlphaNOV">
+        <img src="assets/images/clients/hugoboss.png" alt="BOSS">
+        <img src="assets/images/clients/Gendarmerie-Logo v2.png" alt="Gendarmerie Nationale">
       </div>
     </section>
 
@@ -284,7 +432,6 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-grid">
-        <!-- Brand Section -->
         <div class="footer-brand">
           <a href="/" class="footer-logo">VIBRA</a>
           <p class="footer-description">
@@ -308,8 +455,6 @@
             </a>
           </div>
         </div>
-
-        <!-- Links Section 1 -->
         <div>
           <h3 class="footer-section-title">Prestations</h3>
           <ul class="footer-links">
@@ -318,8 +463,6 @@
             <li><a href="prestations-techniques.html" class="footer-link">Services Techniques</a></li>
           </ul>
         </div>
-
-        <!-- Links Section 2 -->
         <div>
           <h3 class="footer-section-title">Artistes</h3>
           <ul class="footer-links">
@@ -328,8 +471,6 @@
             <li><a href="mix-playlists.html" class="footer-link">Mixs & Playlists</a></li>
           </ul>
         </div>
-
-        <!-- Links Section 3 -->
         <div>
           <h3 class="footer-section-title">À propos</h3>
           <ul class="footer-links">
@@ -339,8 +480,6 @@
           </ul>
         </div>
       </div>
-
-      <!-- Footer Bottom -->
       <div class="footer-bottom">
         <div class="footer-bottom-content">
           <p class="copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
@@ -354,7 +493,6 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script src="assets/js/main.js" type="module"></script>
 </body>

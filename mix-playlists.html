@@ -3,12 +3,498 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="VIBRA - Nos mixs Mixcloud et playlists Spotify/Apple Music">
+  <meta name="description" content="VIBRA - Nos mixs Mixcloud et playlists Spotify">
   <title>VIBRA - Mixs & Playlists | Découvrez Notre Univers Musical</title>
   <link rel="icon" type="image/svg+xml" href="assets/images/logo/vibra-icon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: hidden; }
+
+    /* ===== BASS VISUALIZER ===== */
+    html { scroll-behavior: smooth; }
+
+    .bass-viz {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 8px;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .bass-viz--left { left: 0; }
+    .bass-viz--right { right: 0; }
+    .bass-viz.active { opacity: 1; }
+
+    .bass-viz canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Halo glow derrière les barres */
+    .bass-viz::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 40px;
+      filter: blur(16px);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      background: linear-gradient(to bottom,
+        transparent 5%,
+        rgba(255, 107, 53, 0.06) 25%,
+        rgba(255, 107, 53, 0.12) 50%,
+        rgba(255, 107, 53, 0.06) 75%,
+        transparent 95%
+      );
+    }
+    .bass-viz--left::after { left: 0; }
+    .bass-viz--right::after { right: 0; }
+    .bass-viz.active::after { opacity: 1; }
+
+    /* ===== HERO ===== */
+
+    .mix-hero {
+      position: relative;
+      height: 550px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .mix-hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .mix-hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .mix-hero__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%);
+    }
+    .mix-hero__content {
+      position: relative;
+      z-index: 1;
+    }
+    .mix-hero__title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(36px, 6vw, 64px);
+      text-transform: uppercase;
+      color: #fff;
+      margin: 0 0 60px;
+    }
+    .mix-hero__buttons {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+    }
+    .mix-hero__btn {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 40px;
+      min-width: 240px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .mix-hero__btn--mix,
+    .mix-hero__btn--playlist {
+      background: #FF6B35;
+      color: #fff;
+    }
+    .mix-hero__btn::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      background: linear-gradient(45deg, #FF6B35, #FF8C61);
+      opacity: 0;
+      filter: blur(15px);
+      z-index: -1;
+      transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .mix-hero__btn:hover::before {
+      opacity: 0.3;
+    }
+    .mix-hero__btn:hover {
+      box-shadow: 0 6px 16px rgba(255, 107, 53, 0.25);
+      color: #fff;
+    }
+    .mix-hero__btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .mix-section {
+      padding: 60px 40px 20px;
+      background: #FFF5EE;
+    }
+    .mix-section__title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      text-transform: uppercase;
+      color: #1a1a1a;
+      text-align: center;
+      margin: 0 0 8px;
+    }
+    .mix-section__title span {
+      color: #ea6a28;
+    }
+    .mix-section__line {
+      width: 60px;
+      height: 3px;
+      background: #e86c24;
+      margin: 0 auto 50px;
+      border-radius: 2px;
+    }
+
+    /* ===== MIX CARDS ===== */
+    .mix-list {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      padding-bottom: 40px;
+    }
+    .mix-item {
+      background: transparent;
+    }
+    .mix-item__label {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 22px;
+      color: #1a1a1a;
+      margin: 0 0 4px;
+    }
+    .mix-item__label span {
+      color: #ea6a28;
+    }
+    .mix-item__sub {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #555;
+      margin: 0 0 16px;
+    }
+    .mix-item__embed {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .mix-item__embed iframe {
+      width: 100%;
+      height: 120px;
+      border: none;
+      display: block;
+    }
+
+    /* ===== FIXED BOTTOM PLAYER BAR (floating) ===== */
+    .player-bar {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%) translateY(calc(100% + 24px));
+      width: calc(100% - 48px);
+      max-width: 900px;
+      height: 68px;
+      background: rgba(18, 18, 18, 0.96);
+      backdrop-filter: blur(16px);
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3);
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .player-bar.visible {
+      transform: translateX(-50%) translateY(0);
+    }
+    body.player-active { padding-bottom: 100px; }
+
+    /* Cover */
+    .player-bar__cover {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, #FF6B35 0%, #e05520 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .player-bar__cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .player-bar__cover img.loaded { display: block; }
+    .player-bar__cover svg {
+      width: 22px;
+      height: 22px;
+      fill: rgba(255,255,255,0.85);
+    }
+    .player-bar__cover img.loaded + svg { display: none; }
+
+    /* Infos titre */
+    .player-bar__info {
+      display: flex;
+      flex-direction: column;
+      min-width: 120px;
+      max-width: 200px;
+      overflow: hidden;
+    }
+    .player-bar__title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .player-bar__artist {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .player-bar__source {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 1px;
+    }
+
+    /* Zone centrale : progress */
+    .player-bar__center {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    .player-bar__time {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      min-width: 36px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .player-bar__progress {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: height 0.15s;
+    }
+    .player-bar__progress:hover { height: 6px; }
+    .player-bar__progress-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: #FF6B35;
+      border-radius: 2px;
+      transition: width 0.3s linear;
+      width: 0%;
+    }
+    .player-bar__progress:hover .player-bar__progress-fill {
+      background: #FF8C61;
+    }
+
+    /* Zone droite : volume */
+    .player-bar__right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .player-bar__vol-icon {
+      width: 18px;
+      height: 18px;
+      fill: rgba(255,255,255,0.55);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: fill 0.2s;
+    }
+    .player-bar__vol-icon:hover { fill: #FF6B35; }
+    .player-bar__vol-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 80px;
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(to right, #FF6B35 var(--vol-pct, 80%), rgba(255,255,255,0.1) var(--vol-pct, 80%));
+      outline: none;
+      cursor: pointer;
+    }
+    .player-bar__vol-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+    .player-bar__vol-slider::-moz-range-thumb {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    /* Responsive player bar */
+    @media (max-width: 768px) {
+      .player-bar { width: calc(100% - 24px); padding: 0 12px; gap: 10px; height: 60px; bottom: 10px; }
+      .player-bar__cover { width: 38px; height: 38px; }
+      .player-bar__info { min-width: 80px; max-width: 120px; }
+      .player-bar__title { font-size: 12px; }
+      .player-bar__vol-slider { width: 50px; }
+    }
+    @media (max-width: 480px) {
+      .player-bar { gap: 8px; height: 56px; bottom: 8px; border-radius: 12px; }
+      .player-bar__vol-slider { display: none; }
+      .player-bar__time { font-size: 10px; min-width: 28px; }
+      .player-bar__source { display: none; }
+    }
+
+    /* ===== PLAYLISTS ===== */
+    .playlist-section {
+      padding: 60px 40px;
+      background: #FFFBF9;
+    }
+    .playlist-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .playlist-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .playlist-card iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      display: block;
+    }
+
+    /* ===== CTA ===== */
+    .mix-cta {
+      text-align: center;
+      padding: 60px 40px 80px;
+      background: #fff;
+    }
+    .mix-cta__title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 28px;
+      color: #1a1a1a;
+      margin: 0 0 10px;
+    }
+    .mix-cta__sub {
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      color: #555;
+      margin: 0 0 30px;
+    }
+    .mix-cta__btn {
+      display: inline-block;
+      background: #ea6a28;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(234,106,40,0.25);
+    }
+    .mix-cta__btn:hover {
+      background: #ff8c50;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(234,106,40,0.4);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .mix-hero { height: 420px; }
+      .mix-section { padding: 40px 20px 10px; }
+      .mix-list { padding: 0 0 30px; gap: 35px; }
+      .mix-item__embed iframe { height: 140px; }
+      .playlist-section { padding: 40px 20px; }
+      .playlist-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .playlist-card iframe { height: 420px; }
+      .mix-cta { padding: 40px 20px 60px; }
+      .mix-hero__btn {
+        min-width: 220px;
+        padding: 14px 36px;
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mix-hero { height: 360px; }
+      .mix-hero__buttons { flex-direction: column; align-items: center; }
+      .mix-hero__btn {
+        min-width: 200px;
+        padding: 12px 32px;
+        font-size: 0.9rem;
+      }
+      .mix-item__label { font-size: 18px; }
+      .mix-item__embed iframe { height: 120px; }
+      .playlist-card iframe { height: 380px; }
+    }
+  </style>
 </head>
 <body>
   <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
@@ -25,144 +511,127 @@
   </header>
 
   <main id="main-content">
-    <section class="page-header"><div class="container"><h1 class="page-title">Nos Mixs & Playlists</h1><p class="page-subtitle">Découvrez notre univers musical et nos sélections</p></div></section>
 
-    <!-- Mixcloud Section -->
-    <section class="mixes-section">
-      <div class="container">
-        <h2 class="section-title text-center">Nos Mixs Mixcloud</h2>
-        <p class="section-subtitle text-center">Écoutez nos derniers sets et découvrez notre style</p>
+    <!-- Hero -->
+    <section class="mix-hero">
+      <div class="mix-hero__bg">
+        <!-- Remplacez cette image par la vôtre dans : assets/images/mix/hero-mix.webp -->
+        <img src="assets/images/mix/hero-mix.webp" alt="DJ en live">
+      </div>
+      <div class="mix-hero__content">
+        <h1 class="mix-hero__title">Nos Mix et Playlists</h1>
+        <div class="mix-hero__buttons">
+          <a href="#mixes" class="mix-hero__btn mix-hero__btn--mix">
+            Mix
+            <svg viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <a href="#playlists" class="mix-hero__btn mix-hero__btn--playlist">
+            Playlist
+            <svg viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
 
-        <div class="mixes-grid">
-          <!-- Mix 1 - Lazy-loaded iframe -->
-          <div class="mix-card" data-embed-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Fvibra-events%2Fmix-1%2F">
-            <div class="mix-poster">
-              <img src="assets/images/services/NotiPlage_FDLM_2025_VF-268 (1).webp" alt="Mix Open Format" loading="lazy">
-              <button class="mix-play-btn" aria-label="Lire le mix">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="64" height="64">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </button>
-            </div>
-            <div class="mix-info">
-              <h3 class="mix-title">Open Format Mix</h3>
-              <p class="mix-description">Un voyage musical éclectique à travers les genres</p>
-            </div>
+    <!-- Section Mixs -->
+    <section class="mix-section" id="mixes">
+      <h2 class="mix-section__title">NOS <span>MIX</span></h2>
+      <div class="mix-section__line"></div>
+
+      <div class="mix-list">
+        <!-- Mix 1 - Open Format -->
+        <div class="mix-item" data-title="Open Format" data-artist="RAMEL - Live Chopes & Wine">
+          <h3 class="mix-item__label"><span>Mix</span> Open Format</h3>
+          <p class="mix-item__sub"></p>
+          <div class="mix-item__embed">
+            <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-open-format-live-chopes-wine-generaliste%2F" loading="lazy"></iframe>
           </div>
+        </div>
 
-          <!-- Mix 2 -->
-          <div class="mix-card" data-embed-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Fvibra-events%2Fmix-2%2F">
-            <div class="mix-poster">
-              <img src="assets/images/services/e5a28361-bed1-4b59-bb94-4dfe585f1a1e (1).webp" alt="Mix House" loading="lazy">
-              <button class="mix-play-btn" aria-label="Lire le mix">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="64" height="64">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </button>
-            </div>
-            <div class="mix-info">
-              <h3 class="mix-title">House Vibes</h3>
-              <p class="mix-description">Deep house et tech house pour faire danser</p>
-            </div>
+        <!-- Mix 2 - Snake Chamber -->
+        <div class="mix-item" data-title="Snake Chamber" data-artist="RAMEL - Live L'Organiq x Dojo">
+          <h3 class="mix-item__label"><span>Mix</span> Snake Chamber</h3>
+          <p class="mix-item__sub"></p>
+          <div class="mix-item__embed">
+            <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-snake-chamber-live-lorganiq-x-dojo-afro-house-latino-house%2F" loading="lazy"></iframe>
           </div>
+        </div>
 
-          <!-- Mix 3 -->
-          <div class="mix-card" data-embed-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Fvibra-events%2Fmix-3%2F">
-            <div class="mix-poster">
-              <img src="assets/images/services/WhatsApp_Image_2024-08-30_at_19.22.10_defaced.webp" alt="Mix Hip-Hop" loading="lazy">
-              <button class="mix-play-btn" aria-label="Lire le mix">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="64" height="64">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </button>
-            </div>
-            <div class="mix-info">
-              <h3 class="mix-title">Urban Mix</h3>
-              <p class="mix-description">Hip-hop, R&B et trap pour une ambiance urbaine</p>
-            </div>
+        <!-- Mix 3 - Golden Cruise -->
+        <div class="mix-item" data-title="Golden Cruise" data-artist="RAMEL - Live Burdigala II">
+          <h3 class="mix-item__label"><span>Mix</span> Golden Cruise</h3>
+          <p class="mix-item__sub"></p>
+          <div class="mix-item__embed">
+            <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-golden-cruise-live-burdigala-ii-house%2F" loading="lazy"></iframe>
           </div>
+        </div>
 
-          <!-- Mix 4 -->
-          <div class="mix-card" data-embed-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Fvibra-events%2Fmix-4%2F">
-            <div class="mix-poster">
-              <img src="assets/images/services/AiPulse2025_-_6356.webp" alt="Mix Wedding" loading="lazy">
-              <button class="mix-play-btn" aria-label="Lire le mix">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="64" height="64">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </button>
-            </div>
-            <div class="mix-info">
-              <h3 class="mix-title">Wedding Special</h3>
-              <p class="mix-description">Les incontournables pour faire danser tous les âges</p>
-            </div>
+        <!-- Mix 4 - Savage -->
+        <div class="mix-item" data-title="Savage" data-artist="RAMEL - Live Vice Versa Marseille">
+          <h3 class="mix-item__label"><span>Mix</span> Savage</h3>
+          <p class="mix-item__sub"></p>
+          <div class="mix-item__embed">
+            <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-savage-live-vice-versa-marseille-reggaeton-baile-funk-hip-hop%2F" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <!-- Mix 5 - Sakura 3 -->
+        <div class="mix-item" data-title="Sakura 3" data-artist="RAMEL - Live Zigzag x Dojo">
+          <h3 class="mix-item__label"><span>Mix</span> Sakura 3</h3>
+          <p class="mix-item__sub"></p>
+          <div class="mix-item__embed">
+            <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-sakura-3-live-zigzag-x-dojo-house-latino-house-to-tech-house%2F" loading="lazy"></iframe>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Playlists Section -->
-    <section class="playlists-section">
-      <div class="container">
-        <h2 class="section-title text-center">Nos Playlists</h2>
-        <p class="section-subtitle text-center">Suivez nos playlists Spotify et Apple Music</p>
+    <!-- Section Playlists -->
+    <section class="playlist-section" id="playlists">
+      <h2 class="mix-section__title">Nos <span>Playlists</span></h2>
+      <div class="mix-section__line"></div>
 
-        <div class="playlists-grid">
-          <div class="playlist-card card">
-            <div class="playlist-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="64" height="64">
-                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
-              </svg>
-            </div>
-            <h3 class="playlist-title">Spotify</h3>
-            <p class="playlist-description">Retrouvez nos playlists thématiques</p>
-            <a href="#" class="btn btn-secondary">Écouter sur Spotify</a>
-          </div>
+      <div class="playlist-grid">
+        <!-- Playlist 1 -->
+        <div class="playlist-card">
+          <iframe src="https://open.spotify.com/embed/playlist/3H4AcFO99ezXfRaIXqaGQH?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
 
-          <div class="playlist-card card">
-            <div class="playlist-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="64" height="64">
-                <path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.5 10.5 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.417.024-.834.055-1.25.098-.823.09-1.618.27-2.354.67-1.04.564-1.738 1.382-2.14 2.466-.18.484-.302.984-.382 1.497-.035.226-.057.455-.07.682-.012.21-.022.42-.03.63-.01.305-.015.61-.015.916v7.86c0 .14.003.28.006.418.003.19.01.38.015.57.01.315.021.63.043.945.022.307.058.613.1.918.05.35.114.695.196 1.035.156.64.422 1.23.81 1.763.61.844 1.418 1.446 2.388 1.834.48.193.977.32 1.485.412.285.052.57.087.858.114.11.01.22.014.33.02.36.02.72.03 1.08.037.16.003.32.01.48.01h12.03c.1 0 .2-.007.3-.01.42-.007.84-.02 1.26-.04.16-.008.32-.02.48-.035.22-.02.44-.047.66-.075.23-.03.46-.06.69-.1.28-.04.56-.09.83-.15 1.36-.29 2.5-.95 3.35-2.05.36-.47.63-1 .82-1.57.18-.55.3-1.12.35-1.7.03-.35.05-.71.06-1.07.01-.42.02-.84.02-1.26V6.124zm-5.05 7.41c-.45.787-1.118 1.29-1.973 1.527-.25.07-.505.11-.762.13-.25.02-.5.024-.753.024H6.217v-2.302h9.24c.502 0 .984-.073 1.43-.28.49-.23.87-.58 1.12-1.06.23-.43.335-.897.335-1.38 0-.964-.42-1.638-1.18-2.05-.44-.24-.92-.35-1.42-.35-.024 0-.05.003-.074.003H6.218v-2.3h9.24c.08 0 .16.01.24.012.602.024 1.195.11 1.77.29 1.036.326 1.87.948 2.488 1.856.404.594.644 1.256.74 1.968.043.32.063.64.063.963 0 1.13-.267 2.14-.816 3.03z"/>
-              </svg>
-            </div>
-            <h3 class="playlist-title">Apple Music</h3>
-            <p class="playlist-description">Nos sélections exclusives</p>
-            <a href="#" class="btn btn-secondary">Écouter sur Apple Music</a>
-          </div>
+        <!-- Playlist 2 -->
+        <div class="playlist-card">
+          <iframe src="https://open.spotify.com/embed/playlist/6MTSo9Q2qWSZITzuGRpc8p?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
 
-          <div class="playlist-card card">
-            <div class="playlist-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="64" height="64">
-                <path d="M21.8 8.001c0 .047-.004.094-.006.14-.014.244-.035.487-.074.727-.15.913-.51 1.72-1.13 2.4-.55.6-1.2 1.03-1.95 1.31-.51.19-1.05.32-1.6.37-.24.024-.48.035-.72.035H7.68c-.16 0-.32-.007-.48-.02-.59-.046-1.16-.17-1.7-.39-.74-.3-1.38-.74-1.92-1.34-.62-.69-.99-1.5-1.13-2.42-.04-.25-.065-.5-.08-.75-.006-.09-.01-.18-.01-.27V7.68c0-.15.003-.3.01-.45.015-.39.05-.77.12-1.15.15-.76.47-1.45.97-2.04.55-.65 1.23-1.1 2.02-1.4.5-.19 1.02-.31 1.56-.36.24-.024.48-.035.72-.035h8.64c.16 0 .32.007.48.02.59.046 1.16.17 1.7.39.74.3 1.38.74 1.92 1.34.62.69.99 1.5 1.13 2.42.04.25.065.5.08.75.006.09.01.18.01.27v.141zm-5.05 7.41c-.45.787-1.118 1.29-1.973 1.527-.25.07-.505.11-.762.13-.25.02-.5.024-.753.024H6.217v-2.302h9.24c.502 0 .984-.073 1.43-.28.49-.23.87-.58 1.12-1.06.23-.43.335-.897.335-1.38 0-.964-.42-1.638-1.18-2.05-.44-.24-.92-.35-1.42-.35-.024 0-.05.003-.074.003H6.218v-2.3h9.24c.08 0 .16.01.24.012.602.024 1.195.11 1.77.29 1.036.326 1.87.948 2.488 1.856.404.594.644 1.256.74 1.968.043.32.063.64.063.963 0 1.13-.267 2.14-.816 3.03z"/>
-              </svg>
-            </div>
-            <h3 class="playlist-title">Deezer</h3>
-            <p class="playlist-description">Découvrez nos mixes</p>
-            <a href="#" class="btn btn-secondary">Écouter sur Deezer</a>
-          </div>
+        <!-- Playlist 3 -->
+        <div class="playlist-card">
+          <iframe src="https://open.spotify.com/embed/playlist/3vv98zRui0OAsAbBjedSEp?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
 
-          <div class="playlist-card card">
-            <div class="playlist-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="64" height="64">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-            </div>
-            <h3 class="playlist-title">YouTube</h3>
-            <p class="playlist-description">Nos vidéos et performances</p>
-            <a href="#" class="btn btn-secondary">Voir sur YouTube</a>
-          </div>
+        <!-- Playlist 4 -->
+        <div class="playlist-card">
+          <iframe src="https://open.spotify.com/embed/playlist/5tNPAeAPCIlf1QD68nUVrm?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <!-- Playlist 5 -->
+        <div class="playlist-card">
+          <iframe src="https://open.spotify.com/embed/playlist/4KzrcG9ZtZ0gn5QGczLjhf?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
       </div>
     </section>
 
-    <section class="cta-section"><div class="container"><h2 class="cta-title">Vous aimez notre univers musical ?</h2><p class="cta-subtitle">Réservez-nous pour votre prochain événement</p><a href="#devis" class="btn btn-primary btn-large">Demander un devis</a></div></section>
+    <!-- CTA -->
+    <section class="mix-cta">
+      <h2 class="mix-cta__title">Vous aimez notre univers musical ?</h2>
+      <p class="mix-cta__sub">Réservez-nous pour votre prochain événement</p>
+      <a href="#devis" class="mix-cta__btn">Demander un devis</a>
+    </section>
+
   </main>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-grid">
-        <!-- Brand Section -->
         <div class="footer-brand">
           <a href="/" class="footer-logo">VIBRA</a>
           <p class="footer-description">
@@ -186,8 +655,6 @@
             </a>
           </div>
         </div>
-
-        <!-- Links Section 1 -->
         <div>
           <h3 class="footer-section-title">Prestations</h3>
           <ul class="footer-links">
@@ -196,8 +663,6 @@
             <li><a href="prestations-techniques.html" class="footer-link">Services Techniques</a></li>
           </ul>
         </div>
-
-        <!-- Links Section 2 -->
         <div>
           <h3 class="footer-section-title">Artistes</h3>
           <ul class="footer-links">
@@ -206,8 +671,6 @@
             <li><a href="mix-playlists.html" class="footer-link">Mixs & Playlists</a></li>
           </ul>
         </div>
-
-        <!-- Links Section 3 -->
         <div>
           <h3 class="footer-section-title">À propos</h3>
           <ul class="footer-links">
@@ -217,8 +680,6 @@
           </ul>
         </div>
       </div>
-
-      <!-- Footer Bottom -->
       <div class="footer-bottom">
         <div class="footer-bottom-content">
           <p class="copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
@@ -232,23 +693,242 @@
     </div>
   </footer>
 
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <!-- Fixed Bottom Player Bar -->
+  <div class="player-bar" id="playerBar">
+    <div class="player-bar__cover" id="playerCover">
+      <img id="playerCoverImg" alt="Cover">
+      <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+    </div>
+    <div class="player-bar__info">
+      <span class="player-bar__title" id="playerTitle">--</span>
+      <span class="player-bar__artist" id="playerArtist">VIBRA</span>
+      <span class="player-bar__source" id="playerSource"></span>
+    </div>
+    <div class="player-bar__center">
+      <span class="player-bar__time" id="playerTimeCurrent">0:00</span>
+      <div class="player-bar__progress" id="playerProgress">
+        <div class="player-bar__progress-fill" id="playerProgressFill"></div>
+      </div>
+      <span class="player-bar__time" id="playerTimeTotal">0:00</span>
+    </div>
+    <div class="player-bar__right">
+      <svg class="player-bar__vol-icon" id="playerVolIcon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+      <input type="range" class="player-bar__vol-slider" id="playerVolSlider" min="0" max="100" value="80">
+    </div>
+  </div>
+
+  <!-- Bass Visualizer -->
+  <div class="bass-viz bass-viz--left"><canvas></canvas></div>
+  <div class="bass-viz bass-viz--right"><canvas></canvas></div>
+
+  <!-- Mixcloud Widget API -->
+  <script src="https://widget.mixcloud.com/media/js/widgetApi.js"></script>
+
   <script src="assets/js/main.js" type="module"></script>
   <script>
-    // Lazy load Mixcloud embeds
     document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.mix-card').forEach(card => {
-        const playBtn = card.querySelector('.mix-play-btn');
-        playBtn.addEventListener('click', function() {
-          const embedUrl = card.dataset.embedUrl;
-          const iframe = document.createElement('iframe');
-          iframe.width = '100%';
-          iframe.height = '120';
-          iframe.src = embedUrl;
-          iframe.frameBorder = '0';
-          card.querySelector('.mix-poster').innerHTML = '';
-          card.querySelector('.mix-poster').appendChild(iframe);
+      // === BASS VISUALIZER ===
+      var bassLeft = document.querySelector('.bass-viz--left');
+      var bassRight = document.querySelector('.bass-viz--right');
+      var canvasL = bassLeft.querySelector('canvas');
+      var canvasR = bassRight.querySelector('canvas');
+      var isBassActive = false;
+      var animFrame = null;
+      var bassState = { energy: 0, target: 0, tick: 0 };
+
+      function resizeCanvases() {
+        [canvasL, canvasR].forEach(function(c) {
+          c.width = 8 * window.devicePixelRatio;
+          c.height = window.innerHeight * window.devicePixelRatio;
+          c.style.width = '8px';
+          c.style.height = '100%';
         });
+      }
+      resizeCanvases();
+      window.addEventListener('resize', resizeCanvases);
+
+      function drawBass(canvas, energy, mirror) {
+        var ctx = canvas.getContext('2d');
+        var w = canvas.width; var h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+        var barCount = 40, barH = h / barCount, centerY = h / 2;
+        for (var i = 0; i < barCount; i++) {
+          var y = i * barH;
+          var dist = Math.abs((y + barH / 2) - centerY) / centerY;
+          var falloff = Math.max(0, 1 - dist * 1.3);
+          var noise = Math.sin(bassState.tick * 0.08 + i * 0.7) * 0.3 + 0.7;
+          var barEnergy = energy * falloff * noise;
+          var barWidth = Math.max(1, barEnergy * w * 3);
+          ctx.fillStyle = 'rgba(255,107,53,' + (barEnergy * 0.9).toFixed(3) + ')';
+          if (mirror) { ctx.fillRect(w - barWidth, y + 1, barWidth, barH - 2); }
+          else { ctx.fillRect(0, y + 1, barWidth, barH - 2); }
+        }
+      }
+      function animateBass() {
+        bassState.tick++;
+        if (bassState.tick % 8 === 0) bassState.target = 0.4 + Math.random() * 0.6;
+        if (bassState.tick % 25 === 0 && Math.random() > 0.5) bassState.target = 0.85 + Math.random() * 0.15;
+        bassState.target *= 0.92;
+        bassState.energy += (bassState.target - bassState.energy) * 0.25;
+        drawBass(canvasL, bassState.energy, false);
+        drawBass(canvasR, bassState.energy, true);
+        if (isBassActive) animFrame = requestAnimationFrame(animateBass);
+      }
+      function startBass() {
+        if (!isBassActive) { isBassActive = true; bassLeft.classList.add('active'); bassRight.classList.add('active'); bassState.tick = 0; animateBass(); }
+      }
+      function stopBass() {
+        isBassActive = false; bassLeft.classList.remove('active'); bassRight.classList.remove('active');
+        if (animFrame) cancelAnimationFrame(animFrame);
+      }
+
+      // === PLAYER BAR ===
+      var playerBar = document.getElementById('playerBar');
+      var playerTitle = document.getElementById('playerTitle');
+      var playerArtist = document.getElementById('playerArtist');
+      var playerSource = document.getElementById('playerSource');
+      var playerCoverImg = document.getElementById('playerCoverImg');
+      var playerTimeCurrent = document.getElementById('playerTimeCurrent');
+      var playerTimeTotal = document.getElementById('playerTimeTotal');
+      var playerProgressFill = document.getElementById('playerProgressFill');
+      var playerProgress = document.getElementById('playerProgress');
+      var playerVolSlider = document.getElementById('playerVolSlider');
+      var playerVolIcon = document.getElementById('playerVolIcon');
+
+      var currentWidget = null;
+      var currentVolume = 1.0;
+      var lastVolume = 1.0;
+      var progressInterval = null;
+      var mcWidgets = [];
+
+      function formatTime(seconds) {
+        var s = Math.floor(seconds); var m = Math.floor(s / 60); s = s % 60;
+        return m + ':' + (s < 10 ? '0' : '') + s;
+      }
+
+      function updateVolIcon(vol) {
+        if (vol === 0) {
+          playerVolIcon.innerHTML = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
+        } else if (vol < 0.5) {
+          playerVolIcon.innerHTML = '<path d="M18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM5 9v6h4l5 5V4L9 9H5z"/>';
+        } else {
+          playerVolIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+        }
+      }
+
+      function updateVolSliderBg(val) {
+        playerVolSlider.style.setProperty('--vol-pct', val + '%');
+      }
+
+      // Appliquer le volume a TOUS les widgets Mixcloud
+      function applyVolumeToAll(vol) {
+        mcWidgets.forEach(function(w) {
+          w.widget.setVolume(vol);
+        });
+      }
+
+      function setCover(url) {
+        if (url) {
+          playerCoverImg.src = url;
+          playerCoverImg.classList.add('loaded');
+        } else {
+          playerCoverImg.classList.remove('loaded');
+          playerCoverImg.src = '';
+        }
+      }
+
+      function showPlayerBar(title, artist, source, coverUrl) {
+        playerTitle.textContent = title;
+        playerArtist.textContent = artist;
+        playerSource.textContent = source;
+        setCover(coverUrl);
+        playerBar.classList.add('visible');
+        document.body.classList.add('player-active');
+      }
+
+      // Volume slider - controle TOUS les Mixcloud
+      updateVolSliderBg(100);
+      playerVolSlider.value = 100;
+      playerVolSlider.addEventListener('input', function() {
+        var val = parseInt(this.value);
+        currentVolume = val / 100;
+        updateVolSliderBg(val);
+        updateVolIcon(currentVolume);
+        applyVolumeToAll(currentVolume);
+      });
+
+      // Volume icon click = mute/unmute
+      playerVolIcon.addEventListener('click', function() {
+        if (currentVolume > 0) {
+          lastVolume = currentVolume;
+          currentVolume = 0;
+          playerVolSlider.value = 0;
+        } else {
+          currentVolume = lastVolume;
+          playerVolSlider.value = Math.round(currentVolume * 100);
+        }
+        updateVolSliderBg(Math.round(currentVolume * 100));
+        updateVolIcon(currentVolume);
+        applyVolumeToAll(currentVolume);
+      });
+
+      // Click on progress bar to seek
+      playerProgress.addEventListener('click', function(e) {
+        if (!currentWidget) return;
+        var rect = this.getBoundingClientRect();
+        var pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        currentWidget.getDuration().then(function(dur) { currentWidget.seek(pct * dur); });
+      });
+
+      // === MIXCLOUD PROGRESS TRACKING ===
+      function startMixcloudProgress(widget) {
+        if (progressInterval) clearInterval(progressInterval);
+        progressInterval = setInterval(function() {
+          Promise.all([widget.getPosition(), widget.getDuration()]).then(function(vals) {
+            var pos = vals[0], dur = vals[1];
+            if (dur > 0) {
+              playerTimeCurrent.textContent = formatTime(pos);
+              playerTimeTotal.textContent = formatTime(dur);
+              playerProgressFill.style.width = ((pos / dur) * 100).toFixed(2) + '%';
+            }
+          });
+        }, 500);
+      }
+      function stopProgressTracking() {
+        if (progressInterval) { clearInterval(progressInterval); progressInterval = null; }
+      }
+
+      // === CONNECT MIXCLOUD WIDGETS ===
+      var mixItems = document.querySelectorAll('.mix-item');
+
+      mixItems.forEach(function(item, index) {
+        var iframe = item.querySelector('.mix-item__embed iframe');
+        var title = item.getAttribute('data-title') || 'Mix ' + (index + 1);
+        var artist = item.getAttribute('data-artist') || 'VIBRA';
+
+        if (typeof Mixcloud !== 'undefined' && Mixcloud.PlayerWidget) {
+          var widget = Mixcloud.PlayerWidget(iframe);
+          mcWidgets.push({ widget: widget, title: title, artist: artist });
+
+          widget.ready.then(function() {
+            widget.setVolume(currentVolume);
+
+            widget.events.play.on(function() {
+              // Pause les autres widgets Mixcloud
+              mcWidgets.forEach(function(w) { if (w.widget !== widget) w.widget.pause(); });
+              currentWidget = widget;
+              showPlayerBar(title, artist, 'Mixcloud', null);
+              startMixcloudProgress(widget);
+              startBass();
+            });
+            widget.events.pause.on(function() { stopProgressTracking(); stopBass(); });
+            widget.events.ended.on(function() {
+              stopProgressTracking(); stopBass();
+              playerProgressFill.style.width = '0%';
+              playerTimeCurrent.textContent = '0:00';
+            });
+          });
+        }
       });
     });
   </script>

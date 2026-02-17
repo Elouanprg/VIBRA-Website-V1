@@ -21,13 +21,330 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
 
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="assets/css/main.css">
+
+  <!-- Page-specific styles -->
+  <style>
+    /* ===== DESCRIPTION SECTION ===== */
+    .part-description {
+      background: #ffeee2;
+      padding: 50px 20px;
+    }
+
+    .part-description .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .part-description-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #000;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .part-description-line {
+      width: 100%;
+      max-width: 738px;
+      height: 5px;
+      background: #e86c24;
+      margin: 0 auto 25px;
+      border-radius: 3px;
+    }
+
+    .part-description-text {
+      font-family: 'Roboto', sans-serif;
+      font-size: clamp(16px, 1.5vw, 20px);
+      line-height: 1.89;
+      color: #000;
+      text-align: center;
+    }
+
+    /* ===== SERVICES GRID - 3 Cards ===== */
+    .part-services {
+      padding: 60px 20px;
+      background: #fff;
+    }
+
+    .part-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .part-service-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .part-service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .part-service-card-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      color: #000;
+      position: relative;
+      display: inline-block;
+    }
+
+    .part-service-card-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 3px;
+      background: #e86c24;
+      border-radius: 2px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .part-service-card:hover .part-service-card-title::after {
+      width: 100%;
+    }
+
+    .part-service-card-text {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .part-service-card-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .part-cta {
+      padding: 20px 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+    }
+
+    .part-cta-button {
+      background: #ea6a28;
+      color: white;
+      padding: 16px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: clamp(20px, 2vw, 26px);
+      letter-spacing: -0.13px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      display: inline-block;
+    }
+
+    .part-cta-button:hover {
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 15px rgba(234, 106, 40, 0.3);
+      background: #ff8c50;
+    }
+
+    /* ===== PORTFOLIO SECTION ===== */
+    .part-portfolio {
+      padding: 60px 20px 30px;
+      background: #fff;
+    }
+
+    .part-portfolio-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(30px, 4vw, 48px);
+      text-align: center;
+      margin-bottom: 20px;
+      color: #000;
+    }
+
+    .part-portfolio-line {
+      width: 100%;
+      max-width: 772px;
+      height: 4px;
+      background: #e86c24;
+      margin: 0 auto 40px;
+      border-radius: 2px;
+    }
+
+    /* ===== CAROUSEL ===== */
+    .part-carousel-wrapper {
+      padding: 0 20px 80px;
+      background: #fff;
+    }
+
+    .part-carousel {
+      max-width: 1428px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .part-carousel .swiper-wrapper {
+      transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+    }
+
+    .part-carousel .swiper-slide {
+      position: relative;
+      height: 560px;
+    }
+
+    .part-carousel .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .part-carousel .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 40px 40px;
+      color: #fff;
+      z-index: 2;
+    }
+
+    .part-carousel .slide-caption::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+    }
+
+    .part-carousel .slide-caption::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent, rgba(234, 106, 40, 0.85));
+      opacity: 0;
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+    }
+
+    .part-carousel .swiper-slide:hover .slide-caption::before {
+      opacity: 0;
+    }
+
+    .part-carousel .swiper-slide:hover .slide-caption::after {
+      opacity: 1;
+    }
+
+    .part-carousel .slide-caption h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      margin-bottom: 6px;
+      color: #fff;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .part-carousel .slide-caption p {
+      font-size: 18px;
+      color: #fff;
+      opacity: 0.95;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .part-carousel .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background: #ccc;
+      opacity: 1;
+    }
+
+    .part-carousel .swiper-pagination-bullet-active {
+      width: 16px;
+      height: 16px;
+      background: #ea6a28;
+    }
+
+    .part-carousel .swiper-button-next,
+    .part-carousel .swiper-button-prev {
+      width: 40px;
+      height: 40px;
+      background: #ea6a28;
+      border-radius: 50%;
+      color: #fff;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .part-carousel .swiper-button-next::after,
+    .part-carousel .swiper-button-prev::after {
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .part-carousel .swiper-button-next:hover,
+    .part-carousel .swiper-button-prev:hover {
+      background: #ff8c50;
+      transform: scale(1.1);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .part-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .part-carousel .swiper-slide {
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .part-services-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+      }
+
+      .part-carousel .swiper-slide {
+        height: 300px;
+      }
+
+      .part-carousel .slide-caption {
+        padding: 20px;
+      }
+
+      .part-carousel .slide-caption h3 {
+        font-size: 20px;
+      }
+
+      .part-carousel .slide-caption p {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Skip to content -->
@@ -145,20 +462,21 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-background">
-        <img src="assets/images/services/premire_danse.webp" alt="Mariage VIBRA" loading="eager">
+        <!-- IMAGE HERO : Remplacer par votre image de mariage / soirée privée -->
+        <img src="assets/images/services/premire_danse.webp" alt="Événement particulier VIBRA" class="hero-parallax-bg" loading="eager">
       </div>
 
       <div class="hero-content">
         <h1 class="hero-title">
-          VOTRE ÉVÉNEMENT,<br>
-          NOTRE PASSION
+          NOS ÉVÉNEMENTS<br>
+          PARTICULIERS
         </h1>
         <p class="hero-subtitle">
-          Mariages, anniversaires, soirées privées... Créez des souvenirs inoubliables avec VIBRA
+          Votre moment, notre passion, des souvenirs pour la vie.
         </p>
 
         <div class="primary-ctas">
-          <a href="#services" class="btn btn-primary btn-large">
+          <a href="#portfolio" class="btn btn-primary btn-large smooth-scroll">
             Nos prestations
           </a>
           <a href="#devis" class="btn btn-secondary btn-large">
@@ -168,130 +486,126 @@
       </div>
     </section>
 
-    <!-- Services Particuliers Section -->
-    <section class="services-section" id="services">
+    <!-- Description Section - Fond pêche -->
+    <section class="part-description">
       <div class="container">
-        <h2 class="section-title text-center">Nos Événements Particuliers</h2>
-        <p class="section-subtitle text-center">
-          Du rêve à la réalité, nous créons votre événement idéal
+        <h2 class="part-description-title">Une Célébration à Votre Image</h2>
+        <div class="part-description-line"></div>
+        <p class="part-description-text">
+          Faites de vos moments de vie des souvenirs inoubliables grâce à une ambiance musicale sur mesure et une mise en lumières féerique. Que ce soit pour un mariage, un anniversaire ou une soirée privée, nous créons des DJ sets personnalisés et des atmosphères uniques, parfaitement adaptés à vos envies. Un événement à votre image, des émotions partagées, des souvenirs impérissables.
         </p>
-
-        <div class="services-grid">
-          <!-- Service 1 -->
-          <div class="service-card card">
-            <img src="assets/images/services/premire_danse.webp" alt="Mariages" class="service-card-image" loading="lazy">
-            <h3 class="service-card-title">Mariages</h3>
-          </div>
-
-          <!-- Service 2 -->
-          <div class="service-card card">
-            <img src="assets/images/services/AiPulse2025_-_6356.webp" alt="Anniversaires" class="service-card-image" loading="lazy">
-            <h3 class="service-card-title">Anniversaires</h3>
-          </div>
-
-          <!-- Service 3 -->
-          <div class="service-card card">
-            <img src="assets/images/services/WhatsApp_Image_2024-08-30_at_19.22.10_defaced.webp" alt="Soirées Privées" class="service-card-image" loading="lazy">
-            <h3 class="service-card-title">Soirées Privées</h3>
-          </div>
-
-          <!-- Service 4 -->
-          <div class="service-card card">
-            <img src="assets/images/services/NotiPlage_FDLM_2025_VF-268 (1).webp" alt="Baptêmes" class="service-card-image" loading="lazy">
-            <h3 class="service-card-title">Baptêmes</h3>
-          </div>
-
-          <!-- Service 5 -->
-          <div class="service-card card">
-            <img src="assets/images/services/e5a28361-bed1-4b59-bb94-4dfe585f1a1e (1).webp" alt="Fiançailles" class="service-card-image" loading="lazy">
-            <h3 class="service-card-title">Fiançailles</h3>
-          </div>
-
-          <!-- Service 6 -->
-          <div class="service-card card">
-            <img src="assets/images/services/LBGroup_InstitutEntreprise_GaelleAbrard-254 (1).webp" alt="Fêtes de Famille" class="service-card-image" loading="lazy">
-            <h3 class="service-card-title">Fêtes de Famille</h3>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="process-section">
-      <div class="container">
-        <h2 class="section-title text-center">Notre Processus</h2>
-        <p class="section-subtitle text-center">
-          3 étapes simples pour un événement parfait
-        </p>
+    <!-- Services Grid - 3 cartes -->
+    <section class="part-services" id="services">
+      <div class="part-services-grid">
 
-        <div class="process-steps">
-          <div class="process-step">
-            <div class="process-number">1</div>
-            <h3 class="process-title">Consultation</h3>
-            <p class="process-description">
-              Nous discutons de vos envies, votre budget et vos attentes pour comprendre votre vision.
-            </p>
-          </div>
-
-          <div class="process-step">
-            <div class="process-number">2</div>
-            <h3 class="process-title">Personnalisation</h3>
-            <p class="process-description">
-              Nous créons une proposition sur-mesure avec playlist, matériel et timing adaptés.
-            </p>
-          </div>
-
-          <div class="process-step">
-            <div class="process-number">3</div>
-            <h3 class="process-title">Réalisation</h3>
-            <p class="process-description">
-              Le jour J, notre équipe assure un déroulement parfait de A à Z pour que vous profitiez pleinement.
-            </p>
-          </div>
+        <!-- Service 1 - Sonorisation -->
+        <div class="part-service-card">
+          <h3 class="part-service-card-title">Sonorisation sur mesure</h3>
+          <p class="part-service-card-text">
+            Un son cristallin pour chaque moment clé : cérémonie, dîner, soirée dansante, en intérieur comme en extérieur.
+          </p>
+          <!-- IMAGE CARTE 1 : Remplacer par votre image de sonorisation mariage/fête -->
+          <img src="assets/images/services/AiPulse2025_-_6356.webp" alt="Sonorisation événement particulier" class="part-service-card-image" loading="lazy">
         </div>
+
+        <!-- Service 2 - Lumière -->
+        <div class="part-service-card">
+          <h3 class="part-service-card-title">Mise en lumière</h3>
+          <p class="part-service-card-text">
+            Création d'ambiances lumineuses féeriques pour sublimer votre lieu de réception et enchanter vos invités.
+          </p>
+          <!-- IMAGE CARTE 2 : Remplacer par votre image de mise en lumière -->
+          <img src="assets/images/services/e5a28361-bed1-4b59-bb94-4dfe585f1a1e (1).webp" alt="Mise en lumière événement" class="part-service-card-image" loading="lazy">
+        </div>
+
+        <!-- Service 3 - DJ -->
+        <div class="part-service-card">
+          <h3 class="part-service-card-title">DJ & Animation</h3>
+          <p class="part-service-card-text">
+            Des DJs passionnés qui s'adaptent à votre playlist, vos goûts et l'énergie de vos invités pour une fête mémorable.
+          </p>
+          <!-- IMAGE CARTE 3 : Remplacer par votre image de DJ en soirée privée -->
+          <img src="assets/images/services/WhatsApp_Image_2024-08-30_at_19.22.10_defaced.webp" alt="DJ soirée privée" class="part-service-card-image" loading="lazy">
+        </div>
+
       </div>
     </section>
 
-    <!-- Gallery Carousel -->
-    <section class="gallery-section">
-      <div class="container">
-        <h2 class="section-title text-center">Nos Plus Belles Réalisations</h2>
+    <!-- CTA Button -->
+    <section class="part-cta">
+      <a href="prestations-techniques.html" class="part-cta-button">Plus de détail technique</a>
+    </section>
 
-        <div class="swiper wedding-carousel">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (1) - Copie.webp" alt="Événement 1" loading="lazy">
-            </div>
-            <div class="swiper-slide">
-              <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (2) - Copie.webp" alt="Événement 2" loading="lazy">
-            </div>
-            <div class="swiper-slide">
-              <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (3) - Copie.webp" alt="Événement 3" loading="lazy">
-            </div>
-            <div class="swiper-slide">
-              <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (4) - Copie.webp" alt="Événement 4" loading="lazy">
-            </div>
-            <div class="swiper-slide">
-              <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (5) - Copie.webp" alt="Événement 5" loading="lazy">
-            </div>
-            <div class="swiper-slide">
-              <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (6) - Copie.webp" alt="Événement 6" loading="lazy">
+    <!-- Portfolio Section -->
+    <section class="part-portfolio" id="portfolio">
+      <h2 class="part-portfolio-title">Exemples de prestations réalisées</h2>
+      <div class="part-portfolio-line"></div>
+    </section>
+
+    <!-- Carousel -->
+    <section class="part-carousel-wrapper">
+      <div class="swiper part-carousel">
+        <div class="swiper-wrapper">
+
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <!-- IMAGE CAROUSEL 1 : Remplacer par votre image -->
+            <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (1) - Copie.webp" alt="Mariage - Prestation VIBRA" loading="lazy">
+            <div class="slide-caption">
+              <h3>Mariage</h3>
+              <p>Château de la Vallée</p>
             </div>
           </div>
 
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-pagination"></div>
-        </div>
-      </div>
-    </section>
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <!-- IMAGE CAROUSEL 2 : Remplacer par votre image -->
+            <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (2) - Copie.webp" alt="Anniversaire - Soirée privée" loading="lazy">
+            <div class="slide-caption">
+              <h3>Anniversaire</h3>
+              <p>Soirée privée - Paris</p>
+            </div>
+          </div>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <div class="container">
-        <h2 class="cta-title">Prêt à organiser votre événement de rêve ?</h2>
-        <p class="cta-subtitle">Contactez-nous pour un devis personnalisé</p>
-        <a href="#devis" class="btn btn-primary btn-large">Demander un devis gratuit</a>
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <!-- IMAGE CAROUSEL 3 : Remplacer par votre image -->
+            <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (3) - Copie.webp" alt="Soirée privée" loading="lazy">
+            <div class="slide-caption">
+              <h3>Soirée Privée</h3>
+              <p>Villa Élégance</p>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="swiper-slide">
+            <!-- IMAGE CAROUSEL 4 : Remplacer par votre image -->
+            <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (4) - Copie.webp" alt="Baptême - Fête de famille" loading="lazy">
+            <div class="slide-caption">
+              <h3>Baptême</h3>
+              <p>Fête de famille</p>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="swiper-slide">
+            <!-- IMAGE CAROUSEL 5 : Remplacer par votre image -->
+            <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (5) - Copie.webp" alt="Fiançailles" loading="lazy">
+            <div class="slide-caption">
+              <h3>Fiançailles</h3>
+              <p>Soirée intime</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
       </div>
     </section>
 
@@ -376,13 +690,14 @@
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script src="assets/js/main.js" type="module"></script>
 
-  <!-- Initialize Swiper -->
+  <!-- Initialize Carousel -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      new Swiper('.wedding-carousel', {
+      new Swiper('.part-carousel', {
         slidesPerView: 1,
-        spaceBetween: 30,
+        spaceBetween: 0,
         loop: true,
+        speed: 1200,
         autoplay: {
           delay: 5000,
           disableOnInteraction: false,
@@ -395,14 +710,61 @@
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
-        breakpoints: {
-          768: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView: 3,
-          },
-        },
+        cssMode: false,
+      });
+
+      // Scroll animation for service cards
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      document.querySelectorAll('.part-service-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+
+      // Smooth scroll for "Nos prestations" button
+      document.querySelectorAll('.smooth-scroll').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const target = document.getElementById(targetId);
+          if (!target) return;
+
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 40;
+          const startPosition = window.pageYOffset;
+          const distance = targetPosition - startPosition;
+          const duration = 1800;
+          let startTime = null;
+
+          function easeInOutCubic(t) {
+            return t < 0.5
+              ? 4 * t * t * t
+              : 1 - Math.pow(-2 * t + 2, 3) / 2;
+          }
+
+          function animation(currentTime) {
+            if (!startTime) startTime = currentTime;
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = easeInOutCubic(progress);
+
+            window.scrollTo(0, startPosition + distance * ease);
+
+            if (progress < 1) {
+              requestAnimationFrame(animation);
+            }
+          }
+
+          requestAnimationFrame(animation);
+        });
       });
     });
   </script>

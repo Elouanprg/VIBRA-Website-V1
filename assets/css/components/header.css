@@ -24,7 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 0; /* keep header edges clear so logo and CTAs can sit at extremes */
+  padding: 8px 16px;
   max-width: var(--container-max-width);
   margin: 0 auto;
   gap: var(--space-lg);
@@ -56,24 +56,43 @@
 .logo-image {
   height: 56px;
   width: auto;
-  max-width: 250px;
+  max-width: 150px;
   object-fit: contain;
   object-position: left center;
-  transition: none; /* pas d'effet */
+  transition: none;
   transform-origin: left center;
-  transform: scale(2.25); /* agrandi x1.5 supplémentaire (1.5 * 1.5 = 2.25) */
+  transform: scale(1.4);
 }
 
 @media (min-width: 768px) {
   .logo-image {
     height: 64px;
-    max-width: 220px;
+    max-width: 200px;
+    transform: scale(1.8);
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo-image {
+    max-width: 250px;
     transform: scale(2.25);
   }
 }
 
 .logo:hover .logo-image {
-  transform: scale(2.25); /* même taille au hover : aucun effet */
+  transform: scale(1.4);
+}
+
+@media (min-width: 768px) {
+  .logo:hover .logo-image {
+    transform: scale(1.8);
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo:hover .logo-image {
+    transform: scale(2.25);
+  }
 }
 
 /* Desktop Navigation */
@@ -128,13 +147,13 @@
   }
 }
 
-/* Move logo and CTAs further outside using negative margins (padding can't be negative) */
+/* Move logo and CTAs further outside using negative margins */
 .logo {
-  margin-left: -50px;
+  margin-left: 0;
 }
 
 .header-right {
-  margin-right: -50px;
+  margin-right: 0;
 }
 
 @media (min-width: 1024px) {

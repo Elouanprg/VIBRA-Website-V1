@@ -14,10 +14,343 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="assets/css/main.css">
+
+  <style>
+    /* ===== SON & LUMIÈRE PAGE ===== */
+
+    /* Hero */
+    .tech-hero {
+      padding: 160px 0 60px;
+      text-align: center;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Grain animé subtil en fond du hero */
+    .tech-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(232, 108, 36, 0.03) 0%, transparent 40%),
+        linear-gradient(225deg, rgba(255, 160, 80, 0.04) 0%, transparent 40%);
+      animation: heroShimmer 8s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .tech-hero::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(232, 108, 36, 0.15), transparent);
+      transform: translate(-50%, -50%);
+      animation: heroLineGlow 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes heroShimmer {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes heroLineGlow {
+      0%, 100% { width: 200px; opacity: 0.3; }
+      50% { width: 400px; opacity: 0.6; }
+    }
+
+    .tech-hero-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 64px;
+      line-height: 1.15;
+      color: #000;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tech-hero-title .highlight {
+      color: #ff8c50;
+      display: block;
+    }
+
+    .tech-hero-title-wrap {
+      display: inline-block;
+      position: relative;
+      cursor: default;
+      z-index: 1;
+    }
+
+    .tech-hero-line {
+      width: 180px;
+      height: 4px;
+      background: #e86c24;
+      margin: 20px auto 0;
+      transition: width 0.4s ease;
+    }
+
+    .tech-hero-title-wrap:hover .tech-hero-line {
+      width: 100%;
+    }
+
+    /* ===== Sticky scroll sections ===== */
+    .tech-sticky-section {
+      background: #fff;
+    }
+
+    .tech-sticky-section--sono {
+      background: #FFEFE4;
+    }
+
+    .tech-sticky-section--light {
+      background: #FFFBF9;
+    }
+
+    .tech-sticky-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+      min-height: 100vh;
+    }
+
+    .tech-sticky-wrap.reverse {
+      direction: rtl;
+    }
+
+    .tech-sticky-wrap.reverse > * {
+      direction: ltr;
+    }
+
+
+    /* Texte sticky */
+    .tech-text {
+      position: sticky;
+      top: 120px;
+      align-self: start;
+      padding: 60px 40px 60px 0;
+      height: fit-content;
+    }
+
+    /* Texte placé à droite (2e colonne) */
+    .tech-text-right {
+      padding: 60px 0 60px 20px;
+    }
+
+    .tech-section-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 42px;
+      text-transform: uppercase;
+      color: #000;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      line-height: 1.1;
+      display: inline-block;
+      position: relative;
+    }
+
+    .tech-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #e86c24;
+      border-radius: 2px;
+    }
+
+    .tech-section-desc {
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    /* Colonne images : défile librement */
+    .tech-images-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 40px 0 16px;
+    }
+
+    .tech-images-col img {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+
+    /* Rangée 2 images : grande + petite (60/40) */
+    .tech-images-row-asym {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 16px;
+    }
+
+    .tech-images-row-asym img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* Rangée 2 images égales (50/50) */
+    .tech-images-row-equal {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .tech-images-row-equal img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* Image pleine largeur */
+    .tech-img-full {
+      height: 380px;
+    }
+
+    /* CTA */
+    .tech-cta {
+      text-align: center;
+      padding: 60px 0 80px;
+      background: #fff;
+    }
+
+    .tech-cta-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 32px;
+      color: #000;
+      margin-bottom: 12px;
+    }
+
+    .tech-cta-sub {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .tech-cta-btn {
+      display: inline-block;
+      background: #ea6a28;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      padding: 16px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(234, 106, 40, 0.25);
+    }
+
+    .tech-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(234, 106, 40, 0.4);
+      background: #ff8c50;
+      color: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .tech-hero-title {
+        font-size: 48px;
+      }
+
+      .tech-section-title {
+        font-size: 34px;
+      }
+
+      .tech-img-full {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .tech-hero {
+        padding: 130px 20px 40px;
+      }
+
+      .tech-hero-title {
+        font-size: 36px;
+      }
+
+      .tech-sticky-wrap {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+        min-height: auto;
+      }
+
+      .tech-text {
+        position: relative;
+        top: auto;
+        padding: 40px 0 20px;
+      }
+
+      .tech-text-right {
+        padding: 40px 0 20px;
+      }
+
+      .tech-images-col {
+        padding: 0 0 40px;
+      }
+
+      .tech-images-row-asym {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .tech-images-row-asym img {
+        height: 180px;
+      }
+
+      .tech-images-row-equal img {
+        height: 180px;
+      }
+
+      .tech-img-full {
+        height: 220px;
+      }
+
+      .tech-section-title {
+        font-size: 28px;
+      }
+    }
+
+    /* Dark mode */
+    [data-theme="dark"] .tech-hero,
+    [data-theme="dark"] .tech-sticky-section,
+    [data-theme="dark"] .tech-cta {
+      background: #121212;
+    }
+
+    [data-theme="dark"] .tech-hero-title,
+    [data-theme="dark"] .tech-section-title,
+    [data-theme="dark"] .tech-cta-title {
+      color: #f0f0f0;
+    }
+
+    [data-theme="dark"] .tech-section-desc,
+    [data-theme="dark"] .tech-cta-sub {
+      color: #b0b0b0;
+    }
+  </style>
 </head>
 <body>
   <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
@@ -106,72 +439,64 @@
   <!-- Main Content -->
   <main id="main-content">
 
-    <section class="page-header">
-      <div class="container">
-        <h1 class="page-title">Prestations Techniques</h1>
-        <p class="page-subtitle">Matériel professionnel haut de gamme pour tous vos événements</p>
+    <!-- Hero : L'ART DE LA TECHNIQUE -->
+    <section class="tech-hero">
+      <div class="tech-hero-title-wrap">
+        <h1 class="tech-hero-title">
+          L'art de la
+          <span class="highlight">technique</span>
+        </h1>
+        <div class="tech-hero-line"></div>
       </div>
     </section>
 
-    <!-- Sonorisation Section with scroll-following text -->
-    <section class="technical-section sonorisation-section">
-      <div class="container technical-container">
-        <div class="technical-text sonorisation-text">
-          <h2 class="section-title">Sonorisation</h2>
-          <p class="technical-description">
-            Un son crystal clair pour sublimer votre événement. Nos systèmes de sonorisation professionnels s'adaptent à tous types de lieux et de configurations.
+    <!-- Sonorisation : texte sticky gauche, images droite -->
+    <section class="tech-sticky-section tech-sticky-section--sono">
+      <div class="tech-sticky-wrap">
+        <div class="tech-text">
+          <h2 class="tech-section-title">Sonorisation</h2>
+          <p class="tech-section-desc">
+            Un son crystal clair pour sublimer votre événement. Nos systèmes de sonorisation professionnels s'adaptent à tous types de lieux et de configurations : systèmes line array pour grandes salles, enceintes amplifiées compactes, micros sans fil HF professionnels, tables de mixage numériques, processeurs audio et égaliseurs, monitoring retour scène.
           </p>
-          <ul class="technical-list">
-            <li>Systèmes line array pour grandes salles</li>
-            <li>Enceintes amplifiées compactes</li>
-            <li>Micros sans fil HF professionnels</li>
-            <li>Tables de mixage numériques</li>
-            <li>Processeurs audio et égaliseurs</li>
-            <li>Monitoring retour scène</li>
-          </ul>
         </div>
-
-        <div class="technical-images sonorisation-images">
-          <img src="assets/images/technical/photo3.webp" alt="Sonorisation 1" loading="lazy">
-          <img src="assets/images/technical/IMG_0879.webp" alt="Sonorisation 2" loading="lazy">
-          <img src="assets/images/technical/LBGroup_InstitutEntreprise_GaelleAbrard-254 (2).webp" alt="Sonorisation 3" loading="lazy">
+        <div class="tech-images-col">
+          <div class="tech-images-row-asym">
+            <img src="assets/images/technical/photo3.webp" alt="DJ en prestation sonorisation" loading="lazy">
+            <img src="assets/images/technical/IMG_0879.webp" alt="Matériel de sonorisation" loading="lazy">
+          </div>
+          <img class="tech-img-full" src="assets/images/technical/LBGroup_InstitutEntreprise_GaelleAbrard-254 (2).webp" alt="Installation sono événement" loading="lazy">
         </div>
       </div>
     </section>
 
-    <!-- Lumière Section with scroll-following text (opposite side) -->
-    <section class="technical-section lumiere-section">
-      <div class="container technical-container reverse">
-        <div class="technical-images lumiere-images">
-          <img src="assets/images/technical/WHITE1.webp" alt="Lumière 1" loading="lazy">
-          <img src="assets/images/technical/IMG_0884.webp" alt="Lumière 2" loading="lazy">
-          <img src="assets/images/technical/e5a28361-bed1-4b59-bb94-4dfe585f1a1e (2).webp" alt="Lumière 3" loading="lazy">
+    <!-- Lumière : images gauche, texte sticky droite -->
+    <section class="tech-sticky-section tech-sticky-section--light">
+      <div class="tech-sticky-wrap">
+        <div class="tech-images-col">
+          <img class="tech-img-full" src="assets/images/technical/WHITE1.webp" alt="Éclairage ambiance blanche" loading="lazy">
+          <div class="tech-images-row-equal">
+            <img src="assets/images/technical/IMG_0884.webp" alt="Projecteurs LED événement" loading="lazy">
+            <img src="assets/images/technical/e5a28361-bed1-4b59-bb94-4dfe585f1a1e (2).webp" alt="Mise en lumière scène" loading="lazy">
+          </div>
+          <div class="tech-images-row-equal">
+            <img src="assets/images/technical/SAVANAQUENTIN-20250913-0943.webp" alt="Prestation lumière événement" loading="lazy">
+            <img src="assets/images/technical/e5a28361-bed1-4b59-bb94-4dfe585f1a1e (2).webp" alt="Installation technique salle" loading="lazy">
+          </div>
         </div>
-
-        <div class="technical-text lumiere-text">
-          <h2 class="section-title">Lumière</h2>
-          <p class="technical-description">
-            Créez l'ambiance parfaite avec nos solutions d'éclairage professionnelles. De la subtilité à l'extravagance, nous adaptons la lumière à votre vision.
+        <div class="tech-text tech-text-right">
+          <h2 class="tech-section-title">Lumière</h2>
+          <p class="tech-section-desc">
+            Créez l'ambiance parfaite avec nos solutions d'éclairage professionnelles. De la subtilité à l'extravagance, nous adaptons la lumière à votre vision : projecteurs LED RGBW haute puissance, lyres asservies spot et wash, stroboscopes et effets spéciaux, jeux de lumière et lasers, consoles DMX professionnelles, éclairage architectural et mapping.
           </p>
-          <ul class="technical-list">
-            <li>Projecteurs LED RGBW haute puissance</li>
-            <li>Lyres asservies spot et wash</li>
-            <li>Stroboscopes et effets spéciaux</li>
-            <li>Jeux de lumière et lasers</li>
-            <li>Consoles DMX professionnelles</li>
-            <li>Éclairage architectural et mapping</li>
-          </ul>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <div class="container">
-        <h2 class="cta-title">Besoin de matériel technique ?</h2>
-        <p class="cta-subtitle">Contactez-nous pour un devis personnalisé</p>
-        <a href="#devis" class="btn btn-primary btn-large">Demander un devis</a>
-      </div>
+    <!-- CTA -->
+    <section class="tech-cta">
+      <h2 class="tech-cta-title">Besoin de matériel technique ?</h2>
+      <p class="tech-cta-sub">Contactez-nous pour un devis personnalisé</p>
+      <a href="#devis" class="tech-cta-btn">Demander un devis</a>
     </section>
 
   </main>

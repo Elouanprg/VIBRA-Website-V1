@@ -31,28 +31,6 @@
 
   <!-- Page-specific styles -->
   <style>
-    /* ===== HERO - Figma Design ===== */
-    .pro-hero {
-      background: #fff;
-      padding: 120px 20px 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 350px;
-    }
-
-    .pro-hero h1 {
-      font-family: 'Archivo Black', sans-serif;
-      font-size: clamp(36px, 5vw, 64px);
-      line-height: 1.3;
-      text-align: center;
-      color: #000;
-    }
-
-    .pro-hero .highlight {
-      color: #ff8c50;
-    }
-
     /* ===== DESCRIPTION SECTION ===== */
     .pro-description {
       background: #ffeee2;
@@ -345,11 +323,6 @@
     }
 
     @media (max-width: 768px) {
-      .pro-hero {
-        padding: 100px 15px 40px;
-        min-height: 250px;
-      }
-
       .pro-services-grid {
         grid-template-columns: 1fr;
         max-width: 500px;
@@ -486,9 +459,30 @@
   <!-- Main Content -->
   <main id="main-content">
 
-    <!-- Hero Section - Titre centré fond blanc -->
-    <section class="pro-hero">
-      <h1>Nos <span class="highlight">événements</span> <span class="highlight">professionnels</span></h1>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-background">
+        <img src="assets/images/services/LBGroup_InstitutEntreprise_GaelleAbrard-254 (1).webp" alt="Événement professionnel VIBRA - L'Oréal" class="hero-parallax-bg" loading="eager">
+      </div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">
+          NOS ÉVÉNEMENTS<br>
+          PROFESSIONNELS
+        </h1>
+        <p class="hero-subtitle">
+          Une ambiance rythmée, des souvenirs impérissables.
+        </p>
+
+        <div class="primary-ctas">
+          <a href="#portfolio" class="btn btn-primary btn-large smooth-scroll">
+            Nos prestations
+          </a>
+          <a href="#devis" class="btn btn-secondary btn-large">
+            Demander un devis
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- Description Section - Fond pêche -->
@@ -542,7 +536,7 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section class="pro-portfolio">
+    <section class="pro-portfolio" id="portfolio">
       <h2 class="pro-portfolio-title">Exemples de prestations réalisées</h2>
       <div class="pro-portfolio-line"></div>
     </section>
@@ -725,6 +719,43 @@
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
+      });
+
+      // Smooth scroll for "Nos prestations" button
+      document.querySelectorAll('.smooth-scroll').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const target = document.getElementById(targetId);
+          if (!target) return;
+
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 40;
+          const startPosition = window.pageYOffset;
+          const distance = targetPosition - startPosition;
+          const duration = 1800;
+          let startTime = null;
+
+          function easeInOutCubic(t) {
+            return t < 0.5
+              ? 4 * t * t * t
+              : 1 - Math.pow(-2 * t + 2, 3) / 2;
+          }
+
+          function animation(currentTime) {
+            if (!startTime) startTime = currentTime;
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = easeInOutCubic(progress);
+
+            window.scrollTo(0, startPosition + distance * ease);
+
+            if (progress < 1) {
+              requestAnimationFrame(animation);
+            }
+          }
+
+          requestAnimationFrame(animation);
+        });
       });
     });
   </script>
