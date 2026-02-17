@@ -22,7 +22,7 @@
       position: fixed;
       top: 0;
       bottom: 0;
-      width: 8px;
+      width: 14px;
       z-index: 999;
       pointer-events: none;
       opacity: 0;
@@ -44,15 +44,15 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 40px;
-      filter: blur(16px);
+      width: 70px;
+      filter: blur(22px);
       opacity: 0;
       transition: opacity 0.5s ease;
       background: linear-gradient(to bottom,
         transparent 5%,
-        rgba(255, 107, 53, 0.06) 25%,
-        rgba(255, 107, 53, 0.12) 50%,
-        rgba(255, 107, 53, 0.06) 75%,
+        rgba(255, 107, 53, 0.12) 25%,
+        rgba(255, 107, 53, 0.25) 50%,
+        rgba(255, 107, 53, 0.12) 75%,
         transparent 95%
       );
     }
@@ -175,43 +175,88 @@
 
     /* ===== MIX CARDS ===== */
     .mix-list {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 50px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
       padding-bottom: 40px;
     }
     .mix-item {
-      background: transparent;
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .mix-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    }
+    .mix-item__header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .mix-item__number {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #FF6B35, #e05520);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 16px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .mix-item__info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
     }
     .mix-item__label {
       font-family: 'Archivo Black', sans-serif;
-      font-size: 22px;
-      color: #1a1a1a;
-      margin: 0 0 4px;
+      font-size: 18px;
+      color: #fff;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .mix-item__label span {
-      color: #ea6a28;
+      display: none;
     }
     .mix-item__sub {
       font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      color: #555;
-      margin: 0 0 16px;
+      font-weight: 500;
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      margin: 2px 0 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .mix-item__embed {
       width: 100%;
-      border-radius: 12px;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     }
     .mix-item__embed iframe {
       width: 100%;
       height: 120px;
       border: none;
       display: block;
+    }
+    /* Last item centered if odd count */
+    .mix-list > .mix-item:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      max-width: 540px;
+      justify-self: center;
     }
 
     /* ===== FIXED BOTTOM PLAYER BAR (floating) ===== */
@@ -220,17 +265,17 @@
       bottom: 16px;
       left: 50%;
       transform: translateX(-50%) translateY(calc(100% + 24px));
-      width: calc(100% - 48px);
-      max-width: 900px;
-      height: 68px;
+      width: calc(100% - 40px);
+      max-width: 1100px;
+      height: 78px;
       background: rgba(18, 18, 18, 0.96);
       backdrop-filter: blur(16px);
       z-index: 1001;
       display: flex;
       align-items: center;
-      padding: 0 16px;
-      gap: 14px;
-      border-radius: 16px;
+      padding: 0 22px;
+      gap: 16px;
+      border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.08);
       box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3);
       transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
@@ -238,13 +283,13 @@
     .player-bar.visible {
       transform: translateX(-50%) translateY(0);
     }
-    body.player-active { padding-bottom: 100px; }
+    body.player-active { padding-bottom: 110px; }
 
     /* Cover */
     .player-bar__cover {
-      width: 44px;
-      height: 44px;
-      border-radius: 8px;
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
       flex-shrink: 0;
       overflow: hidden;
       background: linear-gradient(135deg, #FF6B35 0%, #e05520 100%);
@@ -277,7 +322,7 @@
     .player-bar__title {
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
-      font-size: 13px;
+      font-size: 14px;
       color: #fff;
       white-space: nowrap;
       overflow: hidden;
@@ -285,7 +330,7 @@
     }
     .player-bar__artist {
       font-family: 'Inter', sans-serif;
-      font-size: 11px;
+      font-size: 12px;
       color: rgba(255,255,255,0.5);
       white-space: nowrap;
       overflow: hidden;
@@ -298,6 +343,37 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-top: 1px;
+    }
+
+    /* Bouton Play/Pause */
+    .player-bar__play-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: #FF6B35;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s, transform 0.15s;
+      padding: 0;
+    }
+    .player-bar__play-btn:hover {
+      background: #FF8C61;
+      transform: scale(1.08);
+    }
+    .player-bar__play-btn:active {
+      transform: scale(0.95);
+    }
+    .player-bar__play-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+    }
+    .player-bar__icon-play {
+      margin-left: 2px; /* optical centering for play triangle */
     }
 
     /* Zone centrale : progress */
@@ -349,8 +425,8 @@
       flex-shrink: 0;
     }
     .player-bar__vol-icon {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       fill: rgba(255,255,255,0.55);
       cursor: pointer;
       flex-shrink: 0;
@@ -360,7 +436,7 @@
     .player-bar__vol-slider {
       -webkit-appearance: none;
       appearance: none;
-      width: 80px;
+      width: 90px;
       height: 4px;
       border-radius: 2px;
       background: linear-gradient(to right, #FF6B35 var(--vol-pct, 80%), rgba(255,255,255,0.1) var(--vol-pct, 80%));
@@ -388,17 +464,21 @@
 
     /* Responsive player bar */
     @media (max-width: 768px) {
-      .player-bar { width: calc(100% - 24px); padding: 0 12px; gap: 10px; height: 60px; bottom: 10px; }
-      .player-bar__cover { width: 38px; height: 38px; }
-      .player-bar__info { min-width: 80px; max-width: 120px; }
-      .player-bar__title { font-size: 12px; }
+      .player-bar { width: calc(100% - 24px); padding: 0 14px; gap: 12px; height: 66px; bottom: 10px; }
+      .player-bar__cover { width: 42px; height: 42px; }
+      .player-bar__info { min-width: 80px; max-width: 140px; }
+      .player-bar__title { font-size: 13px; }
       .player-bar__vol-slider { width: 50px; }
+      .player-bar__play-btn { width: 36px; height: 36px; }
     }
     @media (max-width: 480px) {
-      .player-bar { gap: 8px; height: 56px; bottom: 8px; border-radius: 12px; }
+      .player-bar { gap: 8px; height: 60px; bottom: 8px; border-radius: 14px; }
       .player-bar__vol-slider { display: none; }
       .player-bar__time { font-size: 10px; min-width: 28px; }
       .player-bar__source { display: none; }
+      .player-bar__play-btn { width: 34px; height: 34px; }
+      .player-bar__play-btn svg { width: 16px; height: 16px; }
+      .player-bar__cover { width: 38px; height: 38px; }
     }
 
     /* ===== PLAYLISTS ===== */
@@ -465,9 +545,11 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .mix-hero { height: 420px; }
-      .mix-section { padding: 40px 20px 10px; }
-      .mix-list { padding: 0 0 30px; gap: 35px; }
-      .mix-item__embed iframe { height: 140px; }
+      .mix-section { padding: 40px 16px 10px; }
+      .mix-list { grid-template-columns: 1fr; gap: 16px; padding: 0 0 30px; }
+      .mix-list > .mix-item:last-child:nth-child(odd) { max-width: 100%; }
+      .mix-item { padding: 16px; }
+      .mix-item__embed iframe { height: 120px; }
       .playlist-section { padding: 40px 20px; }
       .playlist-grid {
         grid-template-columns: 1fr;
@@ -490,7 +572,9 @@
         padding: 12px 32px;
         font-size: 0.9rem;
       }
-      .mix-item__label { font-size: 18px; }
+      .mix-item { padding: 14px; gap: 10px; }
+      .mix-item__label { font-size: 16px; }
+      .mix-item__number { width: 32px; height: 32px; font-size: 13px; border-radius: 8px; }
       .mix-item__embed iframe { height: 120px; }
       .playlist-card iframe { height: 380px; }
     }
@@ -503,10 +587,10 @@
     <div class="header-container">
       <a href="/" class="logo"><img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image"></a>
       <nav class="nav-desktop"><ul class="nav-menu"><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Prestations <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link">Son & Lumière</a></li></ul></li><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Artistes <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li></ul></li><li class="nav-item"><a href="portfolio.html" class="nav-link">Réalisations</a></li><li class="nav-item"><a href="#about" class="nav-link">À propos</a></li><li class="nav-item"><a href="mix-playlists.html" class="nav-link">Nos mixs</a></li></ul></nav>
-      <div class="header-right"><a href="#devis" class="btn btn-primary">Devis en ligne</a><div class="language-switcher"><button class="lang-btn active" data-lang="fr">FR</button><span class="lang-separator">/</span><button class="lang-btn" data-lang="en">EN</button></div></div>
+      <div class="header-right"><a href="devis.html" class="btn btn-primary">Devis en ligne</a><div class="language-switcher"><button class="lang-btn active" data-lang="fr">FR</button><span class="lang-separator">/</span><button class="lang-btn" data-lang="en">EN</button></div></div>
       <button class="menu-toggle"><span></span><span></span><span></span></button>
     </div>
-    <nav class="nav-mobile"><ul class="nav-menu"><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Prestations <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link">Son & Lumière</a></li></ul></li><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Artistes <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li></ul></li><li class="nav-item"><a href="portfolio.html" class="nav-link">Réalisations</a></li><li class="nav-item"><a href="#about" class="nav-link">À propos</a></li><li class="nav-item"><a href="mix-playlists.html" class="nav-link">Nos mixs</a></li><li class="nav-item"><a href="#devis" class="btn btn-primary btn-block">Devis en ligne</a></li></ul></nav>
+    <nav class="nav-mobile"><ul class="nav-menu"><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Prestations <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link">Son & Lumière</a></li></ul></li><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Artistes <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li></ul></li><li class="nav-item"><a href="portfolio.html" class="nav-link">Réalisations</a></li><li class="nav-item"><a href="#about" class="nav-link">À propos</a></li><li class="nav-item"><a href="mix-playlists.html" class="nav-link">Nos mixs</a></li><li class="nav-item"><a href="devis.html" class="btn btn-primary btn-block">Devis en ligne</a></li></ul></nav>
     <div class="menu-overlay"></div>
   </header>
 
@@ -541,8 +625,13 @@
       <div class="mix-list">
         <!-- Mix 1 - Open Format -->
         <div class="mix-item" data-title="Open Format" data-artist="RAMEL - Live Chopes & Wine">
-          <h3 class="mix-item__label"><span>Mix</span> Open Format</h3>
-          <p class="mix-item__sub"></p>
+          <div class="mix-item__header">
+            <div class="mix-item__number">01</div>
+            <div class="mix-item__info">
+              <h3 class="mix-item__label">Open Format</h3>
+              <p class="mix-item__sub">RAMEL - Live Chopes & Wine</p>
+            </div>
+          </div>
           <div class="mix-item__embed">
             <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-open-format-live-chopes-wine-generaliste%2F" loading="lazy"></iframe>
           </div>
@@ -550,8 +639,13 @@
 
         <!-- Mix 2 - Snake Chamber -->
         <div class="mix-item" data-title="Snake Chamber" data-artist="RAMEL - Live L'Organiq x Dojo">
-          <h3 class="mix-item__label"><span>Mix</span> Snake Chamber</h3>
-          <p class="mix-item__sub"></p>
+          <div class="mix-item__header">
+            <div class="mix-item__number">02</div>
+            <div class="mix-item__info">
+              <h3 class="mix-item__label">Snake Chamber</h3>
+              <p class="mix-item__sub">RAMEL - Live L'Organiq x Dojo</p>
+            </div>
+          </div>
           <div class="mix-item__embed">
             <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-snake-chamber-live-lorganiq-x-dojo-afro-house-latino-house%2F" loading="lazy"></iframe>
           </div>
@@ -559,8 +653,13 @@
 
         <!-- Mix 3 - Golden Cruise -->
         <div class="mix-item" data-title="Golden Cruise" data-artist="RAMEL - Live Burdigala II">
-          <h3 class="mix-item__label"><span>Mix</span> Golden Cruise</h3>
-          <p class="mix-item__sub"></p>
+          <div class="mix-item__header">
+            <div class="mix-item__number">03</div>
+            <div class="mix-item__info">
+              <h3 class="mix-item__label">Golden Cruise</h3>
+              <p class="mix-item__sub">RAMEL - Live Burdigala II</p>
+            </div>
+          </div>
           <div class="mix-item__embed">
             <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-golden-cruise-live-burdigala-ii-house%2F" loading="lazy"></iframe>
           </div>
@@ -568,8 +667,13 @@
 
         <!-- Mix 4 - Savage -->
         <div class="mix-item" data-title="Savage" data-artist="RAMEL - Live Vice Versa Marseille">
-          <h3 class="mix-item__label"><span>Mix</span> Savage</h3>
-          <p class="mix-item__sub"></p>
+          <div class="mix-item__header">
+            <div class="mix-item__number">04</div>
+            <div class="mix-item__info">
+              <h3 class="mix-item__label">Savage</h3>
+              <p class="mix-item__sub">RAMEL - Live Vice Versa Marseille</p>
+            </div>
+          </div>
           <div class="mix-item__embed">
             <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-savage-live-vice-versa-marseille-reggaeton-baile-funk-hip-hop%2F" loading="lazy"></iframe>
           </div>
@@ -577,10 +681,29 @@
 
         <!-- Mix 5 - Sakura 3 -->
         <div class="mix-item" data-title="Sakura 3" data-artist="RAMEL - Live Zigzag x Dojo">
-          <h3 class="mix-item__label"><span>Mix</span> Sakura 3</h3>
-          <p class="mix-item__sub"></p>
+          <div class="mix-item__header">
+            <div class="mix-item__number">05</div>
+            <div class="mix-item__info">
+              <h3 class="mix-item__label">Sakura 3</h3>
+              <p class="mix-item__sub">RAMEL - Live Zigzag x Dojo</p>
+            </div>
+          </div>
           <div class="mix-item__embed">
             <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-sakura-3-live-zigzag-x-dojo-house-latino-house-to-tech-house%2F" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <!-- Mix 6 - Teka -->
+        <div class="mix-item" data-title="Teka" data-artist="RAMEL">
+          <div class="mix-item__header">
+            <div class="mix-item__number">06</div>
+            <div class="mix-item__info">
+              <h3 class="mix-item__label">Teka</h3>
+              <p class="mix-item__sub">RAMEL</p>
+            </div>
+          </div>
+          <div class="mix-item__embed">
+            <iframe src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Framel_fr%2Fteka%2F" loading="lazy"></iframe>
           </div>
         </div>
       </div>
@@ -616,6 +739,11 @@
         <div class="playlist-card">
           <iframe src="https://open.spotify.com/embed/playlist/4KzrcG9ZtZ0gn5QGczLjhf?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
+
+        <!-- Playlist 6 -->
+        <div class="playlist-card">
+          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1r8VGYjDLFS8R6z2toZuAI?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
       </div>
     </section>
 
@@ -623,7 +751,7 @@
     <section class="mix-cta">
       <h2 class="mix-cta__title">Vous aimez notre univers musical ?</h2>
       <p class="mix-cta__sub">Réservez-nous pour votre prochain événement</p>
-      <a href="#devis" class="mix-cta__btn">Demander un devis</a>
+      <a href="devis.html" class="mix-cta__btn">Demander un devis</a>
     </section>
 
   </main>
@@ -676,7 +804,7 @@
           <ul class="footer-links">
             <li><a href="portfolio.html" class="footer-link">Nos Réalisations</a></li>
             <li><a href="#contact" class="footer-link">Contact</a></li>
-            <li><a href="#devis" class="footer-link">Devis en ligne</a></li>
+            <li><a href="devis.html" class="footer-link">Devis en ligne</a></li>
           </ul>
         </div>
       </div>
@@ -704,6 +832,10 @@
       <span class="player-bar__artist" id="playerArtist">VIBRA</span>
       <span class="player-bar__source" id="playerSource"></span>
     </div>
+    <button class="player-bar__play-btn" id="playerPlayBtn" aria-label="Lecture / Pause">
+      <svg class="player-bar__icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <svg class="player-bar__icon-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
     <div class="player-bar__center">
       <span class="player-bar__time" id="playerTimeCurrent">0:00</span>
       <div class="player-bar__progress" id="playerProgress">
@@ -724,6 +856,18 @@
   <!-- Mixcloud Widget API -->
   <script src="https://widget.mixcloud.com/media/js/widgetApi.js"></script>
 
+  <!-- Spotify IFrame API callback (must be defined BEFORE loading the API script) -->
+  <script>
+    window.onSpotifyIframeApiReady = function(IFrameAPI) {
+      if (window._initSpotifyWhenReady) {
+        window._initSpotifyWhenReady(IFrameAPI);
+      } else {
+        window._spotifyIFrameAPI = IFrameAPI;
+      }
+    };
+  </script>
+  <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+
   <script src="assets/js/main.js" type="module"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -738,9 +882,9 @@
 
       function resizeCanvases() {
         [canvasL, canvasR].forEach(function(c) {
-          c.width = 8 * window.devicePixelRatio;
+          c.width = 14 * window.devicePixelRatio;
           c.height = window.innerHeight * window.devicePixelRatio;
-          c.style.width = '8px';
+          c.style.width = '14px';
           c.style.height = '100%';
         });
       }
@@ -758,8 +902,8 @@
           var falloff = Math.max(0, 1 - dist * 1.3);
           var noise = Math.sin(bassState.tick * 0.08 + i * 0.7) * 0.3 + 0.7;
           var barEnergy = energy * falloff * noise;
-          var barWidth = Math.max(1, barEnergy * w * 3);
-          ctx.fillStyle = 'rgba(255,107,53,' + (barEnergy * 0.9).toFixed(3) + ')';
+          var barWidth = Math.max(1, barEnergy * w * 2.5);
+          ctx.fillStyle = 'rgba(255,107,53,' + Math.min(1, barEnergy * 1.4).toFixed(3) + ')';
           if (mirror) { ctx.fillRect(w - barWidth, y + 1, barWidth, barH - 2); }
           else { ctx.fillRect(0, y + 1, barWidth, barH - 2); }
         }
@@ -794,12 +938,21 @@
       var playerProgress = document.getElementById('playerProgress');
       var playerVolSlider = document.getElementById('playerVolSlider');
       var playerVolIcon = document.getElementById('playerVolIcon');
+      var playerPlayBtn = document.getElementById('playerPlayBtn');
+      var iconPlay = playerPlayBtn.querySelector('.player-bar__icon-play');
+      var iconPause = playerPlayBtn.querySelector('.player-bar__icon-pause');
 
       var currentWidget = null;
+      var currentSourceType = null; // 'mixcloud' or 'spotify'
+      var currentSpotifyController = null;
+      var isPlaying = false;
       var currentVolume = 1.0;
       var lastVolume = 1.0;
+      var currentDuration = 0; // durée en secondes (pour seek)
       var progressInterval = null;
       var mcWidgets = [];
+      var spotifyControllers = [];
+      var mixcloudCovers = {}; // cache covers Mixcloud
 
       function formatTime(seconds) {
         var s = Math.floor(seconds); var m = Math.floor(s / 60); s = s % 60;
@@ -837,6 +990,19 @@
         }
       }
 
+      // Fetch cover from Mixcloud API
+      function fetchMixcloudCover(feedPath, callback) {
+        if (mixcloudCovers[feedPath]) { callback(mixcloudCovers[feedPath]); return; }
+        fetch('https://api.mixcloud.com' + feedPath)
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            var url = (data.pictures && (data.pictures.extra_large || data.pictures.large || data.pictures['640wx640h'])) || null;
+            if (url) mixcloudCovers[feedPath] = url;
+            callback(url);
+          })
+          .catch(function() { callback(null); });
+      }
+
       function showPlayerBar(title, artist, source, coverUrl) {
         playerTitle.textContent = title;
         playerArtist.textContent = artist;
@@ -845,6 +1011,30 @@
         playerBar.classList.add('visible');
         document.body.classList.add('player-active');
       }
+
+      function setPlayIcon(playing) {
+        isPlaying = playing;
+        if (playing) {
+          iconPlay.style.display = 'none';
+          iconPause.style.display = 'block';
+        } else {
+          iconPlay.style.display = 'block';
+          iconPause.style.display = 'none';
+        }
+      }
+
+      // Play/Pause button click
+      playerPlayBtn.addEventListener('click', function() {
+        if (currentSourceType === 'mixcloud' && currentWidget) {
+          if (isPlaying) {
+            currentWidget.pause();
+          } else {
+            currentWidget.play();
+          }
+        } else if (currentSourceType === 'spotify' && currentSpotifyController) {
+          currentSpotifyController.togglePlay();
+        }
+      });
 
       // Volume slider - controle TOUS les Mixcloud
       updateVolSliderBg(100);
@@ -874,10 +1064,13 @@
 
       // Click on progress bar to seek
       playerProgress.addEventListener('click', function(e) {
-        if (!currentWidget) return;
         var rect = this.getBoundingClientRect();
         var pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-        currentWidget.getDuration().then(function(dur) { currentWidget.seek(pct * dur); });
+        if (currentSourceType === 'mixcloud' && currentWidget) {
+          currentWidget.getDuration().then(function(dur) { currentWidget.seek(pct * dur); });
+        } else if (currentSourceType === 'spotify' && currentSpotifyController && currentDuration > 0) {
+          currentSpotifyController.seek(pct * currentDuration);
+        }
       });
 
       // === MIXCLOUD PROGRESS TRACKING ===
@@ -906,6 +1099,11 @@
         var title = item.getAttribute('data-title') || 'Mix ' + (index + 1);
         var artist = item.getAttribute('data-artist') || 'VIBRA';
 
+        // Extract Mixcloud feed path from iframe src for API cover fetch
+        var iframeSrc = iframe.getAttribute('src') || '';
+        var feedMatch = iframeSrc.match(/feed=([^&]+)/);
+        var feedPath = feedMatch ? decodeURIComponent(feedMatch[1]).replace('https://www.mixcloud.com', '') : null;
+
         if (typeof Mixcloud !== 'undefined' && Mixcloud.PlayerWidget) {
           var widget = Mixcloud.PlayerWidget(iframe);
           mcWidgets.push({ widget: widget, title: title, artist: artist });
@@ -916,20 +1114,130 @@
             widget.events.play.on(function() {
               // Pause les autres widgets Mixcloud
               mcWidgets.forEach(function(w) { if (w.widget !== widget) w.widget.pause(); });
+              // Pause Spotify si actif
+              spotifyControllers.forEach(function(sc) { sc.controller.pause(); });
               currentWidget = widget;
-              showPlayerBar(title, artist, 'Mixcloud', null);
+              currentSourceType = 'mixcloud';
+              currentSpotifyController = null;
+
+              // Fetch cover from Mixcloud API
+              if (feedPath) {
+                fetchMixcloudCover(feedPath, function(coverUrl) {
+                  showPlayerBar(title, artist, 'Mixcloud', coverUrl);
+                });
+              } else {
+                showPlayerBar(title, artist, 'Mixcloud', null);
+              }
+              setPlayIcon(true);
               startMixcloudProgress(widget);
               startBass();
             });
-            widget.events.pause.on(function() { stopProgressTracking(); stopBass(); });
+            widget.events.pause.on(function() { stopProgressTracking(); stopBass(); setPlayIcon(false); });
             widget.events.ended.on(function() {
-              stopProgressTracking(); stopBass();
+              stopProgressTracking(); stopBass(); setPlayIcon(false);
               playerProgressFill.style.width = '0%';
               playerTimeCurrent.textContent = '0:00';
             });
           });
         }
       });
+
+      // === CONNECT SPOTIFY EMBEDS VIA IFRAME API ===
+      function initSpotifyControllers(IFrameAPI) {
+        var spotifyIframes = document.querySelectorAll('.playlist-card iframe');
+        spotifyIframes.forEach(function(iframe, index) {
+          var src = iframe.getAttribute('src') || '';
+          var match = src.match(/embed\/(playlist|track|album)\/([a-zA-Z0-9]+)/);
+          if (!match) return;
+          var type = match[1];
+          var id = match[2];
+          var uri = 'spotify:' + type + ':' + id;
+
+          IFrameAPI.createController(iframe, { uri: uri }, function(controller) {
+            var scEntry = { controller: controller, index: index };
+            spotifyControllers.push(scEntry);
+
+            var wasSpotifyActive = false;
+
+            controller.addListener('playback_update', function(e) {
+              var data = e.data;
+              var isPaused = data.isPaused;
+              var pos = data.position / 1000;
+              var dur = data.duration / 1000;
+
+              if (!isPaused) {
+                // Pause Mixcloud si actif
+                mcWidgets.forEach(function(w) { w.widget.pause(); });
+                // Pause les AUTRES Spotify controllers
+                spotifyControllers.forEach(function(sc) {
+                  if (sc.controller !== controller) sc.controller.pause();
+                });
+
+                var justSwitched = (currentSpotifyController !== controller) || (currentSourceType !== 'spotify');
+                currentSourceType = 'spotify';
+                currentSpotifyController = controller;
+                currentWidget = null;
+                currentDuration = dur;
+
+                if (justSwitched || !wasSpotifyActive) {
+                  wasSpotifyActive = true;
+                  // Try to extract track info from Spotify event data
+                  var trackName = 'Playlist Spotify';
+                  var artistName = 'VIBRA';
+                  var coverUrl = null;
+
+                  var track = data.track || data.currentTrack || null;
+                  if (track) {
+                    trackName = track.name || trackName;
+                    if (track.artists && track.artists.length > 0) {
+                      artistName = track.artists.map(function(a) { return a.name; }).join(', ');
+                    }
+                    if (track.album && track.album.images && track.album.images.length > 0) {
+                      coverUrl = track.album.images[0].url;
+                    }
+                  }
+
+                  showPlayerBar(trackName, artistName, 'Spotify', coverUrl);
+
+                  // Fetch cover via Spotify oEmbed as fallback
+                  if (!coverUrl) {
+                    fetch('https://open.spotify.com/oembed?url=https://open.spotify.com/' + type + '/' + id)
+                      .then(function(r) { return r.json(); })
+                      .then(function(json) {
+                        if (json.thumbnail_url) setCover(json.thumbnail_url);
+                      })
+                      .catch(function() {});
+                  }
+                }
+
+                setPlayIcon(true);
+                startBass();
+
+                // Update progress
+                if (dur > 0) {
+                  playerTimeCurrent.textContent = formatTime(pos);
+                  playerTimeTotal.textContent = formatTime(dur);
+                  playerProgressFill.style.width = ((pos / dur) * 100).toFixed(2) + '%';
+                }
+              } else {
+                wasSpotifyActive = false;
+                if (currentSpotifyController === controller) {
+                  setPlayIcon(false);
+                  stopBass();
+                }
+              }
+            });
+          });
+        });
+      }
+
+      // If Spotify API already loaded before DOMContentLoaded, init now
+      if (window._spotifyIFrameAPI) {
+        initSpotifyControllers(window._spotifyIFrameAPI);
+      } else {
+        // Store init function for when API is ready
+        window._initSpotifyWhenReady = initSpotifyControllers;
+      }
     });
   </script>
 </body>
