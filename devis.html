@@ -92,13 +92,158 @@
       line-height: 1.7;
     }
 
+    /* ===== 2-COLUMN LAYOUT ===== */
+    .dv-layout {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px 60px;
+      align-items: flex-start;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .dv-sidebar {
+      width: 340px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 100px;
+    }
+    .dv-sidebar__section {
+      margin-bottom: 32px;
+    }
+    .dv-sidebar__title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 20px;
+      text-transform: uppercase;
+      color: #1a1a1a;
+      margin: 0 0 6px;
+    }
+    .dv-sidebar__subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      color: #888;
+      margin: 0 0 24px;
+      line-height: 1.6;
+    }
+
+    /* Service items */
+    .dv-service {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .dv-service__icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 107, 53, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .dv-service__icon svg {
+      width: 22px;
+      height: 22px;
+      fill: #FF6B35;
+    }
+    .dv-service__text {
+      flex: 1;
+      padding-top: 2px;
+    }
+    .dv-service__name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #1a1a1a;
+      margin: 0 0 3px;
+    }
+    .dv-service__desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      color: #999;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Sidebar divider */
+    .dv-sidebar__divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(0,0,0,0.06);
+      margin: 8px 0 28px;
+    }
+
+    /* Sidebar contact cards (stacked) */
+    .dv-sidebar-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .dv-sidebar-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .dv-sidebar-contact-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+    .dv-sidebar-contact-item__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 107, 53, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .dv-sidebar-contact-item__icon svg {
+      width: 18px;
+      height: 18px;
+      fill: #FF6B35;
+    }
+    .dv-sidebar-contact-item__info {
+      flex: 1;
+    }
+    .dv-sidebar-contact-item__label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 12.5px;
+      color: #1a1a1a;
+      margin: 0 0 2px;
+    }
+    .dv-sidebar-contact-item__value {
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      color: #888;
+      margin: 0;
+    }
+    .dv-sidebar-contact-item__value a {
+      color: #FF6B35;
+      text-decoration: none;
+    }
+    .dv-sidebar-contact-item__value a:hover {
+      text-decoration: underline;
+    }
+
     /* ===== FORM CONTAINER ===== */
     .dv-form-wrapper {
       position: relative;
       z-index: 1;
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 0 40px 60px;
+      flex: 1;
+      min-width: 0;
     }
     .dv-form-card {
       background: #fff;
@@ -587,84 +732,65 @@
       color: #fff;
     }
 
-    /* ===== CONTACT INFO ASIDE ===== */
-    .dv-contact {
-      position: relative;
-      z-index: 1;
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 0 40px 60px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .dv-contact-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 28px 24px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      border: 1px solid rgba(0,0,0,0.04);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .dv-contact-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-    }
-    .dv-contact-card__icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: rgba(255, 107, 53, 0.08);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-    }
-    .dv-contact-card__icon svg {
-      width: 22px;
-      height: 22px;
-      fill: #FF6B35;
-    }
-    .dv-contact-card__title {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      color: #1a1a1a;
-      margin: 0 0 6px;
-    }
-    .dv-contact-card__text {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      color: #888;
-      margin: 0;
-      line-height: 1.5;
-    }
-    .dv-contact-card__text a {
-      color: #FF6B35;
-      text-decoration: none;
-    }
-    .dv-contact-card__text a:hover {
-      text-decoration: underline;
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .dv-layout {
+        flex-direction: column;
+        padding: 0 24px 40px;
+        gap: 32px;
+        align-items: center;
+      }
+      .dv-sidebar {
+        width: 100%;
+        max-width: 600px;
+        position: relative;
+        top: 0;
+        order: 2;
+      }
+      .dv-form-wrapper {
+        width: 100%;
+        max-width: 600px;
+        order: 1;
+      }
+      .dv-sidebar-contact {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .dv-sidebar-contact-item {
+        flex: 1;
+        min-width: 200px;
+      }
     }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .dv-header { padding: 110px 15px 25px; }
-      .dv-form-wrapper { padding: 0 16px 40px; }
+      .dv-layout { padding: 0 16px 40px; gap: 24px; }
       .dv-form-card { padding: 32px 24px; border-radius: 20px; }
       .dv-row { grid-template-columns: 1fr; }
-      .dv-contact {
-        grid-template-columns: 1fr;
-        padding: 0 16px 40px;
-        gap: 14px;
-      }
+
+      /* Sidebar compact sur mobile */
+      .dv-sidebar__subtitle { display: none; }
+      .dv-service__desc { display: none; }
+      .dv-service { margin-bottom: 10px; gap: 10px; }
+      .dv-service__icon { width: 36px; height: 36px; border-radius: 10px; }
+      .dv-service__icon svg { width: 18px; height: 18px; }
+      .dv-service__name { font-size: 13px; }
+      .dv-sidebar__section { margin-bottom: 20px; }
+      .dv-sidebar__divider { margin: 4px 0 16px; }
+      .dv-sidebar__title { font-size: 16px; }
+      .dv-sidebar-contact { flex-direction: column; }
+      .dv-sidebar-contact-item { min-width: auto; padding: 10px 14px; }
+      .dv-sidebar-contact-item__icon { width: 34px; height: 34px; border-radius: 8px; }
+      .dv-sidebar-contact-item__icon svg { width: 16px; height: 16px; }
+
+      /* Cacher la section "Contactez-nous" title sur mobile */
+      .dv-sidebar__section:last-child > .dv-sidebar__title { font-size: 14px; }
+      .dv-sidebar__section:last-child > .dv-sidebar__subtitle { display: none; }
     }
 
     @media (max-width: 480px) {
       .dv-header { padding: 100px 12px 20px; }
       .dv-form-card { padding: 24px 18px; }
-      .dv-section-title { font-size: 16px; }
       .dv-submit { padding: 14px 36px; font-size: 14px; }
     }
   </style>
@@ -738,9 +864,107 @@
       </p>
     </section>
 
-    <!-- Form -->
-    <div class="dv-form-wrapper">
-      <div class="dv-form-card">
+    <!-- 2-Column Layout -->
+    <div class="dv-layout">
+
+      <!-- Sidebar -->
+      <aside class="dv-sidebar">
+        <div class="dv-sidebar__section">
+          <h2 class="dv-sidebar__title">Pourquoi VIBRA ?</h2>
+          <p class="dv-sidebar__subtitle">Un accompagnement complet pour faire de votre événement un moment inoubliable.</p>
+
+          <div class="dv-service">
+            <div class="dv-service__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 3v9.28a4.39 4.39 0 0 0-1.5-.28C8.01 12 6 13.79 6 16s2.01 4 4.5 4S15 18.21 15 16V6h3V3h-6z"/></svg>
+            </div>
+            <div class="dv-service__text">
+              <p class="dv-service__name">DJs & artistes live</p>
+              <p class="dv-service__desc">Adaptés à votre style et ambiance.</p>
+            </div>
+          </div>
+
+          <div class="dv-service">
+            <div class="dv-service__icon">
+              <svg viewBox="0 0 24 24"><path d="M17 2H7c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-3 2v4l-1.5-1.5L11 8V4h3zm3 16H7V4h2v8l2.5-3 2.5 3V4h3v16z"/><circle cx="12" cy="17" r="2"/></svg>
+            </div>
+            <div class="dv-service__text">
+              <p class="dv-service__name">Sonorisation sur mesure</p>
+              <p class="dv-service__desc">Matériel haut de gamme pour votre lieu.</p>
+            </div>
+          </div>
+
+          <div class="dv-service">
+            <div class="dv-service__icon">
+              <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>
+            </div>
+            <div class="dv-service__text">
+              <p class="dv-service__name">Éclairage & ambiance</p>
+              <p class="dv-service__desc">Lumière et scénographie visuelle.</p>
+            </div>
+          </div>
+
+          <div class="dv-service">
+            <div class="dv-service__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+            <div class="dv-service__text">
+              <p class="dv-service__name">Événements sur mesure</p>
+              <p class="dv-service__desc">Pensé selon vos envies et budget.</p>
+            </div>
+          </div>
+
+          <div class="dv-service">
+            <div class="dv-service__icon">
+              <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+            </div>
+            <div class="dv-service__text">
+              <p class="dv-service__name">Réponse sous 24h</p>
+              <p class="dv-service__desc">Devis détaillé sous 24h.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dv-sidebar__divider"></div>
+
+        <div class="dv-sidebar__section">
+          <h3 class="dv-sidebar__title" style="font-size: 16px;">Contactez-nous</h3>
+          <p class="dv-sidebar__subtitle" style="margin-bottom: 16px;">Une question avant de remplir le formulaire ?</p>
+
+          <div class="dv-sidebar-contact">
+            <div class="dv-sidebar-contact-item">
+              <div class="dv-sidebar-contact-item__icon">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              </div>
+              <div class="dv-sidebar-contact-item__info">
+                <p class="dv-sidebar-contact-item__label">Téléphone</p>
+                <p class="dv-sidebar-contact-item__value"><a href="tel:+33600000000">06 00 00 00 00</a></p>
+              </div>
+            </div>
+            <div class="dv-sidebar-contact-item">
+              <div class="dv-sidebar-contact-item__icon">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </div>
+              <div class="dv-sidebar-contact-item__info">
+                <p class="dv-sidebar-contact-item__label">Email</p>
+                <p class="dv-sidebar-contact-item__value"><a href="mailto:contact@vibra-events.com">contact@vibra-events.com</a></p>
+              </div>
+            </div>
+            <div class="dv-sidebar-contact-item">
+              <div class="dv-sidebar-contact-item__icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </div>
+              <div class="dv-sidebar-contact-item__info">
+                <p class="dv-sidebar-contact-item__label">Instagram</p>
+                <p class="dv-sidebar-contact-item__value"><a href="#">@vibra.events</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Form -->
+      <div class="dv-form-wrapper">
+        <div class="dv-form-card">
 
         <form id="devisForm">
           <!-- NOM / Prénom -->
@@ -898,30 +1122,7 @@
       </div>
     </div>
 
-    <!-- Contact info cards -->
-    <div class="dv-contact">
-      <div class="dv-contact-card">
-        <div class="dv-contact-card__icon">
-          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-        </div>
-        <h3 class="dv-contact-card__title">Téléphone</h3>
-        <p class="dv-contact-card__text"><a href="tel:+33600000000">06 00 00 00 00</a></p>
-      </div>
-      <div class="dv-contact-card">
-        <div class="dv-contact-card__icon">
-          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        </div>
-        <h3 class="dv-contact-card__title">Email</h3>
-        <p class="dv-contact-card__text"><a href="mailto:contact@vibra-events.com">contact@vibra-events.com</a></p>
-      </div>
-      <div class="dv-contact-card">
-        <div class="dv-contact-card__icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </div>
-        <h3 class="dv-contact-card__title">Instagram</h3>
-        <p class="dv-contact-card__text"><a href="#">@vibra.events</a></p>
-      </div>
-    </div>
+    </div><!-- /.dv-layout -->
 
   </main>
 
