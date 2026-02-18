@@ -12,6 +12,7 @@
 @import './components/header.css';
 @import './components/footer.css';
 @import './components/carousel.css';
+@import './components/event-modal.css';
 
 /* Effects */
 @import './effects/gradients.css';
