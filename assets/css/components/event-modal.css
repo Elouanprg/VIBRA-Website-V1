@@ -1,33 +1,76 @@
-/* Event Detail Modal */
+/* Event Detail Modal - Native <dialog> */
 
-/* Clickable trigger */
+/* ===== CLICKABLE INDICATOR ===== */
 [data-event-id] {
   cursor: pointer;
 }
 
-/* Overlay */
-.event-modal {
-  position: fixed;
-  inset: 0;
-  z-index: var(--z-modal);
+/* Wrapper for bare <img> elements with data-event-id */
+.event-trigger-wrap {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.event-trigger-wrap > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Small icon indicator */
+.event-indicator {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 50%;
+  color: #fff;
   opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--transition-base) var(--ease-smooth),
-              visibility var(--transition-base) var(--ease-smooth);
+  transform: scale(0.8);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 5;
+  pointer-events: none;
 }
 
-.event-modal.is-open {
-  opacity: 1;
-  visibility: visible;
+.event-indicator svg {
+  width: 14px;
+  height: 14px;
 }
 
-/* Backdrop */
-.event-modal__backdrop {
-  position: absolute;
-  inset: 0;
+[data-event-id]:hover .event-indicator,
+.event-trigger-wrap:hover .event-indicator {
+  opacity: 0.85;
+  transform: scale(1);
+}
+
+/* ===== DIALOG RESET ===== */
+dialog.event-modal {
+  border: none;
+  padding: 0;
+  background: transparent;
+  max-width: 100vw;
+  max-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px;
+  overflow: visible;
+}
+
+/* Native backdrop */
+dialog.event-modal::backdrop {
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -36,19 +79,13 @@
 /* Container */
 .event-modal__container {
   position: relative;
-  width: 92%;
-  max-width: 1100px;
-  max-height: 90vh;
+  width: 96%;
+  max-width: 1500px;
+  max-height: calc(100vh - 100px);
   background: var(--bg-primary);
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-2xl);
   overflow: hidden;
-  transform: scale(0.92) translateY(20px);
-  transition: transform var(--transition-base) var(--ease-smooth);
-}
-
-.event-modal.is-open .event-modal__container {
-  transform: scale(1) translateY(0);
 }
 
 /* Close button */
@@ -67,8 +104,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background var(--transition-fast) var(--ease-smooth),
-              transform var(--transition-fast) var(--ease-smooth);
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .event-modal__close:hover {
@@ -84,16 +120,16 @@
 /* Content layout */
 .event-modal__content {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  max-height: 90vh;
+  grid-template-columns: 1.3fr 1fr;
+  max-height: calc(100vh - 100px);
 }
 
 /* Gallery (left) */
 .event-modal__gallery {
   position: relative;
-  background: var(--gray-900);
-  min-height: 350px;
-  max-height: 90vh;
+  background: #111;
+  min-height: 500px;
+  max-height: calc(100vh - 100px);
 }
 
 .event-modal__gallery .swiper {
@@ -121,7 +157,7 @@
   height: 40px;
   background: rgba(0, 0, 0, 0.4);
   border-radius: var(--radius-full);
-  transition: background var(--transition-fast) var(--ease-smooth);
+  transition: background 0.2s ease;
 }
 
 .event-modal__gallery .swiper-button-prev:hover,
@@ -141,7 +177,7 @@
   opacity: 0.5;
   width: 8px;
   height: 8px;
-  transition: all var(--transition-fast) var(--ease-smooth);
+  transition: all 0.2s ease;
 }
 
 .event-modal__gallery .swiper-pagination-bullet-active {
@@ -153,9 +189,9 @@
 
 /* Info panel (right) */
 .event-modal__info {
-  padding: 40px;
+  padding: 48px;
   overflow-y: auto;
-  max-height: 90vh;
+  max-height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -179,17 +215,17 @@
 /* Title */
 .event-modal__title {
   font-family: var(--font-display);
-  font-size: var(--text-3xl);
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
   color: var(--text-primary);
   line-height: var(--leading-tight);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 /* Subtitle */
 .event-modal__subtitle {
-  font-size: var(--text-lg);
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
   color: var(--text-secondary);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 /* Meta (location + date) */
@@ -225,10 +261,10 @@
 
 /* Description */
 .event-modal__description {
-  font-size: var(--text-base);
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
   color: var(--text-secondary);
-  line-height: var(--leading-relaxed);
-  margin-bottom: 32px;
+  line-height: 1.8;
+  margin-bottom: 36px;
   flex: 1;
 }
 
@@ -245,7 +281,7 @@
   padding: 14px 28px;
   border-radius: var(--radius-md);
   text-decoration: none;
-  transition: all var(--transition-base) var(--ease-smooth);
+  transition: all 0.2s ease;
   width: fit-content;
 }
 
@@ -258,6 +294,11 @@
 .event-modal__cta svg {
   width: 18px;
   height: 18px;
+}
+
+/* ===== HIDE INDICATOR ON PORTFOLIO ===== */
+[data-page="portfolio"] .event-indicator {
+  display: none !important;
 }
 
 /* ===== DARK MODE ===== */
@@ -281,25 +322,22 @@
 
 /* Tablet & below */
 @media (max-width: 768px) {
-  .event-modal {
+  dialog.event-modal {
     align-items: flex-end;
+    padding-top: 0;
   }
 
   .event-modal__container {
     width: 100%;
     max-width: 100%;
-    max-height: 92vh;
+    max-height: 88vh;
     border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
-    transform: translateY(100%);
-  }
-
-  .event-modal.is-open .event-modal__container {
-    transform: translateY(0);
   }
 
   .event-modal__content {
     grid-template-columns: 1fr;
-    max-height: 92vh;
+    max-height: 88vh;
+    overflow-y: auto;
   }
 
   .event-modal__gallery {
@@ -311,10 +349,6 @@
     padding: 24px;
     max-height: none;
     overflow-y: visible;
-  }
-
-  .event-modal__content {
-    overflow-y: auto;
   }
 
   .event-modal__title {
@@ -356,13 +390,5 @@
   .event-modal__cta {
     width: 100%;
     justify-content: center;
-  }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .event-modal,
-  .event-modal__container {
-    transition: none;
   }
 }

@@ -82,22 +82,10 @@ h6 {
 
 /* Hero heading - extra large */
 .hero-title {
-  font-size: var(--text-5xl);
+  font-size: clamp(1.6rem, 4.2vw, 3.2rem);
   font-weight: var(--font-extrabold);
-  line-height: var(--leading-none);
+  line-height: 1.15;
   letter-spacing: var(--tracking-tight);
-}
-
-@media (min-width: 768px) {
-  .hero-title {
-    font-size: var(--text-6xl);
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero-title {
-    font-size: var(--text-7xl);
-  }
 }
 
 /* Section titles */

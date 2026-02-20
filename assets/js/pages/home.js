@@ -134,7 +134,7 @@ const initHomePage = () => {
     card.classList.add('proximity-card');
   });
 
-  // Smooth scroll to sections
+  // Smooth scroll to sections — uses Lenis if available, else custom fallback
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
@@ -145,18 +145,41 @@ const initHomePage = () => {
 
       if (target) {
         const headerHeight = document.querySelector('.header').offsetHeight;
-        const targetPosition = target.offsetTop - headerHeight;
 
-        if (typeof lenis !== 'undefined') {
-          lenis.scrollTo(targetPosition, {
-            duration: 1.5,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        // Use Lenis scrollTo for smooth, non-conflicting animation
+        if (window.vibraLenis) {
+          window.vibraLenis.scrollTo(target, {
+            offset: -headerHeight,
+            duration: 1.8
           });
         } else {
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
+          // Fallback: custom easeInOutCubic scroll
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          const startPosition = window.pageYOffset;
+          const distance = targetPosition - startPosition;
+          const duration = 1800;
+          let startTime = null;
+
+          function easeInOutCubic(t) {
+            return t < 0.5
+              ? 4 * t * t * t
+              : 1 - Math.pow(-2 * t + 2, 3) / 2;
+          }
+
+          function animation(currentTime) {
+            if (!startTime) startTime = currentTime;
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = easeInOutCubic(progress);
+
+            window.scrollTo(0, startPosition + distance * ease);
+
+            if (progress < 1) {
+              requestAnimationFrame(animation);
+            }
+          }
+
+          requestAnimationFrame(animation);
         }
       }
     });

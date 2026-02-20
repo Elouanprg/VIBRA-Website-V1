@@ -69,7 +69,7 @@
   --shadow-glow: 0 10px 30px var(--orange-glow);
 
   /* Typography */
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --font-display: 'Archivo Black', var(--font-sans);
 
   /* Font Sizes */

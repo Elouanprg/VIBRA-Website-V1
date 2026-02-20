@@ -14,7 +14,10 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="assets/css/main.css">
@@ -22,61 +25,47 @@
   <style>
     /* ===== SON & LUMIÈRE PAGE ===== */
 
-    /* Hero */
+    /* Hero with background image */
     .tech-hero {
-      padding: 160px 0 60px;
-      text-align: center;
-      background: #fff;
       position: relative;
+      min-height: 55vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 40px 60px;
       overflow: hidden;
     }
 
-    /* Grain animé subtil en fond du hero */
-    .tech-hero::before {
+    .tech-hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .tech-hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tech-hero__bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(135deg, rgba(232, 108, 36, 0.03) 0%, transparent 40%),
-        linear-gradient(225deg, rgba(255, 160, 80, 0.04) 0%, transparent 40%);
-      animation: heroShimmer 8s ease-in-out infinite alternate;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .tech-hero::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 300px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(232, 108, 36, 0.15), transparent);
-      transform: translate(-50%, -50%);
-      animation: heroLineGlow 4s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    @keyframes heroShimmer {
-      0% { opacity: 0.6; }
-      100% { opacity: 1; }
-    }
-
-    @keyframes heroLineGlow {
-      0%, 100% { width: 200px; opacity: 0.3; }
-      50% { width: 400px; opacity: 0.6; }
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%);
     }
 
     .tech-hero-title {
       font-family: 'Archivo Black', sans-serif;
       font-size: 64px;
       line-height: 1.15;
-      color: #000;
+      color: #fff;
       text-transform: uppercase;
       margin-bottom: 8px;
       position: relative;
       z-index: 1;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
     }
 
     .tech-hero-title .highlight {
@@ -172,7 +161,7 @@
     }
 
     .tech-section-desc {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 16px;
       line-height: 1.8;
       color: #333;
@@ -241,7 +230,7 @@
     }
 
     .tech-cta-sub {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 18px;
       color: #555;
       margin-bottom: 30px;
@@ -285,7 +274,8 @@
 
     @media (max-width: 768px) {
       .tech-hero {
-        padding: 130px 20px 40px;
+        padding: 120px 20px 40px;
+        min-height: 40vh;
       }
 
       .tech-hero-title {
@@ -340,7 +330,6 @@
       background: #121212;
     }
 
-    [data-theme="dark"] .tech-hero-title,
     [data-theme="dark"] .tech-section-title,
     [data-theme="dark"] .tech-cta-title {
       color: #f0f0f0;
@@ -353,50 +342,50 @@
   </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
+  <a href="#main-content" class="skip-to-content" data-i18n="nav.skip">Aller au contenu principal</a>
 
   <!-- Header (même que les autres pages) -->
   <header class="header" id="header">
     <div class="header-container">
-      <a href="/" class="logo" aria-label="VIBRA accueil">
+      <a href="index.html" class="logo" aria-label="VIBRA accueil">
         <img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image">
       </a>
 
       <nav class="nav-desktop" aria-label="Navigation principale">
         <ul class="nav-menu">
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle">
-              Prestations
+            <a href="#" class="nav-link dropdown-toggle active">
+              <span data-i18n="nav.prestations">Prestations</span>
               <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li>
-              <li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li>
-              <li><a href="prestations-techniques.html" class="nav-link">Son & Lumière</a></li>
+              <li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li>
+              <li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li>
+              <li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle">
-              Artistes
+              <span data-i18n="nav.artistes">Artistes</span>
               <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="equipe-djs.html" class="nav-link">DJs</a></li>
-              <li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li>
+              <li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li>
+              <li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a href="portfolio.html" class="nav-link">Réalisations</a></li>
-          <li class="nav-item"><a href="#about" class="nav-link">À propos</a></li>
-          <li class="nav-item"><a href="mix-playlists.html" class="nav-link">Nos mixs</a></li>
+          <li class="nav-item"><a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li>
+          <li class="nav-item"><a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a></li>
+          <li class="nav-item"><a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a></li>
         </ul>
       </nav>
 
       <div class="header-right">
-        <a href="devis.html" class="btn btn-primary">Devis en ligne</a>
+        <a href="devis.html" class="btn btn-primary" data-i18n="nav.devis">Devis en ligne</a>
         <div class="language-switcher">
           <button class="lang-btn active" data-lang="fr">FR</button>
           <span class="lang-separator">/</span>
@@ -412,24 +401,24 @@
     <nav class="nav-mobile">
       <ul class="nav-menu">
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle">Prestations <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+          <a href="#" class="nav-link dropdown-toggle active"><span data-i18n="nav.prestations">Prestations</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
           <ul class="dropdown-menu">
-            <li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li>
-            <li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li>
-            <li><a href="prestations-techniques.html" class="nav-link">Son & Lumière</a></li>
+            <li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li>
+            <li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li>
+            <li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle">Artistes <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+          <a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.artistes">Artistes</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
           <ul class="dropdown-menu">
-            <li><a href="equipe-djs.html" class="nav-link">DJs</a></li>
-            <li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li>
+            <li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li>
+            <li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a href="portfolio.html" class="nav-link">Réalisations</a></li>
-        <li class="nav-item"><a href="#about" class="nav-link">À propos</a></li>
-        <li class="nav-item"><a href="mix-playlists.html" class="nav-link">Nos mixs</a></li>
-        <li class="nav-item"><a href="devis.html" class="btn btn-primary btn-block">Devis en ligne</a></li>
+        <li class="nav-item"><a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li>
+        <li class="nav-item"><a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a></li>
+        <li class="nav-item"><a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a></li>
+        <li class="nav-item"><a href="devis.html" class="btn btn-primary btn-block" data-i18n="nav.devis">Devis en ligne</a></li>
       </ul>
     </nav>
 
@@ -441,10 +430,13 @@
 
     <!-- Hero : L'ART DE LA TECHNIQUE -->
     <section class="tech-hero">
+      <div class="tech-hero__bg">
+        <img src="assets/images/page-son-et-lumiere/sono-1.webp" alt="Platines DJ technique" loading="eager">
+      </div>
       <div class="tech-hero-title-wrap">
         <h1 class="tech-hero-title">
-          L'art de la
-          <span class="highlight">technique</span>
+          <span data-i18n="tech.hero.title.1">L'art de la</span>
+          <span class="highlight" data-i18n="tech.hero.title.2">technique</span>
         </h1>
         <div class="tech-hero-line"></div>
       </div>
@@ -454,17 +446,17 @@
     <section class="tech-sticky-section tech-sticky-section--sono">
       <div class="tech-sticky-wrap">
         <div class="tech-text">
-          <h2 class="tech-section-title">Sonorisation</h2>
-          <p class="tech-section-desc">
+          <h2 class="tech-section-title" data-i18n="tech.sono.title">Sonorisation</h2>
+          <p class="tech-section-desc" data-i18n="tech.sono.text">
             Un son crystal clair pour sublimer votre événement. Nos systèmes de sonorisation professionnels s'adaptent à tous types de lieux et de configurations : systèmes line array pour grandes salles, enceintes amplifiées compactes, micros sans fil HF professionnels, tables de mixage numériques, processeurs audio et égaliseurs, monitoring retour scène.
           </p>
         </div>
         <div class="tech-images-col">
           <div class="tech-images-row-asym">
-            <img src="assets/images/technical/photo3.webp" alt="DJ en prestation sonorisation" loading="lazy">
-            <img src="assets/images/technical/IMG_0879.webp" alt="Matériel de sonorisation" loading="lazy">
+            <img src="assets/images/page-son-et-lumiere/sono-1.webp" alt="DJ en prestation sonorisation" data-event-id="tech-sono-1" loading="lazy">
+            <img src="assets/images/page-son-et-lumiere/sono-2.webp" alt="Matériel de sonorisation" data-event-id="tech-sono-2" loading="lazy">
           </div>
-          <img class="tech-img-full" src="assets/images/technical/LBGroup_InstitutEntreprise_GaelleAbrard-254 (2).webp" alt="Installation sono événement" loading="lazy">
+          <img class="tech-img-full" src="assets/images/page-son-et-lumiere/sono-3.webp" alt="Installation sono événement" data-event-id="tech-sono-3" loading="lazy">
         </div>
       </div>
     </section>
@@ -473,19 +465,19 @@
     <section class="tech-sticky-section tech-sticky-section--light">
       <div class="tech-sticky-wrap">
         <div class="tech-images-col">
-          <img class="tech-img-full" src="assets/images/technical/WHITE1.webp" alt="Éclairage ambiance blanche" loading="lazy">
+          <img class="tech-img-full" src="assets/images/page-son-et-lumiere/lumiere-1.webp" alt="Éclairage ambiance blanche" data-event-id="tech-light-1" loading="lazy">
           <div class="tech-images-row-equal">
-            <img src="assets/images/technical/IMG_0884.webp" alt="Projecteurs LED événement" loading="lazy">
-            <img src="assets/images/technical/e5a28361-bed1-4b59-bb94-4dfe585f1a1e (2).webp" alt="Mise en lumière scène" loading="lazy">
+            <img src="assets/images/page-son-et-lumiere/lumiere-2.webp" alt="Projecteurs LED événement" data-event-id="tech-light-2" loading="lazy">
+            <img src="assets/images/page-son-et-lumiere/lumiere-3.webp" alt="Mise en lumière scène" data-event-id="tech-light-3" loading="lazy">
           </div>
           <div class="tech-images-row-equal">
-            <img src="assets/images/technical/SAVANAQUENTIN-20250913-0943.webp" alt="Prestation lumière événement" loading="lazy">
-            <img src="assets/images/technical/e5a28361-bed1-4b59-bb94-4dfe585f1a1e (2).webp" alt="Installation technique salle" loading="lazy">
+            <img src="assets/images/page-son-et-lumiere/lumiere-4.webp" alt="Prestation lumière événement" data-event-id="tech-light-4" loading="lazy">
+            <img src="assets/images/page-son-et-lumiere/lumiere-3.webp" alt="Installation technique salle" data-event-id="tech-light-3" loading="lazy">
           </div>
         </div>
         <div class="tech-text tech-text-right">
-          <h2 class="tech-section-title">Lumière</h2>
-          <p class="tech-section-desc">
+          <h2 class="tech-section-title" data-i18n="tech.light.title">Lumière</h2>
+          <p class="tech-section-desc" data-i18n="tech.light.text">
             Créez l'ambiance parfaite avec nos solutions d'éclairage professionnelles. De la subtilité à l'extravagance, nous adaptons la lumière à votre vision : projecteurs LED RGBW haute puissance, lyres asservies spot et wash, stroboscopes et effets spéciaux, jeux de lumière et lasers, consoles DMX professionnelles, éclairage architectural et mapping.
           </p>
         </div>
@@ -494,9 +486,9 @@
 
     <!-- CTA -->
     <section class="tech-cta">
-      <h2 class="tech-cta-title">Besoin de matériel technique ?</h2>
-      <p class="tech-cta-sub">Contactez-nous pour un devis personnalisé</p>
-      <a href="devis.html" class="tech-cta-btn">Demander un devis</a>
+      <h2 class="tech-cta-title" data-i18n="tech.cta.title">Besoin de matériel technique ?</h2>
+      <p class="tech-cta-sub" data-i18n="tech.cta.subtitle">Contactez-nous pour un devis personnalisé</p>
+      <a href="devis.html" class="tech-cta-btn" data-i18n="tech.cta.btn">Demander un devis</a>
     </section>
 
   </main>
@@ -508,7 +500,7 @@
         <!-- Brand Section -->
         <div class="footer-brand">
           <a href="/" class="footer-logo">VIBRA</a>
-          <p class="footer-description">
+          <p class="footer-description" data-i18n="footer.description">
             Votre agence événementielle premium spécialisée dans la sonorisation, l'éclairage et l'animation musicale pour tous vos événements.
           </p>
           <div class="footer-social">
@@ -532,31 +524,31 @@
 
         <!-- Links Section 1 -->
         <div>
-          <h3 class="footer-section-title">Prestations</h3>
+          <h3 class="footer-section-title" data-i18n="footer.prestations">Prestations</h3>
           <ul class="footer-links">
-            <li><a href="evenements-professionnels.html" class="footer-link">Événements Professionnels</a></li>
-            <li><a href="evenements-particuliers.html" class="footer-link">Événements Particuliers</a></li>
-            <li><a href="prestations-techniques.html" class="footer-link">Services Techniques</a></li>
+            <li><a href="evenements-professionnels.html" class="footer-link" data-i18n="footer.events-pro">Événements Professionnels</a></li>
+            <li><a href="evenements-particuliers.html" class="footer-link" data-i18n="footer.events-part">Événements Particuliers</a></li>
+            <li><a href="prestations-techniques.html" class="footer-link" data-i18n="footer.services-tech">Services Techniques</a></li>
           </ul>
         </div>
 
         <!-- Links Section 2 -->
         <div>
-          <h3 class="footer-section-title">Artistes</h3>
+          <h3 class="footer-section-title" data-i18n="footer.artistes">Artistes</h3>
           <ul class="footer-links">
-            <li><a href="equipe-djs.html" class="footer-link">Nos DJs</a></li>
-            <li><a href="equipe-solo-groupes.html" class="footer-link">Solo & Groupes</a></li>
-            <li><a href="mix-playlists.html" class="footer-link">Mixs & Playlists</a></li>
+            <li><a href="equipe-djs.html" class="footer-link" data-i18n="footer.nos-djs">Nos DJs</a></li>
+            <li><a href="equipe-solo-groupes.html" class="footer-link" data-i18n="footer.solo-groupes">Solo & Groupes</a></li>
+            <li><a href="mix-playlists.html" class="footer-link" data-i18n="footer.mixs-playlists">Mixs & Playlists</a></li>
           </ul>
         </div>
 
         <!-- Links Section 3 -->
         <div>
-          <h3 class="footer-section-title">À propos</h3>
+          <h3 class="footer-section-title" data-i18n="footer.a-propos">À propos</h3>
           <ul class="footer-links">
-            <li><a href="portfolio.html" class="footer-link">Nos Réalisations</a></li>
-            <li><a href="#contact" class="footer-link">Contact</a></li>
-            <li><a href="devis.html" class="footer-link">Devis en ligne</a></li>
+            <li><a href="portfolio.html" class="footer-link" data-i18n="footer.realisations">Nos Réalisations</a></li>
+            <li><a href="#contact" class="footer-link" data-i18n="footer.contact">Contact</a></li>
+            <li><a href="devis.html" class="footer-link" data-i18n="footer.devis">Devis en ligne</a></li>
           </ul>
         </div>
       </div>
@@ -564,18 +556,23 @@
       <!-- Footer Bottom -->
       <div class="footer-bottom">
         <div class="footer-bottom-content">
-          <p class="copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
+          <p class="copyright" data-i18n="footer.copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
           <ul class="footer-legal-links">
-            <li><a href="#mentions" class="footer-legal-link">Mentions légales</a></li>
-            <li><a href="#privacy" class="footer-legal-link">Politique de confidentialité</a></li>
-            <li><a href="#cgv" class="footer-legal-link">CGV</a></li>
+            <li><a href="#mentions" class="footer-legal-link" data-i18n="footer.mentions">Mentions légales</a></li>
+            <li><a href="#privacy" class="footer-legal-link" data-i18n="footer.privacy">Politique de confidentialité</a></li>
+            <li><a href="#cgv" class="footer-legal-link" data-i18n="footer.cgv">CGV</a></li>
           </ul>
         </div>
       </div>
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="assets/js/i18n/translations.js"></script>
+  <script src="assets/js/i18n/lang-switcher.js"></script>
   <script src="assets/js/main.js" type="module"></script>
+  <script src="assets/js/data/events-data.js?v=2"></script>
+  <script src="assets/js/components/event-modal.js?v=2"></script>
 </body>
 </html>

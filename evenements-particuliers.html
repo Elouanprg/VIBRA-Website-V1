@@ -21,7 +21,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -62,7 +62,7 @@
     }
 
     .part-description-text {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: clamp(16px, 1.5vw, 20px);
       line-height: 1.89;
       color: #000;
@@ -73,6 +73,23 @@
     .part-services {
       padding: 60px 20px;
       background: #fff;
+    }
+
+    .part-services-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      text-align: center;
+      color: #000;
+      margin-bottom: 12px;
+    }
+
+    .part-services-line {
+      width: 100%;
+      max-width: 500px;
+      height: 4px;
+      background: #e86c24;
+      margin: 0 auto 40px;
+      border-radius: 2px;
     }
 
     .part-services-grid {
@@ -154,7 +171,7 @@
       padding: 16px 40px;
       border-radius: 12px;
       text-decoration: none;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 800;
       font-size: clamp(20px, 2vw, 26px);
       letter-spacing: -0.13px;
@@ -311,6 +328,163 @@
       transform: scale(1.1);
     }
 
+    /* ===== SON & LUMIÈRE SECTIONS ===== */
+    .tech-sticky-section {
+      background: #fff;
+    }
+
+    .tech-sticky-section--sono {
+      background: #FFEFE4;
+    }
+
+    .tech-sticky-section--light {
+      background: #FFFBF9;
+    }
+
+    .tech-sticky-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+      min-height: 100vh;
+    }
+
+    .tech-sticky-wrap.reverse {
+      direction: rtl;
+    }
+
+    .tech-sticky-wrap.reverse > * {
+      direction: ltr;
+    }
+
+    .tech-text {
+      position: sticky;
+      top: 120px;
+      align-self: start;
+      padding: 60px 40px 60px 0;
+      height: fit-content;
+    }
+
+    .tech-text-right {
+      padding: 60px 0 60px 20px;
+    }
+
+    .tech-section-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 42px;
+      text-transform: uppercase;
+      color: #000;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      line-height: 1.1;
+      display: inline-block;
+      position: relative;
+    }
+
+    .tech-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #e86c24;
+      border-radius: 2px;
+    }
+
+    .tech-section-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .tech-images-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 40px 0 16px;
+    }
+
+    .tech-images-col img {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .tech-images-row-asym {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 16px;
+    }
+
+    .tech-images-row-asym img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .tech-images-row-equal {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .tech-images-row-equal img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .tech-img-full {
+      height: 380px;
+    }
+
+    .tech-cta {
+      text-align: center;
+      padding: 60px 0 80px;
+      background: #fff;
+    }
+
+    .tech-cta-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 32px;
+      color: #000;
+      margin-bottom: 12px;
+    }
+
+    .tech-cta-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .tech-cta-btn {
+      display: inline-block;
+      background: #ea6a28;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      padding: 16px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(234, 106, 40, 0.25);
+    }
+
+    .tech-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(234, 106, 40, 0.4);
+      background: #ff8c50;
+      color: #fff;
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .part-services-grid {
@@ -319,6 +493,14 @@
 
       .part-carousel .swiper-slide {
         height: 400px;
+      }
+
+      .tech-section-title {
+        font-size: 34px;
+      }
+
+      .tech-img-full {
+        height: 300px;
       }
     }
 
@@ -343,61 +525,101 @@
       .part-carousel .slide-caption p {
         font-size: 15px;
       }
+
+      .tech-sticky-wrap {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+        min-height: auto;
+      }
+
+      .tech-text {
+        position: relative;
+        top: auto;
+        padding: 40px 0 20px;
+      }
+
+      .tech-text-right {
+        padding: 40px 0 20px;
+      }
+
+      .tech-images-col {
+        padding: 0 0 40px;
+      }
+
+      .tech-images-row-asym {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .tech-images-row-asym img {
+        height: 180px;
+      }
+
+      .tech-images-row-equal img {
+        height: 180px;
+      }
+
+      .tech-img-full {
+        height: 220px;
+      }
+
+      .tech-section-title {
+        font-size: 28px;
+      }
     }
   </style>
 </head>
 <body>
   <!-- Skip to content -->
-  <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
+  <a href="#main-content" class="skip-to-content" data-i18n="nav.skip">Aller au contenu principal</a>
 
   <!-- Header -->
   <header class="header" id="header">
     <div class="header-container">
-      <a href="/" class="logo" aria-label="VIBRA accueil">
+      <a href="index.html" class="logo" aria-label="VIBRA accueil">
         <img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image">
       </a>
 
       <nav class="nav-desktop" aria-label="Navigation principale">
         <ul class="nav-menu">
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-              Prestations
+            <a href="#" class="nav-link dropdown-toggle active" aria-haspopup="true" aria-expanded="false">
+              <span data-i18n="nav.prestations">Prestations</span>
               <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li>
-              <li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li>
-              <li><a href="prestations-techniques.html" class="nav-link">Son & Lumière</a></li>
+              <li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li>
+              <li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li>
+              <li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-              Artistes
+              <span data-i18n="nav.artistes">Artistes</span>
               <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="equipe-djs.html" class="nav-link">DJs</a></li>
-              <li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li>
+              <li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li>
+              <li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a href="portfolio.html" class="nav-link">Réalisations</a>
+            <a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a>
           </li>
           <li class="nav-item">
-            <a href="#about" class="nav-link">À propos</a>
+            <a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a>
           </li>
           <li class="nav-item">
-            <a href="mix-playlists.html" class="nav-link">Nos mixs</a>
+            <a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a>
           </li>
         </ul>
       </nav>
 
       <div class="header-right">
-        <a href="devis.html" class="btn btn-primary">Devis en ligne</a>
+        <a href="devis.html" class="btn btn-primary" data-i18n="nav.devis">Devis en ligne</a>
         <div class="language-switcher">
           <button class="lang-btn active" data-lang="fr" aria-label="Français">FR</button>
           <span class="lang-separator">/</span>
@@ -415,40 +637,40 @@
     <nav class="nav-mobile" aria-label="Navigation mobile">
       <ul class="nav-menu">
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle">
-            Prestations
+          <a href="#" class="nav-link dropdown-toggle active">
+            <span data-i18n="nav.prestations">Prestations</span>
             <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li>
-            <li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li>
+            <li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li>
+            <li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle">
-            Artistes
+            <span data-i18n="nav.artistes">Artistes</span>
             <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="equipe-djs.html" class="nav-link">DJs</a></li>
-            <li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li>
+            <li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li>
+            <li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a href="portfolio.html" class="nav-link">Réalisations</a>
+          <a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a>
         </li>
         <li class="nav-item">
-          <a href="#about" class="nav-link">À propos</a>
+          <a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a>
         </li>
         <li class="nav-item">
-          <a href="mix-playlists.html" class="nav-link">Nos mixs</a>
+          <a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a>
         </li>
         <li class="nav-item">
-          <a href="devis.html" class="btn btn-primary btn-block">Devis en ligne</a>
+          <a href="devis.html" class="btn btn-primary btn-block" data-i18n="nav.devis">Devis en ligne</a>
         </li>
       </ul>
     </nav>
@@ -463,23 +685,23 @@
     <section class="hero">
       <div class="hero-background">
         <!-- IMAGE HERO : Remplacer par votre image de mariage / soirée privée -->
-        <img src="assets/images/services/premire_danse.webp" alt="Événement particulier VIBRA" class="hero-parallax-bg" loading="eager">
+        <img src="assets/images/page-evenements-prives/hero.webp" alt="Événement particulier VIBRA" class="hero-parallax-bg" loading="eager">
       </div>
 
       <div class="hero-content">
         <h1 class="hero-title">
-          NOS ÉVÉNEMENTS<br>
-          PARTICULIERS
+          <span data-i18n="part.hero.title">NOS ÉVÉNEMENTS</span><br>
+          <span data-i18n="part.hero.subtitle">PARTICULIERS</span>
         </h1>
-        <p class="hero-subtitle">
+        <p class="hero-subtitle" data-i18n="part.hero.tagline">
           Votre moment, notre passion, des souvenirs pour la vie.
         </p>
 
         <div class="primary-ctas">
-          <a href="#portfolio" class="btn btn-primary btn-large smooth-scroll">
+          <a href="#description" class="btn btn-primary btn-large smooth-scroll" data-i18n="part.cta.prestations">
             Nos prestations
           </a>
-          <a href="devis.html" class="btn btn-secondary btn-large">
+          <a href="devis.html" class="btn btn-secondary btn-large" data-i18n="part.cta.devis">
             Demander un devis
           </a>
         </div>
@@ -487,11 +709,11 @@
     </section>
 
     <!-- Description Section - Fond pêche -->
-    <section class="part-description">
+    <section class="part-description" id="description">
       <div class="container">
-        <h2 class="part-description-title">Une Célébration à Votre Image</h2>
+        <h2 class="part-description-title" data-i18n="part.intro.title">Une Célébration à Votre Image</h2>
         <div class="part-description-line"></div>
-        <p class="part-description-text">
+        <p class="part-description-text" data-i18n="part.intro.text">
           Faites de vos moments de vie des souvenirs inoubliables grâce à une ambiance musicale sur mesure et une mise en lumières féerique. Que ce soit pour un mariage, un anniversaire ou une soirée privée, nous créons des DJ sets personnalisés et des atmosphères uniques, parfaitement adaptés à vos envies. Un événement à votre image, des émotions partagées, des souvenirs impérissables.
         </p>
       </div>
@@ -499,36 +721,38 @@
 
     <!-- Services Grid - 3 cartes -->
     <section class="part-services" id="services">
+      <h2 class="part-services-title" data-i18n="part.accompagnement.title">Notre Accompagnement</h2>
+      <div class="part-services-line"></div>
       <div class="part-services-grid">
 
         <!-- Service 1 - Sonorisation -->
         <div class="part-service-card">
-          <h3 class="part-service-card-title">Sonorisation sur mesure</h3>
-          <p class="part-service-card-text">
+          <h3 class="part-service-card-title" data-i18n="part.service1.title">Sonorisation sur mesure</h3>
+          <p class="part-service-card-text" data-i18n="part.service1.text">
             Un son cristallin pour chaque moment clé : cérémonie, dîner, soirée dansante, en intérieur comme en extérieur.
           </p>
           <!-- IMAGE CARTE 1 : Remplacer par votre image de sonorisation mariage/fête -->
-          <img src="assets/images/services/AiPulse2025_-_6356.webp" alt="Sonorisation événement particulier" class="part-service-card-image" loading="lazy">
+          <img src="assets/images/page-evenements-prives/carte-sonorisation.webp" alt="Sonorisation événement particulier" class="part-service-card-image" loading="lazy">
         </div>
 
         <!-- Service 2 - Lumière -->
         <div class="part-service-card">
-          <h3 class="part-service-card-title">Mise en lumière</h3>
-          <p class="part-service-card-text">
+          <h3 class="part-service-card-title" data-i18n="part.service2.title">Mise en lumière</h3>
+          <p class="part-service-card-text" data-i18n="part.service2.text">
             Création d'ambiances lumineuses féeriques pour sublimer votre lieu de réception et enchanter vos invités.
           </p>
           <!-- IMAGE CARTE 2 : Remplacer par votre image de mise en lumière -->
-          <img src="assets/images/services/e5a28361-bed1-4b59-bb94-4dfe585f1a1e (1).webp" alt="Mise en lumière événement" class="part-service-card-image" loading="lazy">
+          <img src="assets/images/page-evenements-prives/carte-lumiere.webp" alt="Mise en lumière événement" class="part-service-card-image" loading="lazy">
         </div>
 
         <!-- Service 3 - DJ -->
         <div class="part-service-card">
-          <h3 class="part-service-card-title">DJ & Animation</h3>
-          <p class="part-service-card-text">
+          <h3 class="part-service-card-title" data-i18n="part.service3.title">DJ & Animation</h3>
+          <p class="part-service-card-text" data-i18n="part.service3.text">
             Des DJs passionnés qui s'adaptent à votre playlist, vos goûts et l'énergie de vos invités pour une fête mémorable.
           </p>
           <!-- IMAGE CARTE 3 : Remplacer par votre image de DJ en soirée privée -->
-          <img src="assets/images/services/WhatsApp_Image_2024-08-30_at_19.22.10_defaced.webp" alt="DJ soirée privée" class="part-service-card-image" loading="lazy">
+          <img src="assets/images/page-evenements-prives/carte-dj.webp" alt="DJ soirée privée" class="part-service-card-image" loading="lazy">
         </div>
 
       </div>
@@ -536,12 +760,12 @@
 
     <!-- CTA Button -->
     <section class="part-cta">
-      <a href="prestations-techniques.html" class="part-cta-button">Plus de détail technique</a>
+      <a href="#tech-section" class="part-cta-button smooth-scroll" data-i18n="part.cta.detail">Plus de détail technique</a>
     </section>
 
     <!-- Portfolio Section -->
     <section class="part-portfolio" id="portfolio">
-      <h2 class="part-portfolio-title">Exemples de prestations réalisées</h2>
+      <h2 class="part-portfolio-title" data-i18n="part.carousel.title">Exemples de prestations réalisées</h2>
       <div class="part-portfolio-line"></div>
     </section>
 
@@ -552,46 +776,46 @@
 
           <!-- Slide 1 -->
           <div class="swiper-slide" data-event-id="part-mariage">
-            <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (1) - Copie.webp" alt="Mariage - Prestation VIBRA" loading="lazy">
+            <img src="assets/images/evenements/part-mariage/principale.webp" alt="Mariage - Prestation VIBRA" loading="lazy">
             <div class="slide-caption">
-              <h3>Mariage</h3>
-              <p>Château de la Vallée</p>
+              <h3 data-i18n="part.slide1.title">Mariage</h3>
+              <p data-i18n="part.slide1.subtitle">Château de la Vallée</p>
             </div>
           </div>
 
           <!-- Slide 2 -->
           <div class="swiper-slide" data-event-id="part-anniversaire">
-            <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (2) - Copie.webp" alt="Anniversaire - Soirée privée" loading="lazy">
+            <img src="assets/images/evenements/part-anniversaire/principale.webp" alt="Anniversaire - Soirée privée" loading="lazy">
             <div class="slide-caption">
-              <h3>Anniversaire</h3>
-              <p>Soirée privée - Paris</p>
+              <h3 data-i18n="part.slide2.title">Anniversaire</h3>
+              <p data-i18n="part.slide2.subtitle">Soirée privée - Paris</p>
             </div>
           </div>
 
           <!-- Slide 3 -->
           <div class="swiper-slide" data-event-id="part-soiree">
-            <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (3) - Copie.webp" alt="Soirée privée" loading="lazy">
+            <img src="assets/images/evenements/part-soiree/principale.webp" alt="Soirée privée" loading="lazy">
             <div class="slide-caption">
-              <h3>Soirée Privée</h3>
-              <p>Villa Élégance</p>
+              <h3 data-i18n="part.slide3.title">Soirée Privée</h3>
+              <p data-i18n="part.slide3.subtitle">Villa Élégance</p>
             </div>
           </div>
 
           <!-- Slide 4 -->
           <div class="swiper-slide" data-event-id="part-bapteme">
-            <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (4) - Copie.webp" alt="Baptême - Fête de famille" loading="lazy">
+            <img src="assets/images/evenements/part-bapteme/principale.webp" alt="Baptême - Fête de famille" loading="lazy">
             <div class="slide-caption">
-              <h3>Baptême</h3>
-              <p>Fête de famille</p>
+              <h3 data-i18n="part.slide4.title">Baptême</h3>
+              <p data-i18n="part.slide4.subtitle">Fête de famille</p>
             </div>
           </div>
 
           <!-- Slide 5 -->
           <div class="swiper-slide" data-event-id="part-fiancailles">
-            <img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (5) - Copie.webp" alt="Fiançailles" loading="lazy">
+            <img src="assets/images/evenements/part-fiancailles/principale.webp" alt="Fiançailles" loading="lazy">
             <div class="slide-caption">
-              <h3>Fiançailles</h3>
-              <p>Soirée intime</p>
+              <h3 data-i18n="part.slide5.title">Fiançailles</h3>
+              <p data-i18n="part.slide5.subtitle">Soirée intime</p>
             </div>
           </div>
 
@@ -604,6 +828,55 @@
       </div>
     </section>
 
+    <!-- Son & Lumière : Sonorisation -->
+    <section class="tech-sticky-section tech-sticky-section--sono" id="tech-section">
+      <div class="tech-sticky-wrap">
+        <div class="tech-text">
+          <h2 class="tech-section-title" data-i18n="tech.sono.title">Sonorisation</h2>
+          <p class="tech-section-desc" data-i18n="tech.sono.text">
+            Un son crystal clair pour sublimer votre événement. Nos systèmes de sonorisation professionnels s'adaptent à tous types de lieux et de configurations : systèmes line array pour grandes salles, enceintes amplifiées compactes, micros sans fil HF professionnels, tables de mixage numériques, processeurs audio et égaliseurs, monitoring retour scène.
+          </p>
+        </div>
+        <div class="tech-images-col">
+          <div class="tech-images-row-asym">
+            <img src="assets/images/page-son-et-lumiere/sono-1.webp" alt="DJ en prestation sonorisation" data-event-id="tech-sono-1" loading="lazy">
+            <img src="assets/images/page-son-et-lumiere/sono-2.webp" alt="Matériel de sonorisation" data-event-id="tech-sono-2" loading="lazy">
+          </div>
+          <img class="tech-img-full" src="assets/images/page-son-et-lumiere/sono-3.webp" alt="Installation sono événement" data-event-id="tech-sono-3" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Son & Lumière : Lumière -->
+    <section class="tech-sticky-section tech-sticky-section--light">
+      <div class="tech-sticky-wrap">
+        <div class="tech-images-col">
+          <img class="tech-img-full" src="assets/images/page-son-et-lumiere/lumiere-1.webp" alt="Éclairage ambiance blanche" data-event-id="tech-light-1" loading="lazy">
+          <div class="tech-images-row-equal">
+            <img src="assets/images/page-son-et-lumiere/lumiere-2.webp" alt="Projecteurs LED événement" data-event-id="tech-light-2" loading="lazy">
+            <img src="assets/images/page-son-et-lumiere/lumiere-3.webp" alt="Mise en lumière scène" data-event-id="tech-light-3" loading="lazy">
+          </div>
+          <div class="tech-images-row-equal">
+            <img src="assets/images/page-son-et-lumiere/lumiere-4.webp" alt="Prestation lumière événement" data-event-id="tech-light-4" loading="lazy">
+            <img src="assets/images/page-son-et-lumiere/lumiere-3.webp" alt="Installation technique salle" data-event-id="tech-light-3" loading="lazy">
+          </div>
+        </div>
+        <div class="tech-text tech-text-right">
+          <h2 class="tech-section-title" data-i18n="tech.light.title">Lumière</h2>
+          <p class="tech-section-desc" data-i18n="tech.light.text">
+            Créez l'ambiance parfaite avec nos solutions d'éclairage professionnelles. De la subtilité à l'extravagance, nous adaptons la lumière à votre vision : projecteurs LED RGBW haute puissance, lyres asservies spot et wash, stroboscopes et effets spéciaux, jeux de lumière et lasers, consoles DMX professionnelles, éclairage architectural et mapping.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Son & Lumière : CTA -->
+    <section class="tech-cta">
+      <h2 class="tech-cta-title" data-i18n="tech.cta.title">Besoin de matériel technique ?</h2>
+      <p class="tech-cta-sub" data-i18n="tech.cta.subtitle">Contactez-nous pour un devis personnalisé</p>
+      <a href="devis.html" class="tech-cta-btn" data-i18n="tech.cta.btn">Demander un devis</a>
+    </section>
+
   </main>
 
   <!-- Footer -->
@@ -613,7 +886,7 @@
         <!-- Brand Section -->
         <div class="footer-brand">
           <a href="/" class="footer-logo">VIBRA</a>
-          <p class="footer-description">
+          <p class="footer-description" data-i18n="footer.description">
             Votre agence événementielle premium spécialisée dans la sonorisation, l'éclairage et l'animation musicale pour tous vos événements.
           </p>
           <div class="footer-social">
@@ -637,31 +910,31 @@
 
         <!-- Links Section 1 -->
         <div>
-          <h3 class="footer-section-title">Prestations</h3>
+          <h3 class="footer-section-title" data-i18n="footer.prestations">Prestations</h3>
           <ul class="footer-links">
-            <li><a href="evenements-professionnels.html" class="footer-link">Événements Professionnels</a></li>
-            <li><a href="evenements-particuliers.html" class="footer-link">Événements Particuliers</a></li>
-            <li><a href="prestations-techniques.html" class="footer-link">Services Techniques</a></li>
+            <li><a href="evenements-professionnels.html" class="footer-link" data-i18n="footer.events-pro">Événements Professionnels</a></li>
+            <li><a href="evenements-particuliers.html" class="footer-link" data-i18n="footer.events-part">Événements Particuliers</a></li>
+            <li><a href="prestations-techniques.html" class="footer-link" data-i18n="footer.services-tech">Services Techniques</a></li>
           </ul>
         </div>
 
         <!-- Links Section 2 -->
         <div>
-          <h3 class="footer-section-title">Artistes</h3>
+          <h3 class="footer-section-title" data-i18n="footer.artistes">Artistes</h3>
           <ul class="footer-links">
-            <li><a href="equipe-djs.html" class="footer-link">Nos DJs</a></li>
-            <li><a href="equipe-solo-groupes.html" class="footer-link">Solo & Groupes</a></li>
-            <li><a href="mix-playlists.html" class="footer-link">Mixs & Playlists</a></li>
+            <li><a href="equipe-djs.html" class="footer-link" data-i18n="footer.nos-djs">Nos DJs</a></li>
+            <li><a href="equipe-solo-groupes.html" class="footer-link" data-i18n="footer.solo-groupes">Solo & Groupes</a></li>
+            <li><a href="mix-playlists.html" class="footer-link" data-i18n="footer.mixs-playlists">Mixs & Playlists</a></li>
           </ul>
         </div>
 
         <!-- Links Section 3 -->
         <div>
-          <h3 class="footer-section-title">À propos</h3>
+          <h3 class="footer-section-title" data-i18n="footer.a-propos">À propos</h3>
           <ul class="footer-links">
-            <li><a href="portfolio.html" class="footer-link">Nos Réalisations</a></li>
-            <li><a href="#contact" class="footer-link">Contact</a></li>
-            <li><a href="devis.html" class="footer-link">Devis en ligne</a></li>
+            <li><a href="portfolio.html" class="footer-link" data-i18n="footer.realisations">Nos Réalisations</a></li>
+            <li><a href="#contact" class="footer-link" data-i18n="footer.contact">Contact</a></li>
+            <li><a href="devis.html" class="footer-link" data-i18n="footer.devis">Devis en ligne</a></li>
           </ul>
         </div>
       </div>
@@ -669,11 +942,11 @@
       <!-- Footer Bottom -->
       <div class="footer-bottom">
         <div class="footer-bottom-content">
-          <p class="copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
+          <p class="copyright" data-i18n="footer.copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
           <ul class="footer-legal-links">
-            <li><a href="#mentions" class="footer-legal-link">Mentions légales</a></li>
-            <li><a href="#privacy" class="footer-legal-link">Politique de confidentialité</a></li>
-            <li><a href="#cgv" class="footer-legal-link">CGV</a></li>
+            <li><a href="#mentions" class="footer-legal-link" data-i18n="footer.mentions">Mentions légales</a></li>
+            <li><a href="#privacy" class="footer-legal-link" data-i18n="footer.privacy">Politique de confidentialité</a></li>
+            <li><a href="#cgv" class="footer-legal-link" data-i18n="footer.cgv">CGV</a></li>
           </ul>
         </div>
       </div>
@@ -683,8 +956,11 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="assets/js/i18n/translations.js"></script>
+  <script src="assets/js/i18n/lang-switcher.js"></script>
   <script src="assets/js/main.js" type="module"></script>
-  <script type="module" src="assets/js/components/event-modal.js"></script>
+  <script src="assets/js/data/events-data.js?v=2"></script>
+  <script src="assets/js/components/event-modal.js?v=2"></script>
 
   <!-- Initialize Carousel -->
   <script>
@@ -734,7 +1010,8 @@
           const target = document.getElementById(targetId);
           if (!target) return;
 
-          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 40;
+          const headerHeight = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0;
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
           const startPosition = window.pageYOffset;
           const distance = targetPosition - startPosition;
           const duration = 1800;
