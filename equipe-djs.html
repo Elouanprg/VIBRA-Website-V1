@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/images/logo/vibra-icon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
 
@@ -172,7 +172,7 @@
       gap: 0;
     }
     .dj-card__tag {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 600;
       font-size: 11px;
       text-transform: uppercase;
@@ -194,7 +194,7 @@
       line-height: 1.1;
     }
     .dj-card__specialty {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 500;
       font-size: 15px;
       color: #888;
@@ -224,7 +224,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 600;
       font-size: 13px;
       text-transform: uppercase;
@@ -270,7 +270,7 @@
     }
     .dj-cta__btn {
       display: inline-block;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 700;
       font-size: 15px;
       color: #fff;
@@ -335,35 +335,35 @@
   </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
+  <a href="#main-content" class="skip-to-content" data-i18n="nav.skip">Aller au contenu principal</a>
 
   <header class="header" id="header">
     <div class="header-container">
-      <a href="/" class="logo"><img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image"></a>
+      <a href="index.html" class="logo"><img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image"></a>
       <nav class="nav-desktop">
         <ul class="nav-menu">
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle">Prestations <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+            <a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.prestations">Prestations</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
             <ul class="dropdown-menu">
-              <li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li>
-              <li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li>
-              <li><a href="prestations-techniques.html" class="nav-link">Son & Lumière</a></li>
+              <li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li>
+              <li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li>
+              <li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle">Artistes <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+            <a href="#" class="nav-link dropdown-toggle active"><span data-i18n="nav.artistes">Artistes</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
             <ul class="dropdown-menu">
-              <li><a href="equipe-djs.html" class="nav-link">DJs</a></li>
-              <li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li>
+              <li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li>
+              <li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a href="portfolio.html" class="nav-link">Réalisations</a></li>
-          <li class="nav-item"><a href="#about" class="nav-link">À propos</a></li>
-          <li class="nav-item"><a href="mix-playlists.html" class="nav-link">Nos mixs</a></li>
+          <li class="nav-item"><a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li>
+          <li class="nav-item"><a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a></li>
+          <li class="nav-item"><a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a></li>
         </ul>
       </nav>
       <div class="header-right">
-        <a href="devis.html" class="btn btn-primary">Devis en ligne</a>
+        <a href="devis.html" class="btn btn-primary" data-i18n="nav.devis">Devis en ligne</a>
         <div class="language-switcher">
           <button class="lang-btn active" data-lang="fr">FR</button>
           <span class="lang-separator">/</span>
@@ -374,12 +374,12 @@
     </div>
     <nav class="nav-mobile">
       <ul class="nav-menu">
-        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Prestations <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link">Son & Lumière</a></li></ul></li>
-        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Artistes <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li></ul></li>
-        <li class="nav-item"><a href="portfolio.html" class="nav-link">Réalisations</a></li>
-        <li class="nav-item"><a href="#about" class="nav-link">À propos</a></li>
-        <li class="nav-item"><a href="mix-playlists.html" class="nav-link">Nos mixs</a></li>
-        <li class="nav-item"><a href="devis.html" class="btn btn-primary btn-block">Devis en ligne</a></li>
+        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.prestations">Prestations</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li></ul></li>
+        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle active"><span data-i18n="nav.artistes">Artistes</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li></ul></li>
+        <li class="nav-item"><a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li>
+        <li class="nav-item"><a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a></li>
+        <li class="nav-item"><a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a></li>
+        <li class="nav-item"><a href="devis.html" class="btn btn-primary btn-block" data-i18n="nav.devis">Devis en ligne</a></li>
       </ul>
     </nav>
     <div class="menu-overlay"></div>
@@ -396,8 +396,8 @@
 
     <!-- Page Header -->
     <section class="dj-header">
-      <h1 class="dj-header__title">Notre Équipe</h1>
-      <span class="dj-header__sub">DJ</span>
+      <h1 class="dj-header__title" data-i18n="djs.title">Notre Équipe</h1>
+      <span class="dj-header__sub" data-i18n="djs.tag">DJ</span>
     </section>
 
     <!-- DJ Profiles -->
@@ -408,9 +408,9 @@
         <div class="dj-card__visual">
           <div class="swiper dj-card__carousel" id="dj-carousel-1">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="assets/images/team/YL-R-51_(2024-09-02T07_44_02.498)comp (1).webp" alt="Steffanutto Lucas - Portrait" loading="lazy"></div>
-              <div class="swiper-slide"><img src="assets/images/team/_GO_7321 (1).webp" alt="Steffanutto Lucas - Mix en extérieur" loading="lazy"></div>
-              <div class="swiper-slide"><img src="assets/images/events/NotiPlage_FDLM_2025_VF-268 (1) - Copie - Copie.webp" alt="Steffanutto Lucas - Noti Plage" loading="lazy"></div>
+              <div class="swiper-slide"><img src="assets/images/page-djs/dj1-photo-1.webp" alt="Steffanutto Lucas - Portrait" loading="lazy"></div>
+              <div class="swiper-slide"><img src="assets/images/page-djs/dj1-photo-2.webp" alt="Steffanutto Lucas - Mix en extérieur" loading="lazy"></div>
+              <div class="swiper-slide"><img src="assets/images/page-djs/dj1-photo-3.webp" alt="Steffanutto Lucas - Noti Plage" loading="lazy"></div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -418,11 +418,11 @@
           </div>
         </div>
         <div class="dj-card__content">
-          <span class="dj-card__tag">DJ</span>
+          <span class="dj-card__tag" data-i18n="djs.tag">DJ</span>
           <h2 class="dj-card__name">Steffanutto Lucas</h2>
-          <p class="dj-card__specialty">DJ Résident</p>
+          <p class="dj-card__specialty" data-i18n="djs.specialty">DJ Résident</p>
           <div class="dj-card__divider"></div>
-          <p class="dj-card__desc">
+          <p class="dj-card__desc" data-i18n="djs.bio">
             Passionné par les vinyles depuis son enfance dans un petit village, Lucas est devenu un DJ reconnu qui fait vibrer les clubs du monde entier grâce à son sens unique du rythme. À chaque set, il transforme la piste de danse en un espace de liberté pure où la musique unit les inconnus jusqu'à l'aube.
           </p>
           <div class="dj-card__links">
@@ -430,7 +430,7 @@
               <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               Instagram
             </a>
-            <a href="#" class="dj-card__link">
+            <a href="#" class="dj-card__link" data-i18n="djs.exemple">
               Exemple
             </a>
           </div>
@@ -442,9 +442,9 @@
         <div class="dj-card__visual">
           <div class="swiper dj-card__carousel" id="dj-carousel-2">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="assets/images/team/photo3.webp" alt="Steffanutto Lucas - Mix en costume" loading="lazy"></div>
-              <div class="swiper-slide"><img src="assets/images/team/_GO_7414_(1) (1).webp" alt="Steffanutto Lucas - DJ set en plein air" loading="lazy"></div>
-              <div class="swiper-slide"><img src="assets/images/technical/SAVANAQUENTIN-20250913-0943.webp" alt="Steffanutto Lucas - Événement" loading="lazy"></div>
+              <div class="swiper-slide"><img src="assets/images/page-djs/dj2-photo-1.webp" alt="Steffanutto Lucas - Mix en costume" loading="lazy"></div>
+              <div class="swiper-slide"><img src="assets/images/page-djs/dj2-photo-2.webp" alt="Steffanutto Lucas - DJ set en plein air" loading="lazy"></div>
+              <div class="swiper-slide"><img src="assets/images/page-djs/dj2-photo-3.webp" alt="Steffanutto Lucas - Événement" loading="lazy"></div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -452,15 +452,15 @@
           </div>
         </div>
         <div class="dj-card__content">
-          <span class="dj-card__tag">DJ</span>
+          <span class="dj-card__tag" data-i18n="djs.tag">DJ</span>
           <h2 class="dj-card__name">Steffanutto Lucas</h2>
-          <p class="dj-card__specialty">DJ Résident</p>
+          <p class="dj-card__specialty" data-i18n="djs.specialty">DJ Résident</p>
           <div class="dj-card__divider"></div>
-          <p class="dj-card__desc">
+          <p class="dj-card__desc" data-i18n="djs.bio">
             Passionné par les vinyles depuis son enfance dans un petit village, Lucas est devenu un DJ reconnu qui fait vibrer les clubs du monde entier grâce à son sens unique du rythme. À chaque set, il transforme la piste de danse en un espace de liberté pure où la musique unit les inconnus jusqu'à l'aube.
           </p>
           <div class="dj-card__links">
-            <a href="#" class="dj-card__link">
+            <a href="#" class="dj-card__link" data-i18n="djs.exemple">
               Exemple
             </a>
           </div>
@@ -472,9 +472,9 @@
         <div class="dj-card__visual">
           <div class="swiper dj-card__carousel" id="dj-carousel-3">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="assets/images/team/YL-R-51_(2024-09-02T07_44_02.498)comp (1).webp" alt="Steffanutto Lucas - Portrait studio" loading="lazy"></div>
-              <div class="swiper-slide"><img src="assets/images/team/photo3.webp" alt="Steffanutto Lucas - Mix en costume" loading="lazy"></div>
-              <div class="swiper-slide"><img src="assets/images/services/WhatsApp_Image_2024-08-30_at_19.22.10_defaced.webp" alt="Steffanutto Lucas - Soirée privée" loading="lazy"></div>
+              <div class="swiper-slide"><img src="assets/images/page-djs/dj3-photo-1.webp" alt="Steffanutto Lucas - Portrait studio" loading="lazy"></div>
+              <div class="swiper-slide"><img src="assets/images/page-djs/dj3-photo-2.webp" alt="Steffanutto Lucas - Mix en costume" loading="lazy"></div>
+              <div class="swiper-slide"><img src="assets/images/page-djs/dj3-photo-3.webp" alt="Steffanutto Lucas - Soirée privée" loading="lazy"></div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -482,15 +482,15 @@
           </div>
         </div>
         <div class="dj-card__content">
-          <span class="dj-card__tag">DJ</span>
+          <span class="dj-card__tag" data-i18n="djs.tag">DJ</span>
           <h2 class="dj-card__name">Steffanutto Lucas</h2>
-          <p class="dj-card__specialty">DJ Résident</p>
+          <p class="dj-card__specialty" data-i18n="djs.specialty">DJ Résident</p>
           <div class="dj-card__divider"></div>
-          <p class="dj-card__desc">
+          <p class="dj-card__desc" data-i18n="djs.bio">
             Passionné par les vinyles depuis son enfance dans un petit village, Lucas est devenu un DJ reconnu qui fait vibrer les clubs du monde entier grâce à son sens unique du rythme. À chaque set, il transforme la piste de danse en un espace de liberté pure où la musique unit les inconnus jusqu'à l'aube.
           </p>
           <div class="dj-card__links">
-            <a href="#" class="dj-card__link">
+            <a href="#" class="dj-card__link" data-i18n="djs.exemple">
               Exemple
             </a>
           </div>
@@ -501,9 +501,9 @@
 
     <!-- CTA -->
     <section class="dj-cta">
-      <h2 class="dj-cta__title">Réservez votre DJ</h2>
-      <p class="dj-cta__sub">Faites de votre événement un moment inoubliable</p>
-      <a href="devis.html" class="dj-cta__btn">Demander un devis</a>
+      <h2 class="dj-cta__title" data-i18n="djs.cta.title">Réservez votre DJ</h2>
+      <p class="dj-cta__sub" data-i18n="djs.cta.subtitle">Faites de votre événement un moment inoubliable</p>
+      <a href="devis.html" class="dj-cta__btn" data-i18n="djs.cta.btn">Demander un devis</a>
     </section>
 
   </main>
@@ -514,7 +514,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="footer-logo">VIBRA</a>
-          <p class="footer-description">
+          <p class="footer-description" data-i18n="footer.description">
             Votre agence événementielle premium spécialisée dans la sonorisation, l'éclairage et l'animation musicale pour tous vos événements.
           </p>
           <div class="footer-social">
@@ -530,37 +530,37 @@
           </div>
         </div>
         <div>
-          <h3 class="footer-section-title">Prestations</h3>
+          <h3 class="footer-section-title" data-i18n="footer.prestations">Prestations</h3>
           <ul class="footer-links">
-            <li><a href="evenements-professionnels.html" class="footer-link">Événements Professionnels</a></li>
-            <li><a href="evenements-particuliers.html" class="footer-link">Événements Particuliers</a></li>
-            <li><a href="prestations-techniques.html" class="footer-link">Services Techniques</a></li>
+            <li><a href="evenements-professionnels.html" class="footer-link" data-i18n="footer.events-pro">Événements Professionnels</a></li>
+            <li><a href="evenements-particuliers.html" class="footer-link" data-i18n="footer.events-part">Événements Particuliers</a></li>
+            <li><a href="prestations-techniques.html" class="footer-link" data-i18n="footer.services-tech">Services Techniques</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="footer-section-title">Artistes</h3>
+          <h3 class="footer-section-title" data-i18n="footer.artistes">Artistes</h3>
           <ul class="footer-links">
-            <li><a href="equipe-djs.html" class="footer-link">Nos DJs</a></li>
-            <li><a href="equipe-solo-groupes.html" class="footer-link">Solo & Groupes</a></li>
-            <li><a href="mix-playlists.html" class="footer-link">Mixs & Playlists</a></li>
+            <li><a href="equipe-djs.html" class="footer-link" data-i18n="footer.nos-djs">Nos DJs</a></li>
+            <li><a href="equipe-solo-groupes.html" class="footer-link" data-i18n="footer.solo-groupes">Solo & Groupes</a></li>
+            <li><a href="mix-playlists.html" class="footer-link" data-i18n="footer.mixs-playlists">Mixs & Playlists</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="footer-section-title">À propos</h3>
+          <h3 class="footer-section-title" data-i18n="footer.a-propos">À propos</h3>
           <ul class="footer-links">
-            <li><a href="portfolio.html" class="footer-link">Nos Réalisations</a></li>
-            <li><a href="#contact" class="footer-link">Contact</a></li>
-            <li><a href="devis.html" class="footer-link">Devis en ligne</a></li>
+            <li><a href="portfolio.html" class="footer-link" data-i18n="footer.realisations">Nos Réalisations</a></li>
+            <li><a href="#contact" class="footer-link" data-i18n="footer.contact">Contact</a></li>
+            <li><a href="devis.html" class="footer-link" data-i18n="footer.devis">Devis en ligne</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <div class="footer-bottom-content">
-          <p class="copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
+          <p class="copyright" data-i18n-html="footer.copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
           <ul class="footer-legal-links">
-            <li><a href="#mentions" class="footer-legal-link">Mentions légales</a></li>
-            <li><a href="#privacy" class="footer-legal-link">Politique de confidentialité</a></li>
-            <li><a href="#cgv" class="footer-legal-link">CGV</a></li>
+            <li><a href="#mentions" class="footer-legal-link" data-i18n="footer.mentions">Mentions légales</a></li>
+            <li><a href="#privacy" class="footer-legal-link" data-i18n="footer.privacy">Politique de confidentialité</a></li>
+            <li><a href="#cgv" class="footer-legal-link" data-i18n="footer.cgv">CGV</a></li>
           </ul>
         </div>
       </div>
@@ -571,6 +571,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="assets/js/i18n/translations.js"></script>
+  <script src="assets/js/i18n/lang-switcher.js"></script>
   <script src="assets/js/main.js" type="module"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {

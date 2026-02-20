@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/images/logo/vibra-icon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css">
 
   <style>
@@ -106,7 +106,7 @@
       justify-content: center;
     }
     .mix-hero__btn {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 700;
       font-size: 1rem;
       padding: 16px 40px;
@@ -169,8 +169,17 @@
       width: 60px;
       height: 3px;
       background: #e86c24;
-      margin: 0 auto 50px;
+      margin: 0 auto 20px;
       border-radius: 2px;
+    }
+    .mix-section__desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #666;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 40px;
     }
 
     /* ===== MIX CARDS ===== */
@@ -232,7 +241,7 @@
       display: none;
     }
     .mix-item__sub {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 500;
       font-size: 12px;
       color: rgba(255,255,255,0.45);
@@ -257,228 +266,6 @@
       grid-column: 1 / -1;
       max-width: 540px;
       justify-self: center;
-    }
-
-    /* ===== FIXED BOTTOM PLAYER BAR (floating) ===== */
-    .player-bar {
-      position: fixed;
-      bottom: 16px;
-      left: 50%;
-      transform: translateX(-50%) translateY(calc(100% + 24px));
-      width: calc(100% - 40px);
-      max-width: 1100px;
-      height: 78px;
-      background: rgba(18, 18, 18, 0.96);
-      backdrop-filter: blur(16px);
-      z-index: 1001;
-      display: flex;
-      align-items: center;
-      padding: 0 22px;
-      gap: 16px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3);
-      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .player-bar.visible {
-      transform: translateX(-50%) translateY(0);
-    }
-    body.player-active { padding-bottom: 110px; }
-
-    /* Cover */
-    .player-bar__cover {
-      width: 52px;
-      height: 52px;
-      border-radius: 10px;
-      flex-shrink: 0;
-      overflow: hidden;
-      background: linear-gradient(135deg, #FF6B35 0%, #e05520 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .player-bar__cover img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: none;
-    }
-    .player-bar__cover img.loaded { display: block; }
-    .player-bar__cover svg {
-      width: 22px;
-      height: 22px;
-      fill: rgba(255,255,255,0.85);
-    }
-    .player-bar__cover img.loaded + svg { display: none; }
-
-    /* Infos titre */
-    .player-bar__info {
-      display: flex;
-      flex-direction: column;
-      min-width: 120px;
-      max-width: 200px;
-      overflow: hidden;
-    }
-    .player-bar__title {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      color: #fff;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .player-bar__artist {
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .player-bar__source {
-      font-family: 'Inter', sans-serif;
-      font-size: 9px;
-      color: rgba(255,255,255,0.3);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-top: 1px;
-    }
-
-    /* Bouton Play/Pause */
-    .player-bar__play-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: none;
-      background: #FF6B35;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: background 0.2s, transform 0.15s;
-      padding: 0;
-    }
-    .player-bar__play-btn:hover {
-      background: #FF8C61;
-      transform: scale(1.08);
-    }
-    .player-bar__play-btn:active {
-      transform: scale(0.95);
-    }
-    .player-bar__play-btn svg {
-      width: 20px;
-      height: 20px;
-      fill: #fff;
-    }
-    .player-bar__icon-play {
-      margin-left: 2px; /* optical centering for play triangle */
-    }
-
-    /* Zone centrale : progress */
-    .player-bar__center {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      min-width: 0;
-    }
-    .player-bar__time {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      color: rgba(255,255,255,0.45);
-      min-width: 36px;
-      text-align: center;
-      flex-shrink: 0;
-    }
-    .player-bar__progress {
-      flex: 1;
-      height: 4px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 2px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: height 0.15s;
-    }
-    .player-bar__progress:hover { height: 6px; }
-    .player-bar__progress-fill {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      background: #FF6B35;
-      border-radius: 2px;
-      transition: width 0.3s linear;
-      width: 0%;
-    }
-    .player-bar__progress:hover .player-bar__progress-fill {
-      background: #FF8C61;
-    }
-
-    /* Zone droite : volume */
-    .player-bar__right {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-    .player-bar__vol-icon {
-      width: 20px;
-      height: 20px;
-      fill: rgba(255,255,255,0.55);
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: fill 0.2s;
-    }
-    .player-bar__vol-icon:hover { fill: #FF6B35; }
-    .player-bar__vol-slider {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 90px;
-      height: 4px;
-      border-radius: 2px;
-      background: linear-gradient(to right, #FF6B35 var(--vol-pct, 80%), rgba(255,255,255,0.1) var(--vol-pct, 80%));
-      outline: none;
-      cursor: pointer;
-    }
-    .player-bar__vol-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #fff;
-      cursor: pointer;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
-    }
-    .player-bar__vol-slider::-moz-range-thumb {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #fff;
-      cursor: pointer;
-      border: none;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
-    }
-
-    /* Responsive player bar */
-    @media (max-width: 768px) {
-      .player-bar { width: calc(100% - 24px); padding: 0 14px; gap: 12px; height: 66px; bottom: 10px; }
-      .player-bar__cover { width: 42px; height: 42px; }
-      .player-bar__info { min-width: 80px; max-width: 140px; }
-      .player-bar__title { font-size: 13px; }
-      .player-bar__vol-slider { width: 50px; }
-      .player-bar__play-btn { width: 36px; height: 36px; }
-    }
-    @media (max-width: 480px) {
-      .player-bar { gap: 8px; height: 60px; bottom: 8px; border-radius: 14px; }
-      .player-bar__vol-slider { display: none; }
-      .player-bar__time { font-size: 10px; min-width: 28px; }
-      .player-bar__source { display: none; }
-      .player-bar__play-btn { width: 34px; height: 34px; }
-      .player-bar__play-btn svg { width: 16px; height: 16px; }
-      .player-bar__cover { width: 38px; height: 38px; }
     }
 
     /* ===== PLAYLISTS ===== */
@@ -518,7 +305,7 @@
       margin: 0 0 10px;
     }
     .mix-cta__sub {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 16px;
       color: #555;
       margin: 0 0 30px;
@@ -581,16 +368,16 @@
   </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
+  <a href="#main-content" class="skip-to-content" data-i18n="nav.skip">Aller au contenu principal</a>
 
   <header class="header" id="header">
     <div class="header-container">
-      <a href="/" class="logo"><img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image"></a>
-      <nav class="nav-desktop"><ul class="nav-menu"><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Prestations <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link">Son & Lumière</a></li></ul></li><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Artistes <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li></ul></li><li class="nav-item"><a href="portfolio.html" class="nav-link">Réalisations</a></li><li class="nav-item"><a href="#about" class="nav-link">À propos</a></li><li class="nav-item"><a href="mix-playlists.html" class="nav-link">Nos mixs</a></li></ul></nav>
-      <div class="header-right"><a href="devis.html" class="btn btn-primary">Devis en ligne</a><div class="language-switcher"><button class="lang-btn active" data-lang="fr">FR</button><span class="lang-separator">/</span><button class="lang-btn" data-lang="en">EN</button></div></div>
+      <a href="index.html" class="logo"><img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image"></a>
+      <nav class="nav-desktop"><ul class="nav-menu"><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.prestations">Prestations</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li></ul></li><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.artistes">Artistes</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li></ul></li><li class="nav-item"><a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li><li class="nav-item"><a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a></li><li class="nav-item"><a href="mix-playlists.html" class="nav-link active" data-i18n="nav.nos-mixs">Nos mixs</a></li></ul></nav>
+      <div class="header-right"><a href="devis.html" class="btn btn-primary" data-i18n="nav.devis">Devis en ligne</a><div class="language-switcher"><button class="lang-btn active" data-lang="fr">FR</button><span class="lang-separator">/</span><button class="lang-btn" data-lang="en">EN</button></div></div>
       <button class="menu-toggle"><span></span><span></span><span></span></button>
     </div>
-    <nav class="nav-mobile"><ul class="nav-menu"><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Prestations <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link">Son & Lumière</a></li></ul></li><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Artistes <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li></ul></li><li class="nav-item"><a href="portfolio.html" class="nav-link">Réalisations</a></li><li class="nav-item"><a href="#about" class="nav-link">À propos</a></li><li class="nav-item"><a href="mix-playlists.html" class="nav-link">Nos mixs</a></li><li class="nav-item"><a href="devis.html" class="btn btn-primary btn-block">Devis en ligne</a></li></ul></nav>
+    <nav class="nav-mobile"><ul class="nav-menu"><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.prestations">Prestations</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li></ul></li><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.artistes">Artistes</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li></ul></li><li class="nav-item"><a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li><li class="nav-item"><a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a></li><li class="nav-item"><a href="mix-playlists.html" class="nav-link active" data-i18n="nav.nos-mixs">Nos mixs</a></li><li class="nav-item"><a href="devis.html" class="btn btn-primary btn-block" data-i18n="nav.devis">Devis en ligne</a></li></ul></nav>
     <div class="menu-overlay"></div>
   </header>
 
@@ -599,18 +386,18 @@
     <!-- Hero -->
     <section class="mix-hero">
       <div class="mix-hero__bg">
-        <!-- Remplacez cette image par la vôtre dans : assets/images/mix/hero-mix.webp -->
-        <img src="assets/images/mix/hero-mix.webp" alt="DJ en live">
+        <!-- Remplacez cette image par la vôtre dans : assets/images/page-mix/hero.webp -->
+        <img src="assets/images/page-mix/hero.webp" alt="DJ en live">
       </div>
       <div class="mix-hero__content">
-        <h1 class="mix-hero__title">Nos Mix et Playlists</h1>
+        <h1 class="mix-hero__title" data-i18n="mix.title">Nos Mix et Playlists</h1>
         <div class="mix-hero__buttons">
           <a href="#mixes" class="mix-hero__btn mix-hero__btn--mix">
-            Mix
+            <span data-i18n="mix.btn.mix">Mix</span>
             <svg viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
           </a>
           <a href="#playlists" class="mix-hero__btn mix-hero__btn--playlist">
-            Playlist
+            <span data-i18n="mix.btn.playlist">Playlist</span>
             <svg viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
           </a>
         </div>
@@ -619,8 +406,9 @@
 
     <!-- Section Mixs -->
     <section class="mix-section" id="mixes">
-      <h2 class="mix-section__title">NOS <span>MIX</span></h2>
+      <h2 class="mix-section__title"><span data-i18n="mix.section.title.1">NOS</span> <span data-i18n="mix.section.title.2">MIX</span></h2>
       <div class="mix-section__line"></div>
+      <p class="mix-section__desc" data-i18n="mix.section.desc">Ces DJ sets sont des exemples vous permettant de voir comment nous mixons. Nous préparerons ensemble une playlist sur mesure pour votre événement.</p>
 
       <div class="mix-list">
         <!-- Mix 1 - Open Format -->
@@ -711,8 +499,9 @@
 
     <!-- Section Playlists -->
     <section class="playlist-section" id="playlists">
-      <h2 class="mix-section__title">Nos <span>Playlists</span></h2>
+      <h2 class="mix-section__title" data-i18n-html="mix.playlists.title">Nos <span>Playlists</span></h2>
       <div class="mix-section__line"></div>
+      <p class="mix-section__desc" data-i18n="mix.playlists.desc">Ces playlists sont des exemples vous permettant de voir certains sons que nous mixons habituellement. Nous préparerons ensemble une playlist sur mesure pour votre événement.</p>
 
       <div class="playlist-grid">
         <!-- Playlist 1 -->
@@ -749,9 +538,9 @@
 
     <!-- CTA -->
     <section class="mix-cta">
-      <h2 class="mix-cta__title">Vous aimez notre univers musical ?</h2>
-      <p class="mix-cta__sub">Réservez-nous pour votre prochain événement</p>
-      <a href="devis.html" class="mix-cta__btn">Demander un devis</a>
+      <h2 class="mix-cta__title" data-i18n="mix.cta.title">Vous aimez notre univers musical ?</h2>
+      <p class="mix-cta__sub" data-i18n="mix.cta.subtitle">Réservez-nous pour votre prochain événement</p>
+      <a href="devis.html" class="mix-cta__btn" data-i18n="mix.cta.btn">Demander un devis</a>
     </section>
 
   </main>
@@ -762,7 +551,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="footer-logo">VIBRA</a>
-          <p class="footer-description">
+          <p class="footer-description" data-i18n="footer.description">
             Votre agence événementielle premium spécialisée dans la sonorisation, l'éclairage et l'animation musicale pour tous vos événements.
           </p>
           <div class="footer-social">
@@ -784,70 +573,42 @@
           </div>
         </div>
         <div>
-          <h3 class="footer-section-title">Prestations</h3>
+          <h3 class="footer-section-title" data-i18n="footer.prestations">Prestations</h3>
           <ul class="footer-links">
-            <li><a href="evenements-professionnels.html" class="footer-link">Événements Professionnels</a></li>
-            <li><a href="evenements-particuliers.html" class="footer-link">Événements Particuliers</a></li>
-            <li><a href="prestations-techniques.html" class="footer-link">Services Techniques</a></li>
+            <li><a href="evenements-professionnels.html" class="footer-link" data-i18n="footer.events-pro">Événements Professionnels</a></li>
+            <li><a href="evenements-particuliers.html" class="footer-link" data-i18n="footer.events-part">Événements Particuliers</a></li>
+            <li><a href="prestations-techniques.html" class="footer-link" data-i18n="footer.services-tech">Services Techniques</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="footer-section-title">Artistes</h3>
+          <h3 class="footer-section-title" data-i18n="footer.artistes">Artistes</h3>
           <ul class="footer-links">
-            <li><a href="equipe-djs.html" class="footer-link">Nos DJs</a></li>
-            <li><a href="equipe-solo-groupes.html" class="footer-link">Solo & Groupes</a></li>
-            <li><a href="mix-playlists.html" class="footer-link">Mixs & Playlists</a></li>
+            <li><a href="equipe-djs.html" class="footer-link" data-i18n="footer.nos-djs">Nos DJs</a></li>
+            <li><a href="equipe-solo-groupes.html" class="footer-link" data-i18n="footer.solo-groupes">Solo & Groupes</a></li>
+            <li><a href="mix-playlists.html" class="footer-link" data-i18n="footer.mixs-playlists">Mixs & Playlists</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="footer-section-title">À propos</h3>
+          <h3 class="footer-section-title" data-i18n="footer.a-propos">À propos</h3>
           <ul class="footer-links">
-            <li><a href="portfolio.html" class="footer-link">Nos Réalisations</a></li>
-            <li><a href="#contact" class="footer-link">Contact</a></li>
-            <li><a href="devis.html" class="footer-link">Devis en ligne</a></li>
+            <li><a href="portfolio.html" class="footer-link" data-i18n="footer.realisations">Nos Réalisations</a></li>
+            <li><a href="#contact" class="footer-link" data-i18n="footer.contact">Contact</a></li>
+            <li><a href="devis.html" class="footer-link" data-i18n="footer.devis">Devis en ligne</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <div class="footer-bottom-content">
-          <p class="copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
+          <p class="copyright" data-i18n-html="footer.copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
           <ul class="footer-legal-links">
-            <li><a href="#mentions" class="footer-legal-link">Mentions légales</a></li>
-            <li><a href="#privacy" class="footer-legal-link">Politique de confidentialité</a></li>
-            <li><a href="#cgv" class="footer-legal-link">CGV</a></li>
+            <li><a href="#mentions" class="footer-legal-link" data-i18n="footer.mentions">Mentions légales</a></li>
+            <li><a href="#privacy" class="footer-legal-link" data-i18n="footer.privacy">Politique de confidentialité</a></li>
+            <li><a href="#cgv" class="footer-legal-link" data-i18n="footer.cgv">CGV</a></li>
           </ul>
         </div>
       </div>
     </div>
   </footer>
-
-  <!-- Fixed Bottom Player Bar -->
-  <div class="player-bar" id="playerBar">
-    <div class="player-bar__cover" id="playerCover">
-      <img id="playerCoverImg" alt="Cover">
-      <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-    </div>
-    <div class="player-bar__info">
-      <span class="player-bar__title" id="playerTitle">--</span>
-      <span class="player-bar__artist" id="playerArtist">VIBRA</span>
-      <span class="player-bar__source" id="playerSource"></span>
-    </div>
-    <button class="player-bar__play-btn" id="playerPlayBtn" aria-label="Lecture / Pause">
-      <svg class="player-bar__icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-      <svg class="player-bar__icon-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-    </button>
-    <div class="player-bar__center">
-      <span class="player-bar__time" id="playerTimeCurrent">0:00</span>
-      <div class="player-bar__progress" id="playerProgress">
-        <div class="player-bar__progress-fill" id="playerProgressFill"></div>
-      </div>
-      <span class="player-bar__time" id="playerTimeTotal">0:00</span>
-    </div>
-    <div class="player-bar__right">
-      <svg class="player-bar__vol-icon" id="playerVolIcon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-      <input type="range" class="player-bar__vol-slider" id="playerVolSlider" min="0" max="100" value="80">
-    </div>
-  </div>
 
   <!-- Bass Visualizer -->
   <div class="bass-viz bass-viz--left"><canvas></canvas></div>
@@ -868,9 +629,24 @@
   </script>
   <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
 
+  <script src="assets/js/i18n/translations.js"></script>
+  <script src="assets/js/i18n/lang-switcher.js"></script>
   <script src="assets/js/main.js" type="module"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // === SMOOTH SCROLL WITH HEADER OFFSET ===
+      document.querySelectorAll('.mix-hero__btn').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          var targetId = this.getAttribute('href').substring(1);
+          var target = document.getElementById(targetId);
+          if (!target) return;
+          var headerHeight = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0;
+          var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        });
+      });
+
       // === BASS VISUALIZER ===
       var bassLeft = document.querySelector('.bass-viz--left');
       var bassRight = document.querySelector('.bass-viz--right');
@@ -926,218 +702,30 @@
         if (animFrame) cancelAnimationFrame(animFrame);
       }
 
-      // === PLAYER BAR ===
-      var playerBar = document.getElementById('playerBar');
-      var playerTitle = document.getElementById('playerTitle');
-      var playerArtist = document.getElementById('playerArtist');
-      var playerSource = document.getElementById('playerSource');
-      var playerCoverImg = document.getElementById('playerCoverImg');
-      var playerTimeCurrent = document.getElementById('playerTimeCurrent');
-      var playerTimeTotal = document.getElementById('playerTimeTotal');
-      var playerProgressFill = document.getElementById('playerProgressFill');
-      var playerProgress = document.getElementById('playerProgress');
-      var playerVolSlider = document.getElementById('playerVolSlider');
-      var playerVolIcon = document.getElementById('playerVolIcon');
-      var playerPlayBtn = document.getElementById('playerPlayBtn');
-      var iconPlay = playerPlayBtn.querySelector('.player-bar__icon-play');
-      var iconPause = playerPlayBtn.querySelector('.player-bar__icon-pause');
-
-      var currentWidget = null;
-      var currentSourceType = null; // 'mixcloud' or 'spotify'
-      var currentSpotifyController = null;
-      var isPlaying = false;
-      var currentVolume = 1.0;
-      var lastVolume = 1.0;
-      var currentDuration = 0; // durée en secondes (pour seek)
-      var progressInterval = null;
+      // === MIXCLOUD & SPOTIFY - Bass visualizer only ===
       var mcWidgets = [];
       var spotifyControllers = [];
-      var mixcloudCovers = {}; // cache covers Mixcloud
-
-      function formatTime(seconds) {
-        var s = Math.floor(seconds); var m = Math.floor(s / 60); s = s % 60;
-        return m + ':' + (s < 10 ? '0' : '') + s;
-      }
-
-      function updateVolIcon(vol) {
-        if (vol === 0) {
-          playerVolIcon.innerHTML = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
-        } else if (vol < 0.5) {
-          playerVolIcon.innerHTML = '<path d="M18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM5 9v6h4l5 5V4L9 9H5z"/>';
-        } else {
-          playerVolIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
-        }
-      }
-
-      function updateVolSliderBg(val) {
-        playerVolSlider.style.setProperty('--vol-pct', val + '%');
-      }
-
-      // Appliquer le volume a TOUS les widgets Mixcloud
-      function applyVolumeToAll(vol) {
-        mcWidgets.forEach(function(w) {
-          w.widget.setVolume(vol);
-        });
-      }
-
-      function setCover(url) {
-        if (url) {
-          playerCoverImg.src = url;
-          playerCoverImg.classList.add('loaded');
-        } else {
-          playerCoverImg.classList.remove('loaded');
-          playerCoverImg.src = '';
-        }
-      }
-
-      // Fetch cover from Mixcloud API
-      function fetchMixcloudCover(feedPath, callback) {
-        if (mixcloudCovers[feedPath]) { callback(mixcloudCovers[feedPath]); return; }
-        fetch('https://api.mixcloud.com' + feedPath)
-          .then(function(r) { return r.json(); })
-          .then(function(data) {
-            var url = (data.pictures && (data.pictures.extra_large || data.pictures.large || data.pictures['640wx640h'])) || null;
-            if (url) mixcloudCovers[feedPath] = url;
-            callback(url);
-          })
-          .catch(function() { callback(null); });
-      }
-
-      function showPlayerBar(title, artist, source, coverUrl) {
-        playerTitle.textContent = title;
-        playerArtist.textContent = artist;
-        playerSource.textContent = source;
-        setCover(coverUrl);
-        playerBar.classList.add('visible');
-        document.body.classList.add('player-active');
-      }
-
-      function setPlayIcon(playing) {
-        isPlaying = playing;
-        if (playing) {
-          iconPlay.style.display = 'none';
-          iconPause.style.display = 'block';
-        } else {
-          iconPlay.style.display = 'block';
-          iconPause.style.display = 'none';
-        }
-      }
-
-      // Play/Pause button click
-      playerPlayBtn.addEventListener('click', function() {
-        if (currentSourceType === 'mixcloud' && currentWidget) {
-          if (isPlaying) {
-            currentWidget.pause();
-          } else {
-            currentWidget.play();
-          }
-        } else if (currentSourceType === 'spotify' && currentSpotifyController) {
-          currentSpotifyController.togglePlay();
-        }
-      });
-
-      // Volume slider - controle TOUS les Mixcloud
-      updateVolSliderBg(100);
-      playerVolSlider.value = 100;
-      playerVolSlider.addEventListener('input', function() {
-        var val = parseInt(this.value);
-        currentVolume = val / 100;
-        updateVolSliderBg(val);
-        updateVolIcon(currentVolume);
-        applyVolumeToAll(currentVolume);
-      });
-
-      // Volume icon click = mute/unmute
-      playerVolIcon.addEventListener('click', function() {
-        if (currentVolume > 0) {
-          lastVolume = currentVolume;
-          currentVolume = 0;
-          playerVolSlider.value = 0;
-        } else {
-          currentVolume = lastVolume;
-          playerVolSlider.value = Math.round(currentVolume * 100);
-        }
-        updateVolSliderBg(Math.round(currentVolume * 100));
-        updateVolIcon(currentVolume);
-        applyVolumeToAll(currentVolume);
-      });
-
-      // Click on progress bar to seek
-      playerProgress.addEventListener('click', function(e) {
-        var rect = this.getBoundingClientRect();
-        var pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-        if (currentSourceType === 'mixcloud' && currentWidget) {
-          currentWidget.getDuration().then(function(dur) { currentWidget.seek(pct * dur); });
-        } else if (currentSourceType === 'spotify' && currentSpotifyController && currentDuration > 0) {
-          currentSpotifyController.seek(pct * currentDuration);
-        }
-      });
-
-      // === MIXCLOUD PROGRESS TRACKING ===
-      function startMixcloudProgress(widget) {
-        if (progressInterval) clearInterval(progressInterval);
-        progressInterval = setInterval(function() {
-          Promise.all([widget.getPosition(), widget.getDuration()]).then(function(vals) {
-            var pos = vals[0], dur = vals[1];
-            if (dur > 0) {
-              playerTimeCurrent.textContent = formatTime(pos);
-              playerTimeTotal.textContent = formatTime(dur);
-              playerProgressFill.style.width = ((pos / dur) * 100).toFixed(2) + '%';
-            }
-          });
-        }, 500);
-      }
-      function stopProgressTracking() {
-        if (progressInterval) { clearInterval(progressInterval); progressInterval = null; }
-      }
 
       // === CONNECT MIXCLOUD WIDGETS ===
       var mixItems = document.querySelectorAll('.mix-item');
 
       mixItems.forEach(function(item, index) {
         var iframe = item.querySelector('.mix-item__embed iframe');
-        var title = item.getAttribute('data-title') || 'Mix ' + (index + 1);
-        var artist = item.getAttribute('data-artist') || 'VIBRA';
-
-        // Extract Mixcloud feed path from iframe src for API cover fetch
-        var iframeSrc = iframe.getAttribute('src') || '';
-        var feedMatch = iframeSrc.match(/feed=([^&]+)/);
-        var feedPath = feedMatch ? decodeURIComponent(feedMatch[1]).replace('https://www.mixcloud.com', '') : null;
 
         if (typeof Mixcloud !== 'undefined' && Mixcloud.PlayerWidget) {
           var widget = Mixcloud.PlayerWidget(iframe);
-          mcWidgets.push({ widget: widget, title: title, artist: artist });
+          mcWidgets.push(widget);
 
           widget.ready.then(function() {
-            widget.setVolume(currentVolume);
-
             widget.events.play.on(function() {
               // Pause les autres widgets Mixcloud
-              mcWidgets.forEach(function(w) { if (w.widget !== widget) w.widget.pause(); });
+              mcWidgets.forEach(function(w) { if (w !== widget) w.pause(); });
               // Pause Spotify si actif
-              spotifyControllers.forEach(function(sc) { sc.controller.pause(); });
-              currentWidget = widget;
-              currentSourceType = 'mixcloud';
-              currentSpotifyController = null;
-
-              // Fetch cover from Mixcloud API
-              if (feedPath) {
-                fetchMixcloudCover(feedPath, function(coverUrl) {
-                  showPlayerBar(title, artist, 'Mixcloud', coverUrl);
-                });
-              } else {
-                showPlayerBar(title, artist, 'Mixcloud', null);
-              }
-              setPlayIcon(true);
-              startMixcloudProgress(widget);
+              spotifyControllers.forEach(function(sc) { sc.pause(); });
               startBass();
             });
-            widget.events.pause.on(function() { stopProgressTracking(); stopBass(); setPlayIcon(false); });
-            widget.events.ended.on(function() {
-              stopProgressTracking(); stopBass(); setPlayIcon(false);
-              playerProgressFill.style.width = '0%';
-              playerTimeCurrent.textContent = '0:00';
-            });
+            widget.events.pause.on(function() { stopBass(); });
+            widget.events.ended.on(function() { stopBass(); });
           });
         }
       });
@@ -1154,77 +742,21 @@
           var uri = 'spotify:' + type + ':' + id;
 
           IFrameAPI.createController(iframe, { uri: uri }, function(controller) {
-            var scEntry = { controller: controller, index: index };
-            spotifyControllers.push(scEntry);
-
-            var wasSpotifyActive = false;
+            spotifyControllers.push(controller);
 
             controller.addListener('playback_update', function(e) {
-              var data = e.data;
-              var isPaused = data.isPaused;
-              var pos = data.position / 1000;
-              var dur = data.duration / 1000;
+              var isPaused = e.data.isPaused;
 
               if (!isPaused) {
                 // Pause Mixcloud si actif
-                mcWidgets.forEach(function(w) { w.widget.pause(); });
+                mcWidgets.forEach(function(w) { w.pause(); });
                 // Pause les AUTRES Spotify controllers
                 spotifyControllers.forEach(function(sc) {
-                  if (sc.controller !== controller) sc.controller.pause();
+                  if (sc !== controller) sc.pause();
                 });
-
-                var justSwitched = (currentSpotifyController !== controller) || (currentSourceType !== 'spotify');
-                currentSourceType = 'spotify';
-                currentSpotifyController = controller;
-                currentWidget = null;
-                currentDuration = dur;
-
-                if (justSwitched || !wasSpotifyActive) {
-                  wasSpotifyActive = true;
-                  // Try to extract track info from Spotify event data
-                  var trackName = 'Playlist Spotify';
-                  var artistName = 'VIBRA';
-                  var coverUrl = null;
-
-                  var track = data.track || data.currentTrack || null;
-                  if (track) {
-                    trackName = track.name || trackName;
-                    if (track.artists && track.artists.length > 0) {
-                      artistName = track.artists.map(function(a) { return a.name; }).join(', ');
-                    }
-                    if (track.album && track.album.images && track.album.images.length > 0) {
-                      coverUrl = track.album.images[0].url;
-                    }
-                  }
-
-                  showPlayerBar(trackName, artistName, 'Spotify', coverUrl);
-
-                  // Fetch cover via Spotify oEmbed as fallback
-                  if (!coverUrl) {
-                    fetch('https://open.spotify.com/oembed?url=https://open.spotify.com/' + type + '/' + id)
-                      .then(function(r) { return r.json(); })
-                      .then(function(json) {
-                        if (json.thumbnail_url) setCover(json.thumbnail_url);
-                      })
-                      .catch(function() {});
-                  }
-                }
-
-                setPlayIcon(true);
                 startBass();
-
-                // Update progress
-                if (dur > 0) {
-                  playerTimeCurrent.textContent = formatTime(pos);
-                  playerTimeTotal.textContent = formatTime(dur);
-                  playerProgressFill.style.width = ((pos / dur) * 100).toFixed(2) + '%';
-                }
               } else {
-                wasSpotifyActive = false;
-                if (currentSpotifyController === controller) {
-                  setPlayIcon(false);
-                  stopBass();
-                }
+                stopBass();
               }
             });
           });
@@ -1235,7 +767,6 @@
       if (window._spotifyIFrameAPI) {
         initSpotifyControllers(window._spotifyIFrameAPI);
       } else {
-        // Store init function for when API is ready
         window._initSpotifyWhenReady = initSpotifyControllers;
       }
     });

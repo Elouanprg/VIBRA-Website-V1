@@ -40,14 +40,19 @@ if (typeof Lenis !== 'undefined' && !isTouchDevice) {
 
   requestAnimationFrame(raf);
 
-  // Connect Lenis to GSAP ScrollTrigger
-  lenis.on('scroll', ScrollTrigger.update);
+  // Expose Lenis instance for page scripts
+  window.vibraLenis = lenis;
 
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
+  // Connect Lenis to GSAP ScrollTrigger (only if GSAP is loaded)
+  if (typeof ScrollTrigger !== 'undefined' && typeof gsap !== 'undefined') {
+    lenis.on('scroll', ScrollTrigger.update);
 
-  gsap.ticker.lagSmoothing(0);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+  }
 }
 
 // Initialize LazyLoad

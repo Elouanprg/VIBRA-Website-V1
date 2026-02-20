@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/images/logo/vibra-icon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css">
 
   <style>
@@ -156,7 +156,7 @@
       padding-top: 2px;
     }
     .dv-service__name {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 600;
       font-size: 14px;
       color: #1a1a1a;
@@ -218,7 +218,7 @@
       flex: 1;
     }
     .dv-sidebar-contact-item__label {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 600;
       font-size: 12.5px;
       color: #1a1a1a;
@@ -269,7 +269,7 @@
       gap: 6px;
     }
     .dv-label {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 600;
       font-size: 13px;
       color: #1a1a1a;
@@ -485,7 +485,7 @@
       margin-bottom: 16px;
     }
     .dv-cal-title {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 600;
       font-size: 15px;
       color: #1a1a1a;
@@ -649,7 +649,7 @@
       text-align: center;
     }
     .dv-submit {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 700;
       font-size: 15px;
       color: #fff;
@@ -717,7 +717,7 @@
     }
     .dv-success__btn {
       display: inline-block;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 600;
       font-size: 14px;
       color: #FF6B35;
@@ -796,35 +796,35 @@
   </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
+  <a href="#main-content" class="skip-to-content" data-i18n="nav.skip">Aller au contenu principal</a>
 
   <header class="header" id="header">
     <div class="header-container">
-      <a href="/" class="logo"><img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image"></a>
+      <a href="index.html" class="logo"><img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image"></a>
       <nav class="nav-desktop">
         <ul class="nav-menu">
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle">Prestations <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+            <a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.prestations">Prestations</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
             <ul class="dropdown-menu">
-              <li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li>
-              <li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li>
-              <li><a href="prestations-techniques.html" class="nav-link">Son & Lumière</a></li>
+              <li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li>
+              <li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li>
+              <li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle">Artistes <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+            <a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.artistes">Artistes</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
             <ul class="dropdown-menu">
-              <li><a href="equipe-djs.html" class="nav-link">DJs</a></li>
-              <li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li>
+              <li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li>
+              <li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a href="portfolio.html" class="nav-link">Réalisations</a></li>
-          <li class="nav-item"><a href="#about" class="nav-link">À propos</a></li>
-          <li class="nav-item"><a href="mix-playlists.html" class="nav-link">Nos mixs</a></li>
+          <li class="nav-item"><a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li>
+          <li class="nav-item"><a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a></li>
+          <li class="nav-item"><a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a></li>
         </ul>
       </nav>
       <div class="header-right">
-        <a href="devis.html" class="btn btn-primary">Devis en ligne</a>
+        <a href="devis.html" class="btn btn-primary active" data-i18n="nav.devis">Devis en ligne</a>
         <div class="language-switcher">
           <button class="lang-btn active" data-lang="fr">FR</button>
           <span class="lang-separator">/</span>
@@ -835,12 +835,12 @@
     </div>
     <nav class="nav-mobile">
       <ul class="nav-menu">
-        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Prestations <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link">Son & Lumière</a></li></ul></li>
-        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle">Artistes <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link">Solo & Groupes</a></li></ul></li>
-        <li class="nav-item"><a href="portfolio.html" class="nav-link">Réalisations</a></li>
-        <li class="nav-item"><a href="#about" class="nav-link">À propos</a></li>
-        <li class="nav-item"><a href="mix-playlists.html" class="nav-link">Nos mixs</a></li>
-        <li class="nav-item"><a href="devis.html" class="btn btn-primary btn-block">Devis en ligne</a></li>
+        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.prestations">Prestations</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li></ul></li>
+        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.artistes">Artistes</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li></ul></li>
+        <li class="nav-item"><a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li>
+        <li class="nav-item"><a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a></li>
+        <li class="nav-item"><a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a></li>
+        <li class="nav-item"><a href="devis.html" class="btn btn-primary btn-block active" data-i18n="nav.devis">Devis en ligne</a></li>
       </ul>
     </nav>
     <div class="menu-overlay"></div>
@@ -857,9 +857,9 @@
 
     <!-- Page Header -->
     <section class="dv-header">
-      <h1 class="dv-header__title">Devis en ligne</h1>
-      <span class="dv-header__sub">Gratuit & sans engagement</span>
-      <p class="dv-header__desc">
+      <h1 class="dv-header__title" data-i18n="devis.title">Devis en ligne</h1>
+      <span class="dv-header__sub" data-i18n="devis.subtitle">Gratuit & sans engagement</span>
+      <p class="dv-header__desc" data-i18n="devis.desc">
         Décrivez votre événement et recevez votre devis personnalisé en moins de 24 heures.
       </p>
     </section>
@@ -870,16 +870,16 @@
       <!-- Sidebar -->
       <aside class="dv-sidebar">
         <div class="dv-sidebar__section">
-          <h2 class="dv-sidebar__title">Pourquoi VIBRA ?</h2>
-          <p class="dv-sidebar__subtitle">Un accompagnement complet pour faire de votre événement un moment inoubliable.</p>
+          <h2 class="dv-sidebar__title" data-i18n="devis.why.title">Pourquoi VIBRA ?</h2>
+          <p class="dv-sidebar__subtitle" data-i18n="devis.why.subtitle">Un accompagnement complet pour faire de votre événement un moment inoubliable.</p>
 
           <div class="dv-service">
             <div class="dv-service__icon">
               <svg viewBox="0 0 24 24"><path d="M12 3v9.28a4.39 4.39 0 0 0-1.5-.28C8.01 12 6 13.79 6 16s2.01 4 4.5 4S15 18.21 15 16V6h3V3h-6z"/></svg>
             </div>
             <div class="dv-service__text">
-              <p class="dv-service__name">DJs & artistes live</p>
-              <p class="dv-service__desc">Adaptés à votre style et ambiance.</p>
+              <p class="dv-service__name" data-i18n="devis.s1.name">DJs & artistes live</p>
+              <p class="dv-service__desc" data-i18n="devis.s1.desc">Adaptés à votre style et ambiance.</p>
             </div>
           </div>
 
@@ -888,8 +888,8 @@
               <svg viewBox="0 0 24 24"><path d="M17 2H7c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-3 2v4l-1.5-1.5L11 8V4h3zm3 16H7V4h2v8l2.5-3 2.5 3V4h3v16z"/><circle cx="12" cy="17" r="2"/></svg>
             </div>
             <div class="dv-service__text">
-              <p class="dv-service__name">Sonorisation sur mesure</p>
-              <p class="dv-service__desc">Matériel haut de gamme pour votre lieu.</p>
+              <p class="dv-service__name" data-i18n="devis.s2.name">Sonorisation sur mesure</p>
+              <p class="dv-service__desc" data-i18n="devis.s2.desc">Matériel haut de gamme pour votre lieu.</p>
             </div>
           </div>
 
@@ -898,8 +898,8 @@
               <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>
             </div>
             <div class="dv-service__text">
-              <p class="dv-service__name">Éclairage & ambiance</p>
-              <p class="dv-service__desc">Lumière et scénographie visuelle.</p>
+              <p class="dv-service__name" data-i18n="devis.s3.name">Éclairage & ambiance</p>
+              <p class="dv-service__desc" data-i18n="devis.s3.desc">Lumière et scénographie visuelle.</p>
             </div>
           </div>
 
@@ -908,8 +908,8 @@
               <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
             </div>
             <div class="dv-service__text">
-              <p class="dv-service__name">Événements sur mesure</p>
-              <p class="dv-service__desc">Pensé selon vos envies et budget.</p>
+              <p class="dv-service__name" data-i18n="devis.s4.name">Événements sur mesure</p>
+              <p class="dv-service__desc" data-i18n="devis.s4.desc">Pensé selon vos envies et budget.</p>
             </div>
           </div>
 
@@ -918,8 +918,8 @@
               <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
             </div>
             <div class="dv-service__text">
-              <p class="dv-service__name">Réponse sous 24h</p>
-              <p class="dv-service__desc">Devis détaillé sous 24h.</p>
+              <p class="dv-service__name" data-i18n="devis.s5.name">Réponse sous 24h</p>
+              <p class="dv-service__desc" data-i18n="devis.s5.desc">Devis détaillé sous 24h.</p>
             </div>
           </div>
         </div>
@@ -927,8 +927,8 @@
         <div class="dv-sidebar__divider"></div>
 
         <div class="dv-sidebar__section">
-          <h3 class="dv-sidebar__title" style="font-size: 16px;">Contactez-nous</h3>
-          <p class="dv-sidebar__subtitle" style="margin-bottom: 16px;">Une question avant de remplir le formulaire ?</p>
+          <h3 class="dv-sidebar__title" style="font-size: 16px;" data-i18n="devis.contact.title">Contactez-nous</h3>
+          <p class="dv-sidebar__subtitle" style="margin-bottom: 16px;" data-i18n="devis.contact.subtitle">Une question avant de remplir le formulaire ?</p>
 
           <div class="dv-sidebar-contact">
             <div class="dv-sidebar-contact-item">
@@ -936,7 +936,7 @@
                 <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
               </div>
               <div class="dv-sidebar-contact-item__info">
-                <p class="dv-sidebar-contact-item__label">Téléphone</p>
+                <p class="dv-sidebar-contact-item__label" data-i18n="devis.contact.phone">Téléphone</p>
                 <p class="dv-sidebar-contact-item__value"><a href="tel:+33600000000">06 00 00 00 00</a></p>
               </div>
             </div>
@@ -945,7 +945,7 @@
                 <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
               </div>
               <div class="dv-sidebar-contact-item__info">
-                <p class="dv-sidebar-contact-item__label">Email</p>
+                <p class="dv-sidebar-contact-item__label" data-i18n="devis.contact.email">Email</p>
                 <p class="dv-sidebar-contact-item__value"><a href="mailto:contact@vibra-events.com">contact@vibra-events.com</a></p>
               </div>
             </div>
@@ -970,39 +970,39 @@
           <!-- NOM / Prénom -->
           <div class="dv-row">
             <div class="dv-field">
-              <label class="dv-label" for="dv-nom">NOM <span class="dv-required">*</span></label>
-              <input class="dv-input" type="text" id="dv-nom" name="nom" placeholder="Dupont" required>
+              <label class="dv-label" for="dv-nom"><span data-i18n="devis.form.nom">NOM</span> <span class="dv-required">*</span></label>
+              <input class="dv-input" type="text" id="dv-nom" name="nom" placeholder="Dupont" data-i18n-ph="devis.ph.nom" required>
             </div>
             <div class="dv-field">
-              <label class="dv-label" for="dv-prenom">Prénom <span class="dv-required">*</span></label>
-              <input class="dv-input" type="text" id="dv-prenom" name="prenom" placeholder="Jean" required>
+              <label class="dv-label" for="dv-prenom"><span data-i18n="devis.form.prenom">Prénom</span> <span class="dv-required">*</span></label>
+              <input class="dv-input" type="text" id="dv-prenom" name="prenom" placeholder="Jean" data-i18n-ph="devis.ph.prenom" required>
             </div>
           </div>
 
           <!-- Entreprise -->
           <div class="dv-row dv-row--full">
             <div class="dv-field">
-              <label class="dv-label" for="dv-entreprise">Entreprise (facultatif)</label>
-              <input class="dv-input" type="text" id="dv-entreprise" name="entreprise" placeholder="Nom de votre entreprise">
+              <label class="dv-label" for="dv-entreprise" data-i18n="devis.form.entreprise">Entreprise (facultatif)</label>
+              <input class="dv-input" type="text" id="dv-entreprise" name="entreprise" placeholder="Nom de votre entreprise" data-i18n-ph="devis.ph.entreprise">
             </div>
           </div>
 
           <!-- Téléphone -->
           <div class="dv-row dv-row--full">
             <div class="dv-field">
-              <label class="dv-label" for="dv-tel">Numéro de téléphone <span class="dv-required">*</span></label>
+              <label class="dv-label" for="dv-tel"><span data-i18n="devis.form.tel">Numéro de téléphone</span> <span class="dv-required">*</span></label>
               <div class="dv-phone-wrapper">
                 <div class="dv-phone-prefix" id="phonePrefixBtn">
                   <img class="dv-flag" id="phoneFlag" src="https://flagcdn.com/w40/fr.png" alt="FR">
                   <input class="dv-prefix-input" type="text" id="phonePrefixInput" value="+33" maxlength="5">
                   <svg class="dv-prefix-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7 10l5 5 5-5z" fill="#999"/></svg>
                 </div>
-                <input class="dv-input dv-input--phone" type="tel" id="dv-tel" name="telephone" inputmode="numeric" placeholder="6 12 34 56 78" required>
+                <input class="dv-input dv-input--phone" type="tel" id="dv-tel" name="telephone" inputmode="numeric" placeholder="6 12 34 56 78" data-i18n-ph="devis.ph.tel" required>
               </div>
               <!-- Dropdown pays -->
               <div class="dv-country-dropdown" id="countryDropdown">
                 <div class="dv-country-search-wrap">
-                  <input class="dv-country-search" id="countrySearch" type="text" placeholder="Rechercher un pays...">
+                  <input class="dv-country-search" id="countrySearch" type="text" placeholder="Rechercher un pays..." data-i18n-ph="devis.ph.search">
                 </div>
                 <div class="dv-country-list" id="countryList"></div>
               </div>
@@ -1012,38 +1012,38 @@
           <!-- Email -->
           <div class="dv-row dv-row--full">
             <div class="dv-field">
-              <label class="dv-label" for="dv-email">Adresse email <span class="dv-required">*</span></label>
-              <input class="dv-input" type="email" id="dv-email" name="email" placeholder="jean.dupont@email.com" required>
+              <label class="dv-label" for="dv-email"><span data-i18n="devis.form.email">Adresse email</span> <span class="dv-required">*</span></label>
+              <input class="dv-input" type="email" id="dv-email" name="email" placeholder="jean.dupont@email.com" data-i18n-ph="devis.ph.email" required>
             </div>
           </div>
 
           <!-- Type d'événement - radio buttons -->
           <div class="dv-row dv-row--full" style="margin-top: 8px;">
             <div class="dv-field">
-              <label class="dv-label">Type d'événement <span class="dv-required">*</span></label>
+              <label class="dv-label"><span data-i18n="devis.form.type">Type d'événement</span> <span class="dv-required">*</span></label>
               <div class="dv-radios">
                 <label class="dv-radio">
                   <input type="radio" name="type" value="mariage" required>
                   <span class="dv-radio__dot"></span>
-                  <span class="dv-radio__label">Mariage</span>
+                  <span class="dv-radio__label" data-i18n="devis.form.mariage">Mariage</span>
                 </label>
                 <label class="dv-radio">
                   <input type="radio" name="type" value="evenement-entreprise">
                   <span class="dv-radio__dot"></span>
-                  <span class="dv-radio__label">Événement d'entreprise</span>
+                  <span class="dv-radio__label" data-i18n="devis.form.entreprise-event">Événement d'entreprise</span>
                 </label>
                 <label class="dv-radio">
                   <input type="radio" name="type" value="evenement-particulier">
                   <span class="dv-radio__dot"></span>
-                  <span class="dv-radio__label">Événement particulier</span>
+                  <span class="dv-radio__label" data-i18n="devis.form.particulier-event">Événement particulier</span>
                 </label>
                 <label class="dv-radio">
                   <input type="radio" name="type" value="autre">
                   <span class="dv-radio__dot"></span>
-                  <span class="dv-radio__label">Autre</span>
+                  <span class="dv-radio__label" data-i18n="devis.form.autre">Autre</span>
                 </label>
                 <div class="dv-autre-wrap" id="autreWrap">
-                  <input class="dv-autre-input" type="text" id="dv-autre-type" name="autre_type" placeholder="Dites-nous votre type d'événement">
+                  <input class="dv-autre-input" type="text" id="dv-autre-type" name="autre_type" placeholder="Dites-nous votre type d'événement" data-i18n-ph="devis.ph.autre">
                 </div>
               </div>
             </div>
@@ -1052,27 +1052,27 @@
           <!-- Nom de la salle -->
           <div class="dv-row dv-row--full">
             <div class="dv-field">
-              <label class="dv-label" for="dv-salle">Nom de la salle (facultatif)</label>
-              <input class="dv-input" type="text" id="dv-salle" name="salle" placeholder="Ex : Château de Fontainebleau">
+              <label class="dv-label" for="dv-salle" data-i18n="devis.form.salle">Nom de la salle (facultatif)</label>
+              <input class="dv-input" type="text" id="dv-salle" name="salle" placeholder="Ex : Château de Fontainebleau" data-i18n-ph="devis.ph.salle">
             </div>
           </div>
 
           <!-- Adresse de l'événement -->
           <div class="dv-row dv-row--full">
             <div class="dv-field">
-              <label class="dv-label" for="dv-adresse">Adresse de l'événement <span class="dv-required">*</span></label>
-              <input class="dv-input" type="text" id="dv-adresse" name="adresse" placeholder="12 rue de la Paix, 75002 Paris" required>
+              <label class="dv-label" for="dv-adresse"><span data-i18n="devis.form.adresse">Adresse de l'événement</span> <span class="dv-required">*</span></label>
+              <input class="dv-input" type="text" id="dv-adresse" name="adresse" placeholder="12 rue de la Paix, 75002 Paris" data-i18n-ph="devis.ph.adresse" required>
             </div>
           </div>
 
           <!-- Date -->
           <div class="dv-row dv-row--full">
             <div class="dv-field">
-              <label class="dv-label">Date de l'événement <span class="dv-required">*</span></label>
+              <label class="dv-label"><span data-i18n="devis.form.date">Date de l'événement</span> <span class="dv-required">*</span></label>
               <input type="hidden" id="dv-date-hidden" name="date" required>
               <div class="dv-date-trigger" id="dateTrigger">
                 <svg class="dv-date-icon" viewBox="0 0 24 24" width="18" height="18"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z" fill="#999"/></svg>
-                <span class="dv-date-text" id="dateText">jj / mm / aaaa</span>
+                <span class="dv-date-text" id="dateText" data-i18n="devis.ph.date">jj / mm / aaaa</span>
               </div>
               <!-- Custom calendar -->
               <div class="dv-calendar" id="calendarPopup">
@@ -1082,7 +1082,7 @@
                   <button type="button" class="dv-cal-arrow" id="calNext"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg></button>
                 </div>
                 <div class="dv-cal-weekdays">
-                  <span>Lu</span><span>Ma</span><span>Me</span><span>Je</span><span>Ve</span><span>Sa</span><span>Di</span>
+                  <span data-i18n="devis.cal.lu">Lu</span><span data-i18n="devis.cal.ma">Ma</span><span data-i18n="devis.cal.me">Me</span><span data-i18n="devis.cal.je">Je</span><span data-i18n="devis.cal.ve">Ve</span><span data-i18n="devis.cal.sa">Sa</span><span data-i18n="devis.cal.di">Di</span>
                 </div>
                 <div class="dv-cal-days" id="calDays"></div>
               </div>
@@ -1092,15 +1092,15 @@
           <!-- Décrivez votre demande -->
           <div class="dv-row dv-row--full" style="margin-top: 8px;">
             <div class="dv-field">
-              <label class="dv-label" for="dv-message">Décrivez votre demande</label>
-              <textarea class="dv-textarea" id="dv-message" name="message" placeholder="Dites nous en plus"></textarea>
+              <label class="dv-label" for="dv-message" data-i18n="devis.form.message">Décrivez votre demande</label>
+              <textarea class="dv-textarea" id="dv-message" name="message" placeholder="Dites nous en plus" data-i18n-ph="devis.ph.message"></textarea>
             </div>
           </div>
 
           <!-- Submit -->
           <div class="dv-submit-row">
             <button type="submit" class="dv-submit">
-              Envoyer ma demande
+              <span data-i18n="devis.form.submit">Envoyer ma demande</span>
               <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
             </button>
           </div>
@@ -1111,12 +1111,12 @@
           <div class="dv-success__icon">
             <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
           </div>
-          <h3 class="dv-success__title">Demande envoyée !</h3>
-          <p class="dv-success__text">
+          <h3 class="dv-success__title" data-i18n="devis.success.title">Demande envoyée !</h3>
+          <p class="dv-success__text" data-i18n-html="devis.success.text">
             Merci pour votre confiance. Notre équipe vous recontactera<br>
             sous 48h pour discuter de votre projet.
           </p>
-          <a href="/" class="dv-success__btn">Retour à l'accueil</a>
+          <a href="/" class="dv-success__btn" data-i18n="devis.success.btn">Retour à l'accueil</a>
         </div>
 
       </div>
@@ -1132,7 +1132,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="footer-logo">VIBRA</a>
-          <p class="footer-description">
+          <p class="footer-description" data-i18n="footer.description">
             Votre agence événementielle premium spécialisée dans la sonorisation, l'éclairage et l'animation musicale pour tous vos événements.
           </p>
           <div class="footer-social">
@@ -1148,37 +1148,37 @@
           </div>
         </div>
         <div>
-          <h3 class="footer-section-title">Prestations</h3>
+          <h3 class="footer-section-title" data-i18n="footer.prestations">Prestations</h3>
           <ul class="footer-links">
-            <li><a href="evenements-professionnels.html" class="footer-link">Événements Professionnels</a></li>
-            <li><a href="evenements-particuliers.html" class="footer-link">Événements Particuliers</a></li>
-            <li><a href="prestations-techniques.html" class="footer-link">Services Techniques</a></li>
+            <li><a href="evenements-professionnels.html" class="footer-link" data-i18n="footer.events-pro">Événements Professionnels</a></li>
+            <li><a href="evenements-particuliers.html" class="footer-link" data-i18n="footer.events-part">Événements Particuliers</a></li>
+            <li><a href="prestations-techniques.html" class="footer-link" data-i18n="footer.services-tech">Services Techniques</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="footer-section-title">Artistes</h3>
+          <h3 class="footer-section-title" data-i18n="footer.artistes">Artistes</h3>
           <ul class="footer-links">
-            <li><a href="equipe-djs.html" class="footer-link">Nos DJs</a></li>
-            <li><a href="equipe-solo-groupes.html" class="footer-link">Solo & Groupes</a></li>
-            <li><a href="mix-playlists.html" class="footer-link">Mixs & Playlists</a></li>
+            <li><a href="equipe-djs.html" class="footer-link" data-i18n="footer.nos-djs">Nos DJs</a></li>
+            <li><a href="equipe-solo-groupes.html" class="footer-link" data-i18n="footer.solo-groupes">Solo & Groupes</a></li>
+            <li><a href="mix-playlists.html" class="footer-link" data-i18n="footer.mixs-playlists">Mixs & Playlists</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="footer-section-title">À propos</h3>
+          <h3 class="footer-section-title" data-i18n="footer.a-propos">À propos</h3>
           <ul class="footer-links">
-            <li><a href="portfolio.html" class="footer-link">Nos Réalisations</a></li>
-            <li><a href="#contact" class="footer-link">Contact</a></li>
-            <li><a href="devis.html" class="footer-link">Devis en ligne</a></li>
+            <li><a href="portfolio.html" class="footer-link" data-i18n="footer.realisations">Nos Réalisations</a></li>
+            <li><a href="#contact" class="footer-link" data-i18n="footer.contact">Contact</a></li>
+            <li><a href="devis.html" class="footer-link" data-i18n="footer.devis">Devis en ligne</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <div class="footer-bottom-content">
-          <p class="copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
+          <p class="copyright" data-i18n="footer.copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
           <ul class="footer-legal-links">
-            <li><a href="#mentions" class="footer-legal-link">Mentions légales</a></li>
-            <li><a href="#privacy" class="footer-legal-link">Politique de confidentialité</a></li>
-            <li><a href="#cgv" class="footer-legal-link">CGV</a></li>
+            <li><a href="#mentions" class="footer-legal-link" data-i18n="footer.mentions">Mentions légales</a></li>
+            <li><a href="#privacy" class="footer-legal-link" data-i18n="footer.privacy">Politique de confidentialité</a></li>
+            <li><a href="#cgv" class="footer-legal-link" data-i18n="footer.cgv">CGV</a></li>
           </ul>
         </div>
       </div>
@@ -1188,6 +1188,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="assets/js/i18n/translations.js"></script>
+  <script src="assets/js/i18n/lang-switcher.js"></script>
   <script src="assets/js/main.js" type="module"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -1373,29 +1375,48 @@
       var currentCountry = countries[0]; // France par défaut
 
       // ========== PHONE FORMATTING ==========
+      // Détecte le 0 initial (format local) et adapte le regroupement
       function formatPhone(value, fmt) {
         var digits = value.replace(/[^0-9]/g, '');
         var result = '';
+        var startsWithZero = digits.charAt(0) === '0';
+
         if (fmt === 'us') {
-          // XXX XXX XXXX
+          // USA/Canada : XXX XXX XXXX
           for (var i = 0; i < digits.length; i++) {
             if (i === 3 || i === 6) result += ' ';
             result += digits[i];
           }
         } else if (fmt === 'uk') {
-          // XXXX XXX XXX
-          for (var i = 0; i < digits.length; i++) {
-            if (i === 4 || i === 7) result += ' ';
-            result += digits[i];
+          if (startsWithZero) {
+            // Format local UK : 07XXX XXX XXX (5+3+3)
+            for (var i = 0; i < digits.length; i++) {
+              if (i === 5 || i === 8) result += ' ';
+              result += digits[i];
+            }
+          } else {
+            // Format international : XXXX XXX XXX
+            for (var i = 0; i < digits.length; i++) {
+              if (i === 4 || i === 7) result += ' ';
+              result += digits[i];
+            }
           }
         } else if (fmt === '2') {
-          // X XX XX XX XX (1er chiffre seul, puis groupes de 2)
-          for (var i = 0; i < digits.length; i++) {
-            if (i === 1 || (i > 1 && i % 2 === 1)) result += ' ';
-            result += digits[i];
+          if (startsWithZero) {
+            // Format local (ex: 06 12 34 56 78) : XX XX XX XX XX
+            for (var i = 0; i < digits.length; i++) {
+              if (i > 0 && i % 2 === 0) result += ' ';
+              result += digits[i];
+            }
+          } else {
+            // Format international (ex: 6 12 34 56 78) : X XX XX XX XX
+            for (var i = 0; i < digits.length; i++) {
+              if (i === 1 || (i > 1 && i % 2 === 1)) result += ' ';
+              result += digits[i];
+            }
           }
         } else {
-          // XXX XXX XXX (groups of 3)
+          // Défaut : XXX XXX XXX (groupes de 3)
           for (var i = 0; i < digits.length; i++) {
             if (i > 0 && i % 3 === 0) result += ' ';
             result += digits[i];
@@ -1631,21 +1652,66 @@
         // Add full phone number
         formData.set('telephone', prefixInput.value + ' ' + phoneInput.value);
 
-        var data = {};
-        formData.forEach(function(value, key) {
-          if (data[key]) {
-            if (!Array.isArray(data[key])) data[key] = [data[key]];
-            data[key].push(value);
-          } else {
-            data[key] = value;
-          }
+        // Remove raw phone field (we use the combined one)
+        formData.delete('phone');
+
+        // Disable submit button during sending
+        var submitBtn = form.querySelector('.dv-submit');
+        var originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Envoi en cours...</span>';
+
+        // Send via FormSubmit.co (gratuit, pas d'inscription)
+        // Premier envoi : un email d'activation sera envoyé à contact@prodramel.com
+        // Il suffit de cliquer sur le lien dans cet email une seule fois pour activer
+        fetch('https://formsubmit.co/ajax/contact@prodramel.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            _subject: 'Nouvelle demande de devis VIBRA',
+            Nom: formData.get('nom'),
+            'Prénom': formData.get('prenom'),
+            Entreprise: formData.get('entreprise') || '(non renseigné)',
+            'Téléphone': formData.get('telephone'),
+            Email: formData.get('email'),
+            "Type d'événement": formData.get('type') === 'autre'
+              ? 'Autre : ' + (formData.get('autre_type') || '')
+              : formData.get('type'),
+            'Nom de la salle': formData.get('salle') || '(non renseigné)',
+            Adresse: formData.get('adresse'),
+            Date: formData.get('date'),
+            Message: formData.get('message') || '(aucun message)'
+          })
+        })
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+          form.style.display = 'none';
+          success.classList.add('visible');
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .catch(function(error) {
+          console.error('Erreur envoi:', error);
+          // Fallback: ouvrir le client mail avec les données
+          var body = 'Nom: ' + formData.get('nom')
+            + '%0APrénom: ' + formData.get('prenom')
+            + '%0AEntreprise: ' + (formData.get('entreprise') || 'N/A')
+            + '%0ATéléphone: ' + formData.get('telephone')
+            + '%0AEmail: ' + formData.get('email')
+            + '%0AType: ' + formData.get('type')
+            + '%0ASalle: ' + (formData.get('salle') || 'N/A')
+            + '%0AAdresse: ' + formData.get('adresse')
+            + '%0ADate: ' + formData.get('date')
+            + '%0AMessage: ' + (formData.get('message') || 'Aucun');
+          window.location.href = 'mailto:contact@prodramel.com?subject=Demande de devis VIBRA&body=' + body;
+          // Show success anyway
+          form.style.display = 'none';
+          success.classList.add('visible');
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .finally(function() {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
         });
-
-        console.log('Devis submitted:', data);
-
-        form.style.display = 'none';
-        success.classList.add('visible');
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
     });
   </script>
